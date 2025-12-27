@@ -1,18 +1,99 @@
 @import "tailwindcss";
 
 @theme {
+  /* Primary - Electric Yellow/Orange (Energía, Electricidad) */
   --color-primary: var(--color-primary);
   --color-primary-hover: var(--color-primary-hover);
+  
+  /* Secondary - Deep Industrial Blue (Profesionalismo, Confianza) */
   --color-secondary: var(--color-secondary);
+  
+  /* Accent - Vibrant Green (Seguridad, Eco, Aprobación) */
   --color-accent: var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
+  
+  /* Electric Spark - For highlights and CTAs */
+  --color-electric: var(--color-electric);
+  
+  /* Industrial - For B2B sections */
+  --color-industrial: var(--color-industrial);
+  --color-industrial-light: var(--color-industrial-light);
+  
+  /* Warmth - For B2C/Home sections */
+  --color-warmth: var(--color-warmth);
 }
 
 :root {
-  /* Default Theme Colors (Blue/Slate/Green) */
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-secondary: #1e293b;
-  --color-accent: #16a34a;
-  --color-accent-hover: #15803d;
+  /* ========================================
+     PALETA SERVICIOS ELÉCTRICOS
+     Inspirada en: Electricidad, Industria, Seguridad
+     ======================================== */
+  
+  /* PRIMARY - Amarillo Eléctrico / Ámbar 
+     Representa: Energía, Electricidad, Urgencia */
+  --color-primary: #f59e0b;        /* amber-500 */
+  --color-primary-hover: #d97706;  /* amber-600 */
+  
+  /* SECONDARY - Azul Industrial Profundo
+     Representa: Profesionalismo, Confianza, Industria */
+  --color-secondary: #0f172a;      /* slate-900 */
+  
+  /* ACCENT - Verde Seguridad / Éxito
+     Representa: Certificación SEC, Garantía, Aprobado */
+  --color-accent: #10b981;         /* emerald-500 */
+  --color-accent-hover: #059669;   /* emerald-600 */
+  
+  /* ELECTRIC - Azul Eléctrico Brillante
+     Para highlights, iconos, detalles técnicos */
+  --color-electric: #3b82f6;       /* blue-500 */
+  
+  /* INDUSTRIAL - Gris Acero para secciones B2B */
+  --color-industrial: #334155;     /* slate-700 */
+  --color-industrial-light: #475569; /* slate-600 */
+  
+  /* WARMTH - Verde Cálido para secciones Hogar */
+  --color-warmth: #059669;         /* emerald-600 */
+}
+
+/* Utility classes for custom colors */
+.bg-electric { background-color: var(--color-electric); }
+.text-electric { color: var(--color-electric); }
+.border-electric { border-color: var(--color-electric); }
+
+.bg-industrial { background-color: var(--color-industrial); }
+.text-industrial { color: var(--color-industrial); }
+
+.bg-warmth { background-color: var(--color-warmth); }
+.text-warmth { color: var(--color-warmth); }
+
+/* Gradient utilities for hero sections */
+.gradient-industrial {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+}
+
+.gradient-hogar {
+  background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #064e3b 100%);
+}
+
+.gradient-electric {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e3a8a 100%);
+}
+
+/* Spark animation for electric feel */
+@keyframes spark {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-spark {
+  animation: spark 2s ease-in-out infinite;
+}
+
+/* Glow effect for electric elements */
+.glow-electric {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }

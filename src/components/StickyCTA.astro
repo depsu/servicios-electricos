@@ -5,26 +5,26 @@ const { company } = siteConfig;
 
 <!-- Desktop Sticky CTA (Optional, usuall Mobile Only is preferred but can add margin for desktop) -->
 <!-- Mobile Sticky CTA -->
-<div class="fixed bottom-0 left-0 w-full z-[100] md:hidden bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-2">
+<div class="fixed bottom-0 left-0 w-full z-[100] md:hidden bg-slate-900 border-t border-amber-500/30 shadow-[0_-4px_12px_-1px_rgba(0,0,0,0.3)] p-2">
   <div class="grid grid-cols-2 gap-2">
       <!-- Call Button -->
       <a 
         href={`tel:${company.phone}`}
-        class="flex flex-col items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-900 py-2 rounded-lg transition active:scale-95"
+        class="flex flex-col items-center justify-center bg-slate-800 hover:bg-slate-700 text-white py-2.5 rounded-lg transition active:scale-95 border border-slate-700"
         data-gtm="phone_click_sticky"
       >
-        <i class="fa-solid fa-phone text-blue-600 text-xl mb-1"></i>
-        <span class="text-xs font-bold uppercase">Llamar</span>
+        <i class="fa-solid fa-phone text-amber-400 text-xl mb-1"></i>
+        <span class="text-xs font-bold uppercase tracking-wide">Llamar</span>
       </a>
 
       <!-- WhatsApp Button -->
       <a 
         href={`https://wa.me/${company.whatsapp}?text=Hola,%20me%20interesa%20un%20servicio%20eléctrico`}
-        class="flex flex-col items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition active:scale-95 shadow-lg"
+        class="flex flex-col items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-lg transition active:scale-95 shadow-lg"
         data-gtm="whatsapp_click_sticky"
       >
         <i class="fa-brands fa-whatsapp text-2xl mb-0.5"></i>
-        <span class="text-xs font-bold uppercase">WhatsApp</span>
+        <span class="text-xs font-bold uppercase tracking-wide">WhatsApp</span>
       </a>
   </div>
 </div>

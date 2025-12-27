@@ -50,9 +50,9 @@ export const siteConfig: SiteConfig = {
         footerVariant: 'service',
         font: 'sans', // 'sans' | 'serif' | 'mono'
         colors: {
-            primary: '#0f172a',   // slate-900 (Professional/Industrial)
-            secondary: '#334155', // slate-700
-            accent: '#f59e0b'     // amber-500 (Electric/Warning)
+            primary: '#f59e0b',   // amber-500 (Electric Yellow - Energía)
+            secondary: '#0f172a', // slate-900 (Industrial Deep Blue)
+            accent: '#10b981'     // emerald-500 (Safety Green - SEC)
         }
     },
     features: {

@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,5 @@ export default defineConfig({
   integrations: [sitemap()],
   site: 'https://servicioselectricos.cl',
 
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapter: vercel()
 });

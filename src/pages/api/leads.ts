@@ -1,4 +1,4 @@
-export const prerender = false; // API endpoints must be server-side rendered
+export const prerender = false;
 
 import type { APIRoute } from 'astro';
 

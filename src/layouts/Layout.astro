@@ -48,12 +48,29 @@ import { ClientRouter } from 'astro:transitions';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
+        <!-- Canonical URL -->
+        <link rel="canonical" href={Astro.url.href} />
+
+        <!-- Robots -->
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+        <!-- Geo Meta Tags (Chile) -->
+        <meta name="geo.region" content="CL-RM" />
+        <meta name="geo.placename" content="Santiago, Región Metropolitana" />
+        <meta name="geo.position" content="-33.4489;-70.6693" />
+        <meta name="ICBM" content="-33.4489, -70.6693" />
+
+        <!-- Author & Publisher -->
+        <meta name="author" content="Servicios Eléctricos RM" />
+
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={new URL(image, Astro.url)} />
+        <meta property="og:locale" content="es_CL" />
+        <meta property="og:site_name" content="Servicios Eléctricos RM" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -62,10 +79,48 @@ import { ClientRouter } from 'astro:transitions';
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={new URL(image, Astro.url)} />
         
-        <!-- JSON-LD Schema -->
+        <!-- Page-specific Schema -->
         {schema && (
             <script type="application/ld+json" set:html={JSON.stringify(schema)} />
         )}
+
+        <!-- Global LocalBusiness Schema -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Electrician",
+            "name": "Servicios Eléctricos RM",
+            "description": "Servicios eléctricos industriales y domiciliarios en la Región Metropolitana. Tableros eléctricos, empalmes rurales, gasfitería y más.",
+            "url": "https://servicioselectricos.cl",
+            "telephone": "+56912345678",
+            "email": "contacto@servicioselectricos.cl",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Santiago",
+                "addressRegion": "Región Metropolitana",
+                "addressCountry": "CL"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.4489,
+                "longitude": -70.6693
+            },
+            "areaServed": [
+                { "@type": "City", "name": "Lampa" },
+                { "@type": "City", "name": "Pudahuel" },
+                { "@type": "City", "name": "San Bernardo" },
+                { "@type": "City", "name": "Chicureo" },
+                { "@type": "City", "name": "Buin" },
+                { "@type": "City", "name": "Melipilla" }
+            ],
+            "priceRange": "$$",
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "08:00",
+                "closes": "20:00"
+            },
+            "sameAs": []
+        })} />
         
         <!-- Dynamic Font Loading -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

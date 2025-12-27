@@ -13,7 +13,35 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/gracias') && !page.includes('/api/'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      serialize: (item) => {
+        // High priority for service landing pages
+        if (item.url.includes('/empresas-industria/montaje-electrico/') ||
+          item.url.includes('/hogar-condominios/empalme') ||
+          item.url.includes('/hogar-condominios/gasfiteria')) {
+          return { ...item, priority: 1.0, changefreq: 'weekly' };
+        }
+        // Medium-high for other service pages
+        if (item.url.includes('/empresas-industria/') || item.url.includes('/hogar-condominios/')) {
+          return { ...item, priority: 0.9, changefreq: 'weekly' };
+        }
+        // Medium for coverage pages
+        if (item.url.includes('/cobertura/')) {
+          return { ...item, priority: 0.8, changefreq: 'monthly' };
+        }
+        // Homepage highest
+        if (item.url === 'https://servicioselectricos.cl/' || item.url === 'https://servicioselectricos.cl') {
+          return { ...item, priority: 1.0, changefreq: 'daily' };
+        }
+        // Default
+        return { ...item, priority: 0.5, changefreq: 'monthly' };
+      }
+    })
+  ],
   site: 'https://servicioselectricos.cl',
 
   adapter: vercel()

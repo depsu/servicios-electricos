@@ -1,7 +1,7 @@
-import { f as createComponent, r as renderTemplate, h as addAttribute, m as maybeRenderHead, o as renderSlot, n as renderScript, k as renderComponent, e as createAstro, p as renderHead, u as unescapeHTML } from './astro/server_vQEaLLfT.mjs';
+import { f as createComponent, r as renderTemplate, h as addAttribute, m as maybeRenderHead, o as renderSlot, n as renderScript, k as renderComponent, e as createAstro, p as createTransitionScope, q as renderHead, u as unescapeHTML } from './astro/server_CF1QfBv0.mjs';
 import 'piccolore';
-import 'clsx';
 /* empty css                          */
+import 'clsx';
 
 const siteConfig = {
   company: {
@@ -115,10 +115,18 @@ const $$StickyCTA = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<!-- Desktop Sticky CTA (Optional, usuall Mobile Only is preferred but can add margin for desktop) --><!-- Mobile Sticky CTA -->${maybeRenderHead()}<div class="fixed bottom-0 left-0 w-full z-[100] md:hidden bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-2"> <div class="grid grid-cols-2 gap-2"> <!-- Call Button --> <a${addAttribute(`tel:${company.phone}`, "href")} class="flex flex-col items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-900 py-2 rounded-lg transition active:scale-95" data-gtm="phone_click_sticky"> <i class="fa-solid fa-phone text-blue-600 text-xl mb-1"></i> <span class="text-xs font-bold uppercase">Llamar</span> </a> <!-- WhatsApp Button --> <a${addAttribute(`https://wa.me/${company.whatsapp}?text=Hola,%20me%20interesa%20un%20servicio%20el\xE9ctrico`, "href")} class="flex flex-col items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition active:scale-95 shadow-lg" data-gtm="whatsapp_click_sticky"> <i class="fa-brands fa-whatsapp text-2xl mb-0.5"></i> <span class="text-xs font-bold uppercase">WhatsApp</span> </a> </div> </div>`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/StickyCTA.astro", void 0);
 
+const $$Astro$1 = createAstro("https://servicioselectricos.cl");
+const $$ClientRouter = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$ClientRouter;
+  const { fallback = "animate" } = Astro2.props;
+  return renderTemplate`<meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback"${addAttribute(fallback, "content")}>${renderScript($$result, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/node_modules/astro/components/ClientRouter.astro?astro&type=script&index=0&lang.ts")}`;
+}, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/node_modules/astro/components/ClientRouter.astro", void 0);
+
 var __freeze = Object.freeze;
 var __defProp = Object.defineProperty;
 var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
-var _a;
+var _a, _b;
 const $$Astro = createAstro("https://servicioselectricos.cl");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
@@ -141,7 +149,42 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     }
   };
   const currentFont = fontConfig[font] || fontConfig.sans;
-  return renderTemplate`<html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="description"${addAttribute(description, "content")}><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>${title}</title><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url"${addAttribute(Astro2.url, "content")}><meta property="og:title"${addAttribute(title, "content")}><meta property="og:description"${addAttribute(description, "content")}><meta property="og:image"${addAttribute(new URL(image, Astro2.url), "content")}><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url"${addAttribute(Astro2.url, "content")}><meta property="twitter:title"${addAttribute(title, "content")}><meta property="twitter:description"${addAttribute(description, "content")}><meta property="twitter:image"${addAttribute(new URL(image, Astro2.url), "content")}><!-- JSON-LD Schema -->${schema && renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "<\/script>"])), unescapeHTML(JSON.stringify(schema)))}<!-- Dynamic Font Loading --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link${addAttribute(currentFont.url, "href")} rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">${renderHead()}</head> <body${addAttribute(`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`, "class")}> ${renderComponent($$result, "Navbar", $$Navbar, {}, { "default": ($$result2) => renderTemplate`${regionText}` })} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", $$Footer, {})} ${renderComponent($$result, "WhatsAppFloat", $$WhatsAppFloat, {})} ${renderComponent($$result, "StickyCTA", $$StickyCTA, {})} </body></html>`;
-}, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/layouts/Layout.astro", void 0);
+  return renderTemplate(_b || (_b = __template(['<html lang="es" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="description"', '><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"', "><title>", '</title><!-- Canonical URL --><link rel="canonical"', '><!-- Robots --><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><!-- Geo Meta Tags (Chile) --><meta name="geo.region" content="CL-RM"><meta name="geo.placename" content="Santiago, Regi\xF3n Metropolitana"><meta name="geo.position" content="-33.4489;-70.6693"><meta name="ICBM" content="-33.4489, -70.6693"><!-- Author & Publisher --><meta name="author" content="Servicios El\xE9ctricos RM"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:image"', '><meta property="og:locale" content="es_CL"><meta property="og:site_name" content="Servicios El\xE9ctricos RM"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url"', '><meta property="twitter:title"', '><meta property="twitter:description"', '><meta property="twitter:image"', "><!-- Page-specific Schema -->", '<!-- Global LocalBusiness Schema --><script type="application/ld+json">', '<\/script><!-- Dynamic Font Loading --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link', ' rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">', "", "</head> <body", "> ", " ", " ", " ", " ", " </body></html>"])), addAttribute(description, "content"), addAttribute(Astro2.generator, "content"), title, addAttribute(Astro2.url.href, "href"), addAttribute(Astro2.url, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(new URL(image, Astro2.url), "content"), addAttribute(Astro2.url, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(new URL(image, Astro2.url), "content"), schema && renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "<\/script>"])), unescapeHTML(JSON.stringify(schema))), unescapeHTML(JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "Servicios El\xE9ctricos RM",
+    "description": "Servicios el\xE9ctricos industriales y domiciliarios en la Regi\xF3n Metropolitana. Tableros el\xE9ctricos, empalmes rurales, gasfiter\xEDa y m\xE1s.",
+    "url": "https://servicioselectricos.cl",
+    "telephone": "+56912345678",
+    "email": "contacto@servicioselectricos.cl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Regi\xF3n Metropolitana",
+      "addressCountry": "CL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -33.4489,
+      "longitude": -70.6693
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Lampa" },
+      { "@type": "City", "name": "Pudahuel" },
+      { "@type": "City", "name": "San Bernardo" },
+      { "@type": "City", "name": "Chicureo" },
+      { "@type": "City", "name": "Buin" },
+      { "@type": "City", "name": "Melipilla" }
+    ],
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    "sameAs": []
+  })), addAttribute(currentFont.url, "href"), renderComponent($$result, "ClientRouter", $$ClientRouter, {}), renderHead(), addAttribute(`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`, "class"), renderComponent($$result, "Navbar", $$Navbar, {}, { "default": ($$result2) => renderTemplate`${regionText}` }), renderSlot($$result, $$slots["default"]), renderComponent($$result, "Footer", $$Footer, {}), renderComponent($$result, "WhatsAppFloat", $$WhatsAppFloat, { "data-astro-transition-persist": createTransitionScope($$result, "2zn3ncaw") }), renderComponent($$result, "StickyCTA", $$StickyCTA, { "data-astro-transition-persist": createTransitionScope($$result, "ipxftwfp") }));
+}, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/layouts/Layout.astro", "self");
 
 export { $$Layout as $, siteConfig as s };

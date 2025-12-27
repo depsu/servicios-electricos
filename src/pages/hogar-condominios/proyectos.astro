@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+const projects = [
+    {
+        title: 'Empalme Rural Chicureo',
+        client: 'Parcela 45, Santa Elena',
+        desc: 'Gestión completa de empalme monofásico aéreo y conexión a red CGE.',
+        tags: ['Empalme', 'Rural', 'CGE'],
+        image: 'https://images.unsplash.com/photo-1454694220579-9d99291587d7?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+        title: 'Renovación Eléctrica Casa',
+        client: 'Condominio La Reserva',
+        desc: 'Cambio completo de tablero y recableado de cocina y logia.',
+        tags: ['Tablero', 'Seguridad', 'Hogar'],
+        image: 'https://plus.unsplash.com/premium_photo-1664302152990-281dffc7cb01?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+        title: 'Iluminación Jardín',
+        client: 'Brisas Norte',
+        desc: 'Proyecto de iluminación LED automatizada para parque interior.',
+        tags: ['LED', 'Jardín', 'Domótica'],
+        image: 'https://images.unsplash.com/photo-1558449028-b53a39d100fc?q=80&w=1000&auto=format&fit=crop'
+    }
+];
+---
+
+<Layout title="Proyectos Hogar | Servicios Eléctricos RM" description="Trabajos realizados en domicilios, condominios y parcelas. Calidad y limpieza garantizada.">
+    <section class="bg-emerald-900 py-20 text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Trabajos en Hogares</h1>
+            <p class="text-xl text-emerald-100 max-w-2xl mx-auto">
+                Cuidamos su hogar como si fuera el nuestro. Terminaciones finas y seguridad eléctrica.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projects.map(project => (
+                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-2xl transition duration-300 hover:-translate-y-1">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src={project.image} alt={project.title} class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-emerald-900 via-transparent to-transparent opacity-60"></div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="text-xs font-bold uppercase tracking-wider bg-emerald-600 px-2 py-1 rounded mb-2 inline-block">Hogar</span>
+                                <h3 class="text-xl font-bold">{project.title}</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm font-bold text-slate-500 mb-2 uppercase">{project.client}</p>
+                            <p class="text-slate-600 mb-4">{project.desc}</p>
+                            <div class="flex flex-wrap gap-2">
+                                {project.tags.map(tag => (
+                                    <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded font-medium">#{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <CallToAction 
+        title="Mejore su hogar hoy" 
+        subtitle="Agende una visita técnica para evaluar su proyecto."
+        ctaText="Pedir Presupuesto"
+        ctaLink="/cotizar?tipo=hogar"
+    />
+</Layout>

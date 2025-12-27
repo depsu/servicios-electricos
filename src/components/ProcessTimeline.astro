@@ -1,0 +1,53 @@
+---
+interface Props {
+  steps?: { title: string; desc: string }[];
+  segment: 'industrial' | 'hogar';
+}
+
+const { steps, segment } = Astro.props;
+
+const defaultIndustrialSteps = [
+  { title: "Evaluación Técnica", desc: "Visita a terreno para levantamiento de requerimientos y factibilidad." },
+  { title: "Propuesta Formal", desc: "Entrega de presupuesto detallado y cronograma de ejecución." },
+  { title: "Ejecución Certificada", desc: "Implementación bajo normativa SEC con personal calificado." },
+  { title: "Entrega y Certificación", desc: "Pruebas finales, entrega de planos As-Built y TE1." }
+];
+
+const defaultHogarSteps = [
+  { title: "Contacto", desc: "Coordinación rápida vía WhatsApp o teléfono." },
+  { title: "Diagnóstico", desc: "Visita técnica para evaluar la falla o requerimiento." },
+  { title: "Solución Inmediata", desc: "Reparación o instalación en el mismo día (según factibilidad)." },
+  { title: "Garantía", desc: "Entrega de boleta y garantía por los trabajos realizados." }
+];
+
+const finalSteps = steps || (segment === 'industrial' ? defaultIndustrialSteps : defaultHogarSteps);
+const colorClass = segment === 'industrial' ? 'bg-blue-600' : 'bg-emerald-600';
+const textClass = segment === 'industrial' ? 'text-blue-600' : 'text-emerald-600';
+---
+
+<section class="py-16 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Proceso de Trabajo</h2>
+    
+    <div class="relative">
+      <!-- Line connecting steps (Desktop) -->
+      <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+        {finalSteps.map((step, index) => (
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 relative group hover:-translate-y-1 transition-transform duration-300">
+            <!-- Step Number Badge -->
+            <div class={`w-12 h-12 rounded-full ${colorClass} text-white flex items-center justify-center font-bold text-xl mb-4 mx-auto md:mx-0 shadow-md relative z-20 ring-4 ring-white`}>
+              {index + 1}
+            </div>
+            
+            <h3 class={`text-xl font-bold mb-2 text-center md:text-left ${textClass}`}>{step.title}</h3>
+            <p class="text-slate-600 text-sm text-center md:text-left leading-relaxed">
+              {step.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

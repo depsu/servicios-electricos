@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureSection from '../../components/FeatureSection.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import { services } from '../../data/servicios';
+
+const industrialServices = services.filter(s => s.segment === 'industrial');
+
+const benefits = [
+  {
+    title: "Cumplimiento Normativo",
+    desc: "Instalaciones certificadas TE1 y cumplimiento de normas técnicas vigentes.",
+    icon: "📋"
+  },
+  {
+    title: "Seguridad Industrial",
+    desc: "Protocolos estrictos de seguridad y personal con EPP certificado.",
+    icon: "🦺"
+  },
+  {
+    title: "Documentación Técnica",
+    desc: "Entrega de planos As-Built, memorias de cálculo y certificaciones.",
+    icon: "d"
+  },
+  {
+    title: "Continuidad Operacional",
+    desc: "Trabajos programados para minimizar impacto en su producción.",
+    icon: "⚡"
+  }
+];
+---
+
+<Layout title="Servicios Industriales | Tableros y Montaje Eléctrico">
+  <Hero 
+    title="Montaje Eléctrico y Mantención <br><span class='text-blue-400'>Industrial</span>"
+    subtitle="Expertos en tableros, escalerillas y media tensión para bodegas, plantas productivas y centros logísticos."
+    bgImage="https://images.unsplash.com/photo-1565514020176-db7936a28243?q=80&w=1600&auto=format&fit=crop"
+    badgeText="Servicio B2B"
+  />
+
+  <!-- Main Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900">Soluciones Industriales</h2>
+        <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Diseñamos y ejecutamos proyectos eléctricos de alta complejidad.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {industrialServices.map(service => (
+          <a href={`/empresas-industria/${service.slug}`} class="group p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-blue-500 transition-all duration-300 bg-slate-50">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 px-2 text-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              ⚡
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600">{service.title}</h3>
+            <p class="text-slate-600 mb-6 text-sm leading-relaxed">{service.shortDescription}</p>
+            <ul class="space-y-2 mb-6 text-sm text-slate-500">
+              {service.features?.slice(0, 3).map(f => (
+                <li class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <span class="text-blue-600 font-bold text-sm group-hover:translate-x-1 inline-block transition-transform">
+              Ver detalle técnico &rarr;
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <div class="w-full md:w-1/2">
+           <img 
+            src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1200&auto=format&fit=crop" 
+            alt="Ingeniero en obra" 
+            class="rounded-2xl shadow-lg"
+          />
+        </div>
+        <div class="w-full md:w-1/2">
+          <h2 class="text-3xl font-bold text-slate-900 mb-8">Por qué elegirnos para su industria</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            {benefits.map(b => (
+              <div class="flex gap-4">
+                <div class="text-3xl">{b.icon}</div>
+                <div>
+                  <h3 class="font-bold text-slate-900">{b.title}</h3>
+                  <p class="text-sm text-slate-600 mt-1">{b.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction 
+    title="Cotice su Proyecto Industrial" 
+    subtitle="Obtenga una evaluación técnica y presupuesto detallado."
+    ctaText="Cotizar con Planos"
+    ctaLink="/cotizar?tipo=empresa"
+  />
+</Layout>

@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { comunas } from '../../data/comunas';
+
+const sortedComunas = comunas.sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout title="Cobertura en Región Metropolitana | Servicios Eléctricos RM" description="Conozca nuestras zonas de cobertura en la Región Metropolitana. Atención rápida en Lampa, Colina, Buin, Paine y más.">
+  <section class="py-20 bg-slate-900 text-white text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Zonas de Cobertura</h1>
+      <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+        Llegamos donde otros no llegan. Nuestros equipos móviles están distribuidos estratégicamente para asegurar una respuesta rápida.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {sortedComunas.map((comuna) => (
+          <a href={`/cobertura/${comuna.slug}`} class="group block bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-400 transition-all duration-300">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+                {comuna.name}
+              </h3>
+              <span class={`text-xs px-2 py-1 rounded-full font-semibold uppercase ${
+                comuna.type === 'industrial' ? 'bg-blue-100 text-blue-700' : 
+                comuna.type === 'rural' ? 'bg-amber-100 text-amber-700' : 
+                'bg-emerald-100 text-emerald-700'
+              }`}>
+                {comuna.type}
+              </span>
+            </div>
+            <p class="text-sm text-slate-600 mb-4 line-clamp-2">
+              {comuna.intro}
+            </p>
+            <div class="flex items-center text-sm font-medium text-slate-500">
+               <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+               Llegada: {comuna.responseTime}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import ComunaLanding from '../../components/ComunaLanding.astro';
+import { comunas } from '../../data/comunas';
+
+export async function getStaticPaths() {
+  return comunas.map(comuna => ({
+    params: { slug: comuna.slug },
+    props: { comuna },
+  }));
+}
+
+const { comuna } = Astro.props;
+---
+
+<ComunaLanding 
+  name={comuna.name}
+  slug={comuna.slug}
+  type={comuna.type}
+  intro={comuna.intro}
+  microZones={comuna.microZones}
+  responseTime={comuna.responseTime}
+  serviceFocus={comuna.serviceFocus}
+  proofPoints={comuna.proofPoints}
+  faq={comuna.faq}
+/>

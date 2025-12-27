@@ -1,0 +1,62 @@
+---
+const projects = [
+  {
+    title: "Tableros Industriales",
+    location: "Lo Boza, Pudahuel",
+    image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=800&auto=format&fit=crop",
+    category: "Industrial"
+  },
+  {
+    title: "Iluminación Bodega",
+    location: "Valle Grande, Lampa",
+    image: "https://images.unsplash.com/photo-1565514020176-db7936a28243?q=80&w=800&auto=format&fit=crop",
+    category: "Industrial"
+  },
+  {
+    title: "Empalme Parcela",
+    location: "Chicureo, Colina",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop",
+    category: "Hogar"
+  },
+  {
+    title: "Renovación Tablero",
+    location: "Las Condes",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
+    category: "Hogar"
+  }
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Proyectos Recientes</h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Trabajos destacados en el sector industrial y residencial de la Región Metropolitana.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {projects.map((project) => (
+        <div class="group relative overflow-hidden rounded-lg shadow-md aspect-[4/3] cursor-pointer">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 p-4 w-full">
+              <span class="inline-block px-2 py-1 text-xs font-semibold bg-blue-600 text-white rounded mb-2">
+                {project.category}
+              </span>
+              <h3 class="text-white font-bold text-lg leading-tight mb-1">{project.title}</h3>
+              <p class="text-slate-300 text-sm flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                {project.location}
+              </p>
+            </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

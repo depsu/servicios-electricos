@@ -1,0 +1,23 @@
+---
+import { comunas } from '../data/comunas';
+
+interface Props {
+  selectedSlug?: string;
+  className?: string;
+}
+
+const { selectedSlug, className = "w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 outline-none bg-white" } = Astro.props;
+
+// Sort comunas alphabetically
+const sortedComunas = [...comunas].sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<select name="comuna" class={className}>
+  <option value="">Seleccione su comuna...</option>
+  {sortedComunas.map((comuna) => (
+    <option value={comuna.slug} selected={comuna.slug === selectedSlug}>
+      {comuna.name}
+    </option>
+  ))}
+  <option value="otra">Otra Comuna (RM)</option>
+</select>

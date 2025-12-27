@@ -2,14 +2,18 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import StickyCTA from '../components/StickyCTA.astro';
 import { siteConfig } from '../config/site';
 
 interface Props {
 	title: string;
+    description?: string;
+    image?: string;
+    schema?: object;
     regionText?: string;
 }
 
-const { title, regionText = "Región Metropolitana" } = Astro.props;
+const { title, description = "Servicios eléctricos profesionales en Región Metropolitana. Industrial y Domiciliario.", image = "/images/og-default.jpg", schema, regionText = "Región Metropolitana" } = Astro.props;
 const { font } = siteConfig.theme;
 
 // Map fonts to Google Fonts URLs and Tailwind classes
@@ -35,11 +39,30 @@ const currentFont = fontConfig[font] || fontConfig.sans;
 <html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Servicios profesionales y soluciones confiables." />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={new URL(image, Astro.url)} />
+        
+        <!-- JSON-LD Schema -->
+        {schema && (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        )}
         
         <!-- Dynamic Font Loading -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,5 +76,6 @@ const currentFont = fontConfig[font] || fontConfig.sans;
 		<slot />
         <Footer />
         <WhatsAppFloat />
+        <StickyCTA />
 	</body>
 </html>

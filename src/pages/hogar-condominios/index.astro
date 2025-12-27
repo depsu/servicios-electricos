@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import { services } from '../../data/servicios';
+
+const homeServices = services.filter(s => s.segment === 'hogar');
+---
+
+<Layout title="Servicios Hogar y Condominios | Electricista y Gasfíter">
+  <Hero 
+    title="Expertos en su Hogar <br><span class='text-emerald-500'>Rápido y Garantizado</span>"
+    subtitle="Electricidad, empalmes rurales, gasfitería y pintura. Atención limpia y segura para su casa o condominio."
+    bgImage="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1600&auto=format&fit=crop"
+    badgeText="Servicio Residencial"
+  />
+
+  <TrustBar items={["Visita Técnica", "Técnicos Identificados", "Limpieza Total", "Garantía Escrita"]} />
+
+  <!-- Main Services Grid -->
+  <section class="py-20 bg-emerald-50/50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900">Servicios para su Hogar</h2>
+        <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Soluciones profesionales sin dolores de cabeza.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {homeServices.map(service => (
+          <a href={`/hogar-condominios/${service.slug}`} class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:scale-110 transition-transform">
+              {service.icon === 'poste' ? '⚡' : service.icon === 'gota' ? '💧' : service.icon === 'brocha' ? '🖌️' : '🔧'}
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600">{service.title}</h3>
+            <p class="text-slate-600 text-sm mb-4">{service.shortDescription}</p>
+            <span class="text-emerald-600 font-bold text-sm border-b-2 border-transparent group-hover:border-emerald-600 transition-colors">
+              Ver más
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us - Home Focus -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-12">La Diferencia de un Servicio Profesional</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6">
+          <div class="text-4xl mb-4">🛡️</div>
+          <h3 class="font-bold text-xl mb-2">Seguridad Total</h3>
+          <p class="text-slate-600">Personal con antecedentes al día, uniformado y con identificación. Su seguridad es lo primero.</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl mb-4">🧹</div>
+          <h3 class="font-bold text-xl mb-2">Limpieza Impecable</h3>
+          <p class="text-slate-600">Protegemos sus muebles y pisos. Dejamos todo tan limpio como lo encontramos (o mejor).</p>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl mb-4">📝</div>
+          <h3 class="font-bold text-xl mb-2">Garantía Real</h3>
+          <p class="text-slate-600">Si algo no queda bien, volvemos y lo arreglamos sin costo. Garantía por escrito en todo trabajo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials 
+    reviews={[
+      {
+        name: "Patricia L.",
+        text: "Hicieron el empalme de mi parcela en Chicureo. Trámite rápido y muy ordenados con la instalación del poste.",
+        rating: 5,
+        location: "Chicureo"
+      },
+      {
+        name: "Roberto M.",
+        text: "Excelente servicio de pintura, cubrieron todo y terminaron en el plazo acordado. Muy recomendables.",
+        rating: 5,
+        location: "La Reina"
+      }
+    ]}
+  />
+
+  <CallToAction 
+    title="Mejore su Hogar Hoy" 
+    subtitle="Agende una visita técnica o pida un presupuesto rápido vía WhatsApp."
+    ctaText="Solicitar Visita"
+    ctaLink="/cotizar?tipo=hogar"
+  />
+</Layout>

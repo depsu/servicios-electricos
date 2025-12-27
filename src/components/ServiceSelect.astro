@@ -1,0 +1,23 @@
+---
+import { services } from '../data/servicios';
+
+interface Props {
+  segment: 'industrial' | 'hogar';
+  selectedSlug?: string;
+  className?: string;
+}
+
+const { segment, selectedSlug, className = "w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none bg-white" } = Astro.props;
+
+const filteredServices = services.filter(s => s.segment === segment);
+---
+
+<select name="servicio" class={className}>
+  <option value="">Seleccione servicio...</option>
+  {filteredServices.map((service) => (
+    <option value={service.slug} selected={service.slug === selectedSlug}>
+      {service.title}
+    </option>
+  ))}
+  <option value="otro">Otro Requerimiento</option>
+</select>

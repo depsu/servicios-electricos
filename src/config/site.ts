@@ -33,31 +33,31 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
     company: {
-        name: "NombreEmpresa",
-        logoText: "NOMBRE",
-        logoTextHighlight: "EMPRESA",
-        email: "contacto@ejemplo.com",
+        name: "Servicios Eléctricos RM",
+        logoText: "SERV",
+        logoTextHighlight: "ELECTRO",
+        email: "contacto@servicioselectricos.cl",
         phone: "+56 9 1234 5678",
         whatsapp: "56912345678",
         address: "Región Metropolitana, Chile"
     },
     social: {
-        facebook: "https://facebook.com",
-        instagram: "https://instagram.com"
+        // facebook: "https://facebook.com",
+        // instagram: "https://instagram.com"
     },
     theme: {
         navbarVariant: 'service',
         footerVariant: 'service',
         font: 'sans', // 'sans' | 'serif' | 'mono'
         colors: {
-            primary: '#2563eb',   // blue-600
-            secondary: '#1e293b', // slate-800
-            accent: '#16a34a'     // green-600 (WhatsApp)
+            primary: '#0f172a',   // slate-900 (Professional/Industrial)
+            secondary: '#334155', // slate-700
+            accent: '#f59e0b'     // amber-500 (Electric/Warning)
         }
     },
     features: {
         showServiceStatus: true,
-        showBlog: true,
+        showBlog: false, // User requested no blog for now
         showTestimonials: true
     }
 };

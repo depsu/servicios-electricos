@@ -1,0 +1,54 @@
+PROJECT STRUCTURE & DOCUMENTATION
+===================================
+Project: Servicios Eléctricos RM
+Framework: Astro + Tailwind CSS
+
+DIRECTORY STRUCTURE
+-------------------
+/src
+  /components       # UI Components
+    /ComunaSelect.astro   # Dropdown for selecting coverage areas
+    /ServiceSelect.astro  # Dropdown for selecting services
+    /ProcessTimeline.astro# Visual workflow steps (Industrial vs Home)
+    /TechSpecsTable.astro # Technical data table for B2B
+    /TrustBar.astro       # Trust indicators (e.g., "Certified SEC")
+    /ServiceLanding.astro # Template for service pages
+    /ComunaLanding.astro  # Template for location pages
+    /NavbarService.astro  # Main navigation
+
+  /data             # Centralized Data Sources
+    /servicios.ts   # Service definitions, benefits, technical specs
+    /comunas.ts     # Coverage areas, response times, micro-zones
+
+  /pages            # Routes
+    /index.astro    # Home Split (Industrial / Home)
+    /cotizar.astro  # Smart Quote Form (Adapts to segment)
+    /cobertura/     # Dynamic Routes for Location SEO
+      /[slug].astro
+    /empresas-industria/ # B2B Section
+      /[...slug].astro   # Dynamic Industrial Services
+    /hogar-condominios/  # B2C Section
+      /[...slug].astro   # Dynamic Home Services
+
+  /layouts
+    /Layout.astro   # options: title, description, schema (JSON-LD)
+
+KEY FEATURES
+------------
+1. DYNAMIC SEO
+   - Every page generates unique Title and Meta Description.
+   - JSON-LD Structured Data is injected automatically for Google Rich Results.
+   - Sitemap.xml is auto-generated on build.
+
+2. SMART INTERCONNECTIVITY
+   - Users clicking "Cotizar" from a service page carry that context to the form.
+   - URL Parameters: ?tipo=empresa&servicio=tableros
+
+3. CONTENT ARCHITECTURE
+   - "Home Split" design separates B2B and B2C traffic immediately.
+   - Data-driven pages mean you only edit /src/data files to update content.
+
+COMMANDS
+--------
+- npm run dev    # Start local server
+- npm run build  # Generate static site (dist folder)

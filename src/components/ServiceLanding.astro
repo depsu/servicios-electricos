@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import TrustBar from '../components/TrustBar.astro';
+import TechSpecsTable from '../components/TechSpecsTable.astro';
+import ProcessTimeline from '../components/ProcessTimeline.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  segment: 'industrial' | 'hogar';
+  intro: string;
+  benefits: string[];
+  features?: string[];
+  faq?: { question: string; answer: string }[];
+  techSpecs?: { label: string; value: string }[];
+  processSteps?: { title: string; desc: string }[];
+  deliverables?: string[];
+}
+
+const { title, subtitle, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables } = Astro.props;
+
+const isIndustrial = segment === 'industrial';
+const themeColor = isIndustrial ? 'text-blue-600' : 'text-emerald-600';
+const themeBg = isIndustrial ? 'bg-blue-50' : 'bg-emerald-50';
+const btnColor = isIndustrial ? 'bg-blue-600 hover:bg-blue-700' : 'bg-emerald-600 hover:bg-emerald-700';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": title,
+  "description": intro,
+  "provider": {
+    "@type": "Electrician",
+    "name": "Servicios Eléctricos RM",
+    "image": "https://servicioselectricos.cl/images/logo.png",
+    "areaServed": "Región Metropolitana"
+  },
+  "serviceType": isIndustrial ? "Industrial Electrical Service" : "Residential Electrical Service",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "CLP",
+    "price": "0" // Price upon request
+  }
+};
+---
+
+<Layout title={`${title} | Servicios Eléctricos RM`} description={intro} schema={schema}>
+  <!-- Hero -->
+  <section class={`py-20 ${isIndustrial ? 'bg-slate-900 text-white' : 'bg-emerald-900 text-white'} relative overflow-hidden`}>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl">
+        <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${isIndustrial ? 'bg-blue-500/20 text-blue-200' : 'bg-emerald-500/20 text-emerald-200'}`}>
+          {isIndustrial ? 'SERVICIO INDUSTRIAL / B2B' : 'SERVICIO HOGAR / B2C'}
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">{title}</h1>
+        <p class="text-xl opacity-90 mb-8 max-w-2xl">{subtitle || intro}</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/cotizar" class={`px-8 py-4 rounded-lg font-bold shadow-lg transition-transform hover:-translate-y-1 ${isIndustrial ? 'bg-blue-500 text-white' : 'bg-emerald-500 text-white'}`}>
+            Solicitar Cotización
+          </a>
+          <a href="#detalles" class="px-8 py-4 rounded-lg font-bold bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm">
+            Ver Detalles
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section id="detalles" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        
+        <!-- Benefits / Intro -->
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">Descripción del Servicio</h2>
+          <div class="prose prose-lg text-slate-600 mb-8">
+            <p>{intro}</p>
+          </div>
+          
+          <h3 class="text-xl font-bold text-slate-900 mb-4">Beneficios Clave</h3>
+          <ul class="space-y-4">
+            {benefits.map(benefit => (
+              <li class="flex items-start gap-3">
+                <span class={`w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs ${isIndustrial ? 'bg-blue-600' : 'bg-emerald-600'}`}>✓</span>
+                <span class="text-slate-700">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Features card -->
+        <div class={`p-8 rounded-2xl ${themeBg}`}>
+          <h3 class={`text-2xl font-bold mb-6 ${themeColor}`}>
+            {isIndustrial ? 'Especificaciones Técnicas' : 'Lo que incluye el servicio'}
+          </h3>
+          
+          <div class="space-y-4">
+            {(features || []).map(feature => (
+              <div class="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                <span class="text-xl">⚡</span>
+                <span class="font-medium text-slate-800">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-8 p-4 bg-white/50 rounded-lg border border-slate-200">
+            <p class="text-sm text-slate-500 italic">
+              * Todos nuestros técnicos cuentan con certificación SEC y EPP reglamentario.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {techSpecs && techSpecs.length > 0 && (
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+         <TechSpecsTable specs={techSpecs} />
+      </div>
+    </section>
+  )}
+
+  <ProcessTimeline steps={processSteps} segment={segment} />
+
+  {/* Deliverables Section */}
+  {deliverables && deliverables.length > 0 && (
+      <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Entregables del Servicio</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {deliverables.map((item, index) => (
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex items-start gap-4">
+                    <div class={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shrink-0 ${isIndustrial ? 'bg-blue-600' : 'bg-emerald-600'}`}>
+                        {index + 1}
+                    </div>
+                    <p class="font-medium text-slate-700">{item}</p>
+                </div>
+            ))}
+          </div>
+      </div>
+      </section>
+  )}
+
+  {faq && faq.length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Preguntas Frecuentes</h2>
+        <div class="space-y-4">
+          {faq.map(item => (
+            <div class="bg-white rounded-xl shadow-sm p-6">
+              <h3 class="font-bold text-slate-900 mb-2 text-lg">{item.question}</h3>
+              <p class="text-slate-600">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CallToAction 
+    title="¿Necesitas este servicio?" 
+    subtitle="Contáctanos para una evaluación gratuita o presupuesto inmediato."
+    ctaText="Conversar con Especialista"
+    ctaLink={`/cotizar?tipo=${segment === 'industrial' ? 'empresa' : 'hogar'}&servicio=${Astro.url.pathname.split('/').pop()}`}
+  />
+</Layout>

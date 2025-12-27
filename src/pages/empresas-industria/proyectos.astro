@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+const projects = [
+    {
+        title: 'Montaje Tableros 3000A',
+        client: 'Industrial Lampa',
+        desc: 'Diseño e implementación de sala eléctrica principal.',
+        tags: ['Tableros', 'Montaje', 'Certificación TE1'],
+        image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+        title: 'Canalización Planta ENEA',
+        client: 'Logística ENEA',
+        desc: 'Instalación de 500m de escalerillas porta-conductores a 8m de altura.',
+        tags: ['Escalerillas', 'Altura', 'Iluminación'],
+        image: 'https://images.unsplash.com/photo-1565514020126-dbfa84a3c18b?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+        title: 'Normalización Bodegas',
+        client: 'San Bernardo Centro',
+        desc: 'Recableado completo y certificación SEC para bodegas de almacenamiento.',
+        tags: ['Normalización', 'SEC', 'Fuerza'],
+        image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop'
+    }
+];
+---
+
+<Layout title="Proyectos Industriales | Servicios Eléctricos RM" description="Casos de éxito en montaje eléctrico industrial, tableros y certificación SEC.">
+    <section class="bg-slate-900 py-20 text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Proyectos Industriales</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+                Experiencia comprobable en montaje y mantenimiento eléctrico para la industria.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projects.map(project => (
+                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-2xl transition duration-300 hover:-translate-y-1">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src={project.image} alt={project.title} class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="text-xs font-bold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded mb-2 inline-block">Industrial</span>
+                                <h3 class="text-xl font-bold">{project.title}</h3>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm font-bold text-slate-500 mb-2 uppercase">{project.client}</p>
+                            <p class="text-slate-600 mb-4">{project.desc}</p>
+                            <div class="flex flex-wrap gap-2">
+                                {project.tags.map(tag => (
+                                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded font-medium">#{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <CallToAction 
+        title="¿Tiene un proyecto en mente?" 
+        subtitle="Conversamos sobre sus requerimientos técnicos y plazos."
+        ctaText="Cotizar Proyecto"
+        ctaLink="/cotizar?tipo=empresa"
+    />
+</Layout>

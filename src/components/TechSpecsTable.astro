@@ -1,0 +1,24 @@
+---
+interface Props {
+  specs: { label: string; value: string }[];
+  title?: string;
+}
+
+const { specs, title = "Especificaciones Técnicas" } = Astro.props;
+---
+
+<div class="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden">
+  <div class="bg-slate-900 text-white px-6 py-4">
+    <h3 class="font-bold text-lg flex items-center gap-2">
+      <i class="fa-solid fa-file-waveform text-blue-400"></i> {title}
+    </h3>
+  </div>
+  <div class="divide-y divide-slate-200">
+    {specs.map((spec) => (
+      <div class="grid grid-cols-2 px-6 py-3 hover:bg-slate-100 transition-colors">
+        <span class="font-semibold text-slate-700">{spec.label}</span>
+        <span class="text-slate-600 font-mono text-sm">{spec.value}</span>
+      </div>
+    ))}
+  </div>
+</div>

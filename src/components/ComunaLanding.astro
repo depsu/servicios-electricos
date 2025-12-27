@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CallToAction from '../components/CallToAction.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+interface Props {
+  name: string;
+  slug: string;
+  type: 'industrial' | 'rural' | 'premium' | 'volumen';
+  intro: string;
+  microZones: string[];
+  responseTime: string;
+  serviceFocus?: string[];
+  proofPoints?: string[];
+  faq?: { question: string; answer: string }[];
+}
+
+const { name, slug, type, intro, microZones, responseTime, serviceFocus, proofPoints, faq } = Astro.props;
+
+let heroBg = '';
+if(type === 'industrial') heroBg = 'bg-slate-900';
+else if(type === 'premium') heroBg = 'bg-stone-900';
+else heroBg = 'bg-emerald-900';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": `Electricistas en ${name}`,
+  "description": intro,
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Región Metropolitana",
+    "addressLocality": name
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": name
+  },
+  "priceRange": "$$"
+};
+---
+
+<Layout title={`Electricistas en ${name} | Servicios Certificados`} description={intro} schema={schema}>
+  <section class={`py-20 ${heroBg} text-white text-center`}>
+     <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Servicios Eléctricos en <span class="text-yellow-400">{name}</span></h1>
+        <p class="text-xl max-w-2xl mx-auto opacity-90 mb-8">{intro}</p>
+        <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          {responseTime}
+        </div>
+     </div>
+  </section>
+
+  <TrustBar items={[`Atención en ${name}`, "Técnicos Locales", "Llegada Rápida", "Garantía"]} />
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">Cobertura en Sectores de {name}</h2>
+          <p class="text-slate-600 mb-6">
+            Nuestros equipos móviles cubren toda la comuna, con especial atención a las siguientes zonas para asegurar tiempos de respuesta mínimos:
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {microZones.map(zone => (
+              <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium">
+                📍 {zone}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+          <h3 class="text-xl font-bold text-slate-900 mb-4">¿Por qué elegirnos en {name}?</h3>
+          <ul class="space-y-4">
+            {(proofPoints || ["Atención Garantizada", "Técnicos Locales", "Precios Justos"]).map(point => (
+                <li class="flex items-center gap-3">
+                  <span class="text-green-500 text-xl">✓</span>
+                  <span class="text-slate-700">{point}</span>
+                </li>
+            ))}
+          </ul>
+
+          {faq && faq.length > 0 && (
+             <div class="mt-8 pt-8 border-t border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-4">Preguntas Frecuentes en {name}</h4>
+                <div class="space-y-4">
+                    {faq.map(item => (
+                        <div>
+                            <p class="font-semibold text-sm text-slate-800">{item.question}</p>
+                            <p class="text-sm text-slate-600">{item.answer}</p>
+                        </div>
+                    ))}
+                </div>
+             </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction 
+    title={`Cotizar en ${name}`}
+    subtitle="Estamos cerca. Contáctenos para una visita hoy mismo."
+    ctaText="Pedir Presupuesto"
+    ctaLink={`/cotizar?comuna=${slug}`}
+  />
+</Layout>

@@ -1,0 +1,48 @@
+---
+import ServiceLanding from '../../components/ServiceLanding.astro';
+import { services } from '../../data/servicios';
+
+export async function getStaticPaths() {
+  const industrialServices = services.filter(s => s.segment === 'industrial');
+  
+  // We need to strip the prefix "montaje-electrico/" or similar if it exists in the slug for the file path match?
+  // Wait, the file is at src/pages/empresas-industria/[slug].astro
+  // But the slugs in data are like 'montaje-electrico/tableros-electricos'
+  // If I want the URL to be /empresas-industria/montaje-electrico/tableros-electricos/
+  // Then [slug] should be [...slug] to catch all? Or I should nested folders?
+  // User requested: /empresas-industria/montaje-electrico/tableros-electricos/
+  
+  // To handle deep paths like a/b, we can use [...slug] or just ensure the slug in data doesn't have complex paths if we use [slug].
+  // However, the requested URLs are deep. 
+  // Let's use [...slug] for maximum flexibility or just map the simple slug part if the ID is complex.
+  // The data has 'slug' property.
+  // If slug is 'montaje-electrico/tableros-electricos', and file is [slug].astro under /empresas-industria/
+  // The URL will be /empresas-industria/montaje-electrico/tableros-electricos
+  // BUT [slug] normally doesn't catch slashes unless it is [...slug].
+  // CHECK: Astro [slug] vs [...slug]. [slug] does NOT match slashes.
+  // So I should use [...slug].astro OR change the data structure.
+  // Given the requirement, I will use [...slug].astro to be safe, but let's stick to [slug] if I can flatten it or if I misread the data.
+  // Data has 'montaje-electrico/tableros-electricos'. DEFINITELY needs [...slug] or nested folders.
+  // I will use [...slug].astro to handle the slashes in the data slug.
+  
+// Fix for deep slugs in Astro (though [...slug] natively handles "a/b/c" strings, splitting is explicit)
+  return industrialServices.map(service => ({
+    params: { slug: service.slug }, // Astro's [...slug] accepts the full string "folder/item"
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<ServiceLanding 
+  title={service.title}
+  subtitle={service.description}
+  segment={service.segment}
+  intro={service.description} 
+  benefits={service.benefits}
+  features={service.features}
+  techSpecs={service.techSpecs}
+  processSteps={service.processSteps}
+  deliverables={service.deliverables}
+/>

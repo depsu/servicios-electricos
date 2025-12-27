@@ -1,177 +1,177 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import StatsGrid from '../components/StatsGrid.astro';
-import FeatureSection from '../components/FeatureSection.astro';
-import PricingTable from '../components/PricingTable.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
 import CallToAction from '../components/CallToAction.astro';
-import BlogCard from '../components/blog/BlogCard.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
-import { getCollection } from 'astro:content';
+import { comunas } from '../data/comunas';
 
-const latestPosts = (await getCollection('blog'))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3);
+// Filter top coverage areas
+const topIndustrial = comunas.filter(c => c.type === 'industrial').slice(0, 3);
+const topRural = comunas.filter(c => c.type === 'premium' || c.type === 'rural').slice(0, 3);
 ---
 
-<Layout title="Plantilla Demo Astro">
-	<Hero 
-        title="Plantilla Demo <br><span class='text-blue-400'>Astro + Tailwind</span>"
-        subtitle="Esta es una demostración de cómo estructurar el sitio usando componentes reutilizables para máxima velocidad y mantenibilidad."
-        bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-        badgeText="Demo Técnica"
-    />
+<Layout title="Servicios Eléctricos RM | Industrial y Domiciliario">
+  
+  <!-- Hero Split -->
+  <section class="relative bg-slate-900 text-white overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-800 opacity-90"></div>
+      <img 
+        src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop" 
+        alt="Servicios Eléctricos" 
+        class="w-full h-full object-cover opacity-20"
+      />
+    </div>
 
-    <StatsGrid 
-        stats={[
-            { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-calendar-check" },
-            { number: "+5000", label: "Clientes Satisfechos", icon: "fa-solid fa-users" },
-            { number: "24/7", label: "Atención Urgencias", icon: "fa-solid fa-clock" },
-            { number: "100%", label: "Garantía de Servicio", icon: "fa-solid fa-medal" }
-        ]}
-    />
+    <div class="container mx-auto px-4 py-20 relative z-10">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+          Soluciones Eléctricas <span class="text-blue-400">Integrales</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8">
+          Especialistas certificados para grandes proyectos industriales y reparaciones domiciliarias.
+        </p>
+      </div>
 
-    <FeatureSection 
-        title="Soluciones Profesionales para tu Hogar"
-        subtitle="Nos especializamos en resolver problemas complejos con tecnología de punta y personal altamente capacitado."
-        image="https://images.unsplash.com/photo-1581094794329-cd1096a7a438?q=80&w=2070&auto=format&fit=crop"
-        features={[
-            "Atención inmediata en menos de 60 minutos",
-            "Equipos de última tecnología sin romper pisos",
-            "Personal certificado y con antecedentes al día",
-            "Garantía por escrito en todos los trabajos"
-        ]}
-    >
-        <a href="/nosotros" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700 transition-colors">
-            Conoce más sobre nosotros <i class="fa-solid fa-arrow-right ml-2"></i>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <!-- B2B Card -->
+        <a href="/empresas-industria/" class="group relative overflow-hidden rounded-2xl bg-white p-1 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700 opacity-10 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative h-full bg-slate-50 rounded-xl p-8 flex flex-col items-center text-center group-hover:bg-transparent transition-colors duration-300">
+            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6 text-3xl group-hover:bg-white/20 group-hover:text-white transition-colors">
+              🏭
+            </div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-white">Empresas e Industria</h2>
+            <p class="text-slate-600 mb-6 group-hover:text-blue-100">
+              Montaje de tableros, escalerillas, iluminación industrial y corrientes débiles. Cumplimiento normativo y seguridad.
+            </p>
+            <span class="mt-auto px-6 py-3 bg-blue-600 text-white font-bold rounded-lg group-hover:bg-white group-hover:text-blue-700 w-full md:w-auto">
+              Ver Soluciones Industriales
+            </span>
+          </div>
         </a>
-    </FeatureSection>
 
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Páginas de Ejemplo Generadas</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <a href="/ejemplo-zona" class="group block bg-white border border-slate-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600">Ejemplo Zona</h3>
-                    <p class="text-slate-600 mb-4">Ver plantilla configurada para una zona geográfica con sectores específicos.</p>
-                    <span class="text-blue-600 font-bold text-sm">Ver Demo &rarr;</span>
-                </a>
-
-                <a href="/ejemplo-servicio" class="group block bg-white border border-slate-200 rounded-2xl p-8 hover:border-green-500 hover:shadow-xl transition-all duration-300">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-green-600">Ejemplo Servicio</h3>
-                    <p class="text-slate-600 mb-4">Ver plantilla reutilizada para un servicio específico.</p>
-                    <span class="text-green-600 font-bold text-sm">Ver Demo &rarr;</span>
-                </a>
+        <!-- B2C Card -->
+        <a href="/hogar-condominios/" class="group relative overflow-hidden rounded-2xl bg-white p-1 transition-transform hover:-translate-y-1 hover:shadow-2xl">
+          <div class="absolute inset-0 bg-gradient-to-br from-teal-500 to-emerald-600 opacity-10 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative h-full bg-slate-50 rounded-xl p-8 flex flex-col items-center text-center group-hover:bg-transparent transition-colors duration-300">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6 text-3xl group-hover:bg-white/20 group-hover:text-white transition-colors">
+              🏡
             </div>
-        </div>
-    </section>
+            <h2 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-white">Hogar y Condominios</h2>
+            <p class="text-slate-600 mb-6 group-hover:text-emerald-100">
+              Electricidad, empalmes rurales, gasfitería y pintura. Atención rápida, limpia y garantizada.
+            </p>
+            <span class="mt-auto px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg group-hover:bg-white group-hover:text-emerald-700 w-full md:w-auto">
+              Ver Servicios Hogar
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <FeatureSection 
-        title="Tecnología que Marca la Diferencia"
-        subtitle="Utilizamos cámaras de inspección y maquinaria de alta presión para asegurar resultados duraderos."
-        image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
-        align="right"
-        features={[
-            "Diagnóstico preciso con video inspección",
-            "Hidrolavado de alta potencia",
-            "Detección de fugas sin destrucción",
-            "Mantenimiento preventivo programado"
-        ]}
-    />
+  <TrustBar />
 
-    <PricingTable 
-        title="Planes Transparentes"
-        subtitle="Elige el plan que mejor se adapte a tus necesidades. Sin costos ocultos."
-        plans={[
-            {
-                name: "Básico",
-                price: "$45.000",
-                description: "Para mantenciones preventivas simples.",
-                features: ["Visita técnica", "Diagnóstico visual", "Limpieza básica", "Informe digital"],
-                ctaText: "Agendar Visita"
-            },
-            {
-                name: "Estándar",
-                price: "$85.000",
-                description: "La opción más elegida para hogares.",
-                features: ["Todo lo del plan Básico", "Destape con máquina", "Garantía 3 meses", "Sanitización área"],
-                isPopular: true,
-                ctaText: "Lo Quiero"
-            },
-            {
-                name: "Premium",
-                price: "$150.000",
-                description: "Solución completa para problemas graves.",
-                features: ["Todo lo del plan Estándar", "Hidrolavado a presión", "Video inspección", "Garantía 6 meses"],
-                ctaText: "Solicitar Premium"
-            }
-        ]}
-    />
+  <!-- Services Quick View -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-slate-900">Nuestros Servicios Principales</h2>
+        <p class="text-slate-600 mt-2">Cubrimos todas las necesidades eléctricas y de mantenimiento</p>
+      </div>
 
-    <Testimonials 
-        reviews={[
-            {
-                name: "María González",
-                text: "Excelente servicio, llegaron muy rápido y solucionaron el problema sin ensuciar nada. Totalmente recomendados.",
-                rating: 5,
-                location: "Las Condes"
-            },
-            {
-                name: "Carlos Tapia",
-                text: "Muy profesionales. Me explicaron todo el proceso y el precio fue justo. Volveré a llamarlos para la mantención.",
-                rating: 5,
-                location: "Colina"
-            },
-            {
-                name: "Ana Silva",
-                text: "Me salvaron un domingo por la tarde. El técnico fue muy amable y eficiente. Gracias por la rápida atención.",
-                rating: 5,
-                location: "Ñuñoa"
-            }
-        ]}
-    />
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Industrial Items -->
+        {['Tableros Eléctricos', 'Escalerillas y Bandejas', 'Iluminación LED', 'Corrientes Débiles'].map(item => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 flex items-start gap-4">
+            <div class="text-blue-600 mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900">{item}</h3>
+              <p class="text-xs text-blue-600 font-semibold uppercase mt-1">Industrial</p>
+            </div>
+          </div>
+        ))}
+        
+        <!-- Hogar Items -->
+        {['Empalmes Rurales', 'Gasfitería', 'Pintura Fachadas', 'Urgencias 24/7'].map(item => (
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 flex items-start gap-4">
+            <div class="text-emerald-600 mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900">{item}</h3>
+              <p class="text-xs text-emerald-600 font-semibold uppercase mt-1">Hogar</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Últimas Novedades</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                {latestPosts.map((post) => (
-                    <BlogCard 
-                        title={post.data.title}
-                        description={post.data.description}
-                        publishDate={post.data.pubDate}
-                        image={post.data.image}
-                        url={`/blog/${post.slug}`}
-                    />
+  <!-- Coverage Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-blue-600 font-semibold tracking-wider text-sm">COBERTURA RM</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-6">
+            Llegamos donde su proyecto nos necesite
+          </h2>
+          <p class="text-slate-600 mb-8 text-lg">
+            Contamos con cuadrillas móviles estratégicamente ubicadas para asegurar tiempos de respuesta rápidos tanto en zonas industriales como residenciales rurales.
+          </p>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                Polos Industriales
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {topIndustrial.map(comuna => (
+                  <a href={`/cobertura/${comuna.slug}`} class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                    {comuna.name}
+                  </a>
                 ))}
+              </div>
             </div>
+
+            <div>
+              <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Zona Norte y Rural
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {topRural.map(comuna => (
+                  <a href={`/cobertura/${comuna.slug}`} class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+                    {comuna.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+        <div class="relative">
+             <img 
+              src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1200&auto=format&fit=crop"
+              alt="Cobertura en Terreno" 
+              class="rounded-2xl shadow-xl z-10 relative"
+            />
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-100 rounded-full -z-0 opacity-50 blur-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <FAQ 
-        title="Preguntas Frecuentes"
-        items={[
-            {
-                question: "¿Cuál es el tiempo de respuesta?",
-                answer: "Para urgencias, nuestro tiempo promedio de llegada es de 30 a 60 minutos dentro de la zona de cobertura."
-            },
-            {
-                question: "¿Dan garantía por los trabajos?",
-                answer: "Sí, todos nuestros trabajos cuentan con garantía por escrito. El tiempo depende del tipo de servicio realizado."
-            },
-            {
-                question: "¿Qué medios de pago aceptan?",
-                answer: "Aceptamos efectivo, transferencia electrónica y tarjetas de crédito/débito."
-            }
-        ]}
-    />
+  <ProjectsGrid />
 
-    <CallToAction 
-        title="¿Tienes una Emergencia?"
-        subtitle="Nuestro equipo está listo para ayudarte las 24 horas del día, los 7 días de la semana."
-        ctaText="Llamar Ahora"
-        ctaLink="tel:+56912345678"
-    />
+  <CallToAction 
+    title="¿Listo para comenzar?"
+    subtitle="Cotiza tu proyecto industrial o servicio domiciliario hoy mismo."
+    ctaText="Solicitar Cotización"
+    ctaLink="/cotizar"
+  />
 </Layout>

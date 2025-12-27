@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const certifications = [
+    { title: 'Certificación SEC', desc: 'Todo nuestro equipo cuenta con licencia SEC vigente Clase A y B.', icon: 'fa-solid fa-id-card' },
+    { title: 'Norma NCh Elec. 4/2003', desc: 'Cumplimiento estricto de la normativa eléctrica chilena.', icon: 'fa-solid fa-book' },
+    { title: 'Garantía 12 Meses', desc: 'Respaldo por escrito en todos nuestros proyectos de montaje.', icon: 'fa-solid fa-shield-halved' },
+    { title: 'Seguro de Responsabilidad', desc: 'Cobertura ante cualquier eventualidad durante la obra.', icon: 'fa-solid fa-file-contract' }
+];
+
+const checklist = [
+    'Uso de EPP certificado (Casco, Zapatos dieléctricos, Guantes)',
+    'Herramientas aisladas 1000V certificadas',
+    'Procedimientos de Bloqueo y Etiquetado (LOTO)',
+    'Charla de seguridad diaria (5 minutos)',
+    'Delimitación de zonas de trabajo'
+];
+---
+
+<Layout title="Certificaciones y Seguridad | Servicios Eléctricos RM" description="Conozca nuestros estándares de seguridad y certificaciones SEC. Garantía y confianza para su empresa.">
+    <!-- Hero -->
+    <section class="bg-slate-900 py-20 text-center text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Seguridad y Confianza</h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+                No transamos con la seguridad. Nuestros estándares superan la normativa para garantizar la continuidad de su operación y la protección de las personas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Certifications Grid -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                {certifications.map(cert => (
+                    <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-lg transition text-center">
+                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                            <i class={cert.icon}></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">{cert.title}</h3>
+                        <p class="text-sm text-slate-600">{cert.desc}</p>
+                    </div>
+                ))}
+             </div>
+
+             <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Nuestros Protocolos de Seguridad</h2>
+                    <p class="text-slate-600 mb-6">
+                        Cada técnico que ingresa a su planta o domicilio cumple con un estricto checklist de seguridad.
+                    </p>
+                    <ul class="space-y-4">
+                        {checklist.map(item => (
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-500 mt-1"><i class="fa-solid fa-check-circle"></i></span>
+                                <span class="text-slate-700 font-medium">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000&auto=format&fit=crop" alt="Técnico Electricista Seguro" class="rounded-2xl shadow-xl grayscale hover:grayscale-0 transition duration-500" />
+                    <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-xl shadow-lg max-w-xs">
+                        <p class="font-bold text-lg mb-1">"La seguridad es lo primero"</p>
+                        <p class="text-blue-100 text-sm">Cero accidentes en los últimos 24 meses.</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+    
+    <CallToAction 
+        title="Trabaje con profesionales certificados" 
+        subtitle="Solicite una visita técnica con la tranquilidad de estar en las mejores manos."
+        ctaText="Agendar Visita"
+        ctaLink="/cotizar"
+    />
+</Layout>

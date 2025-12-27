@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
@@ -33,6 +34,8 @@ const fontConfig = {
 };
 
 const currentFont = fontConfig[font] || fontConfig.sans;
+
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -70,12 +73,13 @@ const currentFont = fontConfig[font] || fontConfig.sans;
         <link href={currentFont.url} rel="stylesheet">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <ClientRouter />
 	</head>
 	<body class={`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`}>
         <Navbar>{regionText}</Navbar>
 		<slot />
         <Footer />
-        <WhatsAppFloat />
-        <StickyCTA />
+        <WhatsAppFloat transition:persist />
+        <StickyCTA transition:persist />
 	</body>
 </html>

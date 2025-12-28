@@ -291,12 +291,33 @@ if (currentPath.includes('empresas-industria')) {
     }
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const btn = document.getElementById("wa-btn");
         const closeBtn = document.getElementById("wa-close-btn");
         
         if (btn) btn.addEventListener('click', toggleChat);
         if (closeBtn) closeBtn.addEventListener('click', toggleChat);
+
+        // Update WhatsApp text based on current URL (since component is persisted)
+        const companyWhatsapp = "56930153632"; // Hardcoded or passed via data-attribute if available
+        const currentPath = window.location.pathname;
+        let whatsappText = "Hola,%20vi%20su%20web%20y%20necesito%20más%20información.";
+
+        if (currentPath.includes('empresas-industria')) {
+            whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20industrial.";
+        } else if (currentPath.includes('hogar-condominios')) {
+            whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20para%20hogar.";
+        }
+        
+        // Update link hrefs
+        const desktopLink = document.querySelector('.wa-start-chat-btn');
+        if (desktopLink) {
+            desktopLink.href = `https://wa.me/${companyWhatsapp}?text=${whatsappText}`;
+        }
+        const mobileLink = document.querySelector('a[aria-label="WhatsApp"]');
+        if (mobileLink) {
+            mobileLink.href = `https://wa.me/${companyWhatsapp}?text=${whatsappText}`;
+        }
 
         // Show notification after 5s
         setTimeout(() => {

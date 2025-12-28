@@ -1,0 +1,61 @@
+Prioridad 1 (sí o sí antes de lanzar)
+
+Estas son las landings principales por servicio (las que deben recibir casi todo el tráfico):
+
+B2B Industrial (alto ticket)
+
+/empresas-industria/montaje-electrico/tableros-electricos/
+
+/empresas-industria/montaje-electrico/escalerillas-portacables/
+
+/empresas-industria/montaje-electrico/bandejas-portaconductores/
+
+Estas 3 son tu “core” de rentabilidad.
+
+B2C Rural / Hogar (flujo + buenos tickets)
+
+/hogar-condominios/empalme-electrico-rural/.   LISTO
+
+/hogar-condominios/gasfiteria-a-domicilio/.   LISTO
+
+/hogar-condominios/pintura-interior-exterior/. LISTO
+
+/hogar-condominios/electricidad-domiciliaria/. LISTO
+
+Si tuviera que elegir solo 2 para empezar en B2C: Empalme Rural + Gasfitería.
+
+Prioridad 2 (para mejorar conversión y segmentación por zona)
+
+Estas son landings de comuna (muy útiles para campañas “por sector” y para anuncios con “en [comuna]”):
+
+Industriales (clusters)
+
+/cobertura/lampa-valle-grande/
+
+/cobertura/pudahuel-enea-lo-boza/
+
+/cobertura/san-bernardo/ (o Quilicura si la agregas)
+
+Rural / Premium / Volumen
+
+/cobertura/chicureo-colina/
+
+/cobertura/buin/
+
+/cobertura/paine/
+
+/cobertura/talagante/
+
+/cobertura/penaflor/
+
+/cobertura/melipilla/
+
+Prioridad 3 (para subir cierre, confianza y optimización)
+
+Estas no suelen ser destino principal de Ads, pero aumentan cierres y ayudan a Ads indirectamente:
+
+/cotizar/ (no como destino principal, pero como CTA y para campañas de remarketing)
+
+/certificaciones-y-seguridad/ (clave para B2B y para filtrar clientes serios)
+
+/empresas-industria/proyectos/ + /hogar-condominios/proyectos/ (prueba social)

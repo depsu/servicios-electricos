@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import QuickForm from '../components/QuickForm.astro';
 import CallToAction from '../components/CallToAction.astro';
 import TrustBar from '../components/TrustBar.astro';
 import TechSpecsTable from '../components/TechSpecsTable.astro';
@@ -48,27 +49,103 @@ const schema = {
 
 <Layout title={`${title} | Servicios Eléctricos RM`} description={intro} schema={schema}>
   <!-- Hero -->
-  <section class={`py-20 ${isIndustrial ? 'bg-slate-900 text-white' : 'bg-emerald-900 text-white'} relative overflow-hidden`}>
+  <section class={`relative py-12 md:py-20 ${isIndustrial ? 'bg-slate-900 text-white' : 'bg-emerald-900 text-white'} overflow-hidden`}>
+    <!-- Background Pattern/Overlay -->
+    <div class="absolute inset-0 z-0 opacity-10 bg-[url('/images/grid-pattern.svg')]"></div>
+    
     <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-3xl">
-        <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${isIndustrial ? 'bg-blue-500/20 text-blue-200' : 'bg-emerald-500/20 text-emerald-200'}`}>
-          {isIndustrial ? 'SERVICIO INDUSTRIAL / B2B' : 'SERVICIO HOGAR / B2C'}
-        </span>
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">{title}</h1>
-        <p class="text-xl opacity-90 mb-8 max-w-2xl">{subtitle || intro}</p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/cotizar" class={`px-8 py-4 rounded-lg font-bold shadow-lg transition-transform hover:-translate-y-1 ${isIndustrial ? 'bg-blue-500 text-white' : 'bg-emerald-500 text-white'}`}>
-            Solicitar Cotización
-          </a>
-          <a href="#detalles" class="px-8 py-4 rounded-lg font-bold bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm">
-            Ver Detalles
-          </a>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="max-w-2xl">
+            <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 border ${isIndustrial ? 'bg-blue-500/10 border-blue-400 text-blue-300' : 'bg-emerald-500/10 border-emerald-400 text-emerald-300'}`}>
+              {isIndustrial ? '⚡ SERVICIO INDUSTRIAL / B2B' : '🏡 SERVICIO HOGAR / RURAL'}
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+              {title}
+            </h1>
+            <p class="text-lg md:text-xl opacity-90 mb-8 leading-relaxed max-w-lg">
+              {intro}
+            </p>
+            
+            <div class="hidden md:flex flex-col gap-3 mb-8">
+               <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <span class="text-green-400 text-xl">✓</span>
+                  </div>
+                  <div>
+                    <span class="font-bold block">Certificación SEC</span>
+                    <span class="text-xs opacity-70">Normativa vigente NCh4/2003</span>
+                  </div>
+               </div>
+               <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <span class="text-yellow-400 text-xl">★</span>
+                  </div>
+                  <div>
+                    <span class="font-bold block">Garantía por Escrito</span>
+                    <span class="text-xs opacity-70">Respaldo total en cada trabajo</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 md:hidden">
+              <a href="#cotizar-form" class={`px-8 py-3 rounded-lg font-bold shadow-lg text-center w-full ${isIndustrial ? 'bg-blue-500 text-white' : 'bg-emerald-500 text-white'}`}>
+                Solicitar Presupuesto
+              </a>
+            </div>
         </div>
+
+        <!-- Hero Form -->
+        <div class="relative" id="cotizar-form">
+          <QuickForm 
+            title="Solicita Presupuesto o Visita Técnica"
+            buttonText="Solicitar Evaluacion GRATIS"
+            variant={isIndustrial ? 'dark' : 'light'}
+            class="shadow-2xl border-opacity-50"
+          />
+          <p class="text-xs text-center mt-3 opacity-60">
+            <i class="fa-solid fa-lock mr-1"></i> Tus datos están 100% seguros y no compartimos spam.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <TrustBar />
+  <TrustBar items={["Empresa Certificada SEC", "+500 Proyectos Ejecutados", "Garantía Legal 12 Meses", "Atención en Todo RM"]} />
+
+  <!-- Trusted Industries Section (New) -->
+  {isIndustrial && (
+    <section class="py-12 bg-slate-50 border-b border-slate-200">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-slate-500 font-bold uppercase tracking-widest text-sm mb-8">Experiencia Multisectorial</h3>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            <!-- Placeholders for logos -->
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="fa-solid fa-industry text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
+                <span class="text-xs font-bold text-slate-400">Manufactura</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="fa-solid fa-warehouse text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
+                <span class="text-xs font-bold text-slate-400">Logística</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="fa-solid fa-building text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
+                <span class="text-xs font-bold text-slate-400">Corporativo</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 group">
+                <i class="fa-solid fa-hospital text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
+                <span class="text-xs font-bold text-slate-400">Salud</span>
+            </div>
+             <div class="flex flex-col items-center gap-2 group">
+                <i class="fa-solid fa-cart-shopping text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
+                <span class="text-xs font-bold text-slate-400">Retail</span>
+            </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section id="detalles" class="py-20 bg-white">
     <div class="container mx-auto px-4">
@@ -146,6 +223,58 @@ const schema = {
       </div>
       </section>
   )}
+
+  <!-- Comparison Section (New) -->
+  <section class="py-20 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-900">¿Por qué elegirnos?</h2>
+            <p class="text-slate-600 mt-2">La diferencia entre un trabajo y una solución profesional.</p>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr>
+                        <th class="p-4 bg-slate-50 border-b-2 border-slate-200 text-slate-500 font-medium w-1/3">Características</th>
+                        <th class={`p-4 ${isIndustrial ? 'bg-blue-50 border-blue-200 text-blue-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'} border-b-2 font-bold text-center w-1/3 rounded-t-lg relative`}>
+                           <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Recomendado</span>
+                           Servicios Eléctricos RM
+                        </th>
+                        <th class="p-4 bg-slate-50 border-b-2 border-slate-200 text-slate-500 font-medium text-center w-1/3">Técnico Informal</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-b border-slate-100">
+                        <td class="p-4 font-semibold text-slate-700">Certificación SEC</td>
+                        <td class="p-4 text-center font-bold text-green-600"><i class="fa-solid fa-check-circle mr-1"></i> SI, AL DÍA</td>
+                        <td class="p-4 text-center text-slate-400"><i class="fa-solid fa-circle-question mr-1"></i> Dudoso</td>
+                    </tr>
+                    <tr class="border-b border-slate-100 bg-slate-50/50">
+                        <td class="p-4 font-semibold text-slate-700">Garantía por Escrito</td>
+                        <td class="p-4 text-center font-bold text-green-600">12 MESES</td>
+                        <td class="p-4 text-center text-slate-400">Verbal / Ninguna</td>
+                    </tr>
+                    <tr class="border-b border-slate-100">
+                        <td class="p-4 font-semibold text-slate-700">Facturación</td>
+                        <td class="p-4 text-center font-bold text-green-600">FACTURA / BOLETA</td>
+                        <td class="p-4 text-center text-slate-400">Solo Efectivo</td>
+                    </tr>
+                    <tr class="border-b border-slate-100 bg-slate-50/50">
+                        <td class="p-4 font-semibold text-slate-700">Tiempos de Entrega</td>
+                        <td class="p-4 text-center font-bold text-green-600">GARANTIZADOS</td>
+                        <td class="p-4 text-center text-slate-400">Inciertos</td>
+                    </tr>
+                    <tr>
+                         <td class="p-4 font-semibold text-slate-700">Herramientas Normadas</td>
+                        <td class="p-4 text-center font-bold text-green-600"><i class="fa-solid fa-check mr-1"></i> SI (Calibradas)</td>
+                        <td class="p-4 text-center text-slate-400">Básicas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </section>
 
   {faq && faq.length > 0 && (
     <section class="py-20 bg-white">

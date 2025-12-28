@@ -37,8 +37,8 @@ export const siteConfig: SiteConfig = {
         logoText: "SERV",
         logoTextHighlight: "ELECTRO",
         email: "contacto@servicioselectricos.cl",
-        phone: "+56 9 1234 5678",
-        whatsapp: "56912345678",
+        phone: "+56 9 3015 3632",
+        whatsapp: "56930153632",
         address: "Región Metropolitana, Chile"
     },
     social: {

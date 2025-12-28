@@ -1,4 +1,16 @@
 ---
+import { siteConfig } from '../config/site';
+
+const { company } = siteConfig;
+const currentPath = Astro.url.pathname;
+
+let whatsappText = "Hola,%20vi%20su%20web%20y%20necesito%20más%20información.";
+
+if (currentPath.includes('empresas-industria')) {
+    whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20industrial.";
+} else if (currentPath.includes('hogar-condominios')) {
+    whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20para%20hogar.";
+}
 ---
 <!-- Mobile Bottom Bar -->
 <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
@@ -11,12 +23,12 @@
         <span>3 Unidades disponibles</span>
     </div>
     <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
-        <a href="tel:+56912345678"
+        <a href={`tel:${company.phone}`}
             class="flex-1 bg-blue-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-blue-600/20"
             aria-label="Llamar ahora">
             <i class="fa-solid fa-phone animate-pulse"></i> Llamar
         </a>
-        <a href="https://wa.me/56912345678"
+        <a href={`https://wa.me/${company.whatsapp}?text=${whatsappText}`}
             class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
             aria-label="WhatsApp">
             <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
@@ -53,7 +65,7 @@
         </div>
     </div>
     <div class="wa-footer">
-        <a href="https://wa.me/56912345678?text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="wa-start-chat-btn">
+        <a href={`https://wa.me/${company.whatsapp}?text=${whatsappText}`} target="_blank" class="wa-start-chat-btn">
             COMENZAR CHAT
         </a>
     </div>

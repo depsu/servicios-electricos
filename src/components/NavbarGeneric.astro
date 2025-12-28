@@ -2,6 +2,14 @@
 import { siteConfig } from '../config/site';
 
 const { company, theme } = siteConfig;
+const currentPath = Astro.url.pathname;
+let whatsappText = "Hola,%20vi%20su%20web%20y%20necesito%20más%20información.";
+
+if (currentPath.includes('empresas-industria')) {
+    whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20industrial.";
+} else if (currentPath.includes('hogar-condominios')) {
+    whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20para%20hogar.";
+}
 ---
 
 <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
@@ -25,7 +33,7 @@ const { company, theme } = siteConfig;
                 <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
                 
                 <div class="flex items-center gap-4 ml-4">
-                    <a href={`https://wa.me/${company.whatsapp}`} class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-bold shadow-md transition hover:-translate-y-0.5 flex items-center gap-2">
+                    <a href={`https://wa.me/${company.whatsapp}?text=${whatsappText}`} class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-bold shadow-md transition hover:-translate-y-0.5 flex items-center gap-2">
                         WhatsApp
                     </a>
                 </div>

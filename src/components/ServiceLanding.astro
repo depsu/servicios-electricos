@@ -5,6 +5,7 @@ import CallToAction from '../components/CallToAction.astro';
 import TrustBar from '../components/TrustBar.astro';
 import TechSpecsTable from '../components/TechSpecsTable.astro';
 import ProcessTimeline from '../components/ProcessTimeline.astro';
+import { siteConfig } from '../config/site';
 
 interface Props {
   title: string;
@@ -29,7 +30,8 @@ const { title, subtitle, segment, intro, benefits, features, faq, techSpecs, pro
 const isIndustrial = segment === 'industrial';
 const themeColor = isIndustrial ? 'text-blue-600' : 'text-emerald-600';
 const themeBg = isIndustrial ? 'bg-blue-50' : 'bg-emerald-50';
-const btnColor = isIndustrial ? 'bg-blue-600 hover:bg-blue-700' : 'bg-emerald-600 hover:bg-emerald-700';
+const btnColor = isIndustrial ? 'bg-blue-600 hover:bg-blue-700' : 'bg-emerald-500 hover:bg-emerald-600';
+const whatsappUrl = `https://wa.me/${siteConfig.company.whatsapp}?text=Hola,%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(title)}.%20Necesito%20más%20información.`;
 
 const schema = {
   "@context": "https://schema.org",
@@ -113,8 +115,9 @@ const schema = {
             </div>
 
             <div class="flex flex-wrap gap-4 md:hidden">
-              <a href="#cotizar-form" class={`px-8 py-3 rounded-lg font-bold shadow-lg text-center w-full ${isIndustrial ? 'bg-blue-500 text-white' : 'bg-emerald-500 text-white'}`}>
-                Solicitar Presupuesto
+              <a href={whatsappUrl} class={`px-8 py-3 rounded-xl font-bold shadow-lg text-center w-full flex items-center justify-center gap-2 ${isIndustrial ? 'bg-blue-500 text-white' : 'bg-green-500 text-white'}`}>
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                Consultar por WhatsApp
               </a>
             </div>
         </div>
@@ -124,7 +127,7 @@ const schema = {
           <QuickForm 
             title="Solicita Presupuesto o Visita Técnica"
             buttonText="Solicitar Evaluacion GRATIS"
-            variant={isIndustrial ? 'dark' : 'light'}
+            variant="glass-dark"
             class="shadow-2xl border-opacity-50"
           />
           <p class="text-xs text-center mt-3 opacity-60">

@@ -147,6 +147,30 @@ import { ClientRouter } from 'astro:transitions';
         <Footer />
         <WhatsAppFloat transition:persist />
         <StickyCTA transition:persist />
-        <script is:inline src="/scripts/navbar-scroll.js"></script>
+        <script is:inline>
+            document.addEventListener('astro:page-load', () => {
+                let lastScroll = 0;
+                const navs = [document.getElementById('main-nav'), document.getElementById('service-nav')].filter(Boolean);
+                if (navs.length === 0) return;
+
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.scrollY;
+                    if (window.innerWidth < 1024) {
+                        if (currentScroll <= 0) {
+                            navs.forEach(nav => nav.classList.remove('-translate-y-full'));
+                            return;
+                        }
+                        if (currentScroll > lastScroll && currentScroll > 60) {
+                            navs.forEach(nav => nav.classList.add('-translate-y-full'));
+                        } else if (currentScroll < lastScroll) {
+                            navs.forEach(nav => nav.classList.remove('-translate-y-full'));
+                        }
+                    } else {
+                        navs.forEach(nav => nav.classList.remove('-translate-y-full'));
+                    }
+                    lastScroll = currentScroll;
+                }, { passive: true });
+            });
+        </script>
 	</body>
 </html>

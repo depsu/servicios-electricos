@@ -34,8 +34,8 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
     company: {
         name: "Servicios Eléctricos RM",
-        logoText: "SERV",
-        logoTextHighlight: "ELECTRO",
+        logoText: "CHILE",
+        logoTextHighlight: "ELECTRICO",
         email: "contacto@chileelectrico.cl",
         phone: "+56 9 3015 3632",
         whatsapp: "56930153632",

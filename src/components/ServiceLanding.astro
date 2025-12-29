@@ -212,7 +212,7 @@ const schema = {
           <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Entregables del Servicio</h2>
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {deliverables.map((item, index) => (
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex items-start gap-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex items-center gap-4">
                     <div class={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shrink-0 ${isIndustrial ? 'bg-blue-600' : 'bg-emerald-600'}`}>
                         {index + 1}
                     </div>
@@ -232,7 +232,7 @@ const schema = {
             <p class="text-slate-600 mt-2">La diferencia entre un trabajo y una solución profesional.</p>
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto pt-6">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr>

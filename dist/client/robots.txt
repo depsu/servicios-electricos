@@ -19,3 +19,4 @@ Crawl-delay: 1
 
 # Sitemaps
 Sitemap: https://chileelectrico.cl/sitemap-index.xml
+

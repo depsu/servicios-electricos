@@ -492,7 +492,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_DHy5vdDe.mjs'
+      './sharp_CBU5Z5BP.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -807,13 +807,13 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/node_modules/astro/components/Font.astro", void 0);
 
 const assetQueryParams = undefined;
-const imageConfig = { "endpoint": { "route": "/_image" }, "service": { "entrypoint": "astro/assets/services/sharp", "config": {} }, "domains": [], "remotePatterns": [], "responsiveStyles": false };
-Object.defineProperty(imageConfig, 'assetQueryParams', {
-  value: assetQueryParams,
-  enumerable: false,
-  configurable: true,
-});
-const getImage = async (options) => await getImage$1(options, imageConfig);
+							const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
+							Object.defineProperty(imageConfig, 'assetQueryParams', {
+								value: assetQueryParams,
+								enumerable: false,
+								configurable: true,
+							});
+							const getImage = async (options) => await getImage$1(options, imageConfig);
 
 const fnv1a52 = (str) => {
   const len = str.length;

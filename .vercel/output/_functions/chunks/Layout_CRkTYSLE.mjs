@@ -9,23 +9,26 @@ const siteConfig = {
     logoText: "SERV",
     logoTextHighlight: "ELECTRO",
     phone: "+56 9 3015 3632",
-    whatsapp: "56930153632"},
+    whatsapp: "56930153632"
+  },
   social: {
     // facebook: "https://facebook.com",
     // instagram: "https://instagram.com"
   },
   theme: {
-    font: "sans"}};
+    font: "sans"
+  }
+};
 
 var __freeze$2 = Object.freeze;
 var __defProp$2 = Object.defineProperty;
 var __template$2 = (cooked, raw) => __freeze$2(__defProp$2(cooked, "raw", { value: __freeze$2(cooked.slice()) }));
 var _a$2;
-const $$Astro$5 = createAstro("https://servicioselectricos.cl");
+const $$Astro$5 = createAstro("https://chileelectrico.cl");
 const $$NavbarGeneric = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$NavbarGeneric;
-  const { company} = siteConfig;
+  const { company } = siteConfig;
   const currentPath = Astro2.url.pathname;
   let whatsappText = "Hola,%20vi%20su%20web%20y%20necesito%20m\xE1s%20informaci\xF3n.";
   if (currentPath.includes("empresas-industria")) {
@@ -55,7 +58,7 @@ var __freeze$1 = Object.freeze;
 var __defProp$1 = Object.defineProperty;
 var __template$1 = (cooked, raw) => __freeze$1(__defProp$1(cooked, "raw", { value: __freeze$1(cooked.slice()) }));
 var _a$1;
-const $$Astro$4 = createAstro("https://servicioselectricos.cl");
+const $$Astro$4 = createAstro("https://chileelectrico.cl");
 const $$NavbarService = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
   Astro2.self = $$NavbarService;
@@ -98,7 +101,7 @@ const $$NavbarService = createComponent(($$result, $$props, $$slots) => {
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/NavbarService.astro", void 0);
 
 const $$Navbar = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderTemplate`${renderComponent($$result, "NavbarService", $$NavbarService, {}, { "default": ($$result2) => renderTemplate`${renderSlot($$result2, $$slots["default"])}` })}` }`;
+  return renderTemplate`${renderTemplate`${renderComponent($$result, "NavbarService", $$NavbarService, {}, { "default": ($$result2) => renderTemplate`${renderSlot($$result2, $$slots["default"])}` })}`}`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/Navbar.astro", void 0);
 
 createComponent(($$result, $$props, $$slots) => {
@@ -119,10 +122,10 @@ Desarrollado por <a href="https://www.paginasfast.cl" target="_blank" rel="noope
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/FooterService.astro", void 0);
 
 const $$Footer = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderTemplate`${renderComponent($$result, "FooterService", $$FooterService, {}, { "default": ($$result2) => renderTemplate`${renderSlot($$result2, $$slots["default"])}` })}` }`;
+  return renderTemplate`${renderTemplate`${renderComponent($$result, "FooterService", $$FooterService, {}, { "default": ($$result2) => renderTemplate`${renderSlot($$result2, $$slots["default"])}` })}`}`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/Footer.astro", void 0);
 
-const $$Astro$3 = createAstro("https://servicioselectricos.cl");
+const $$Astro$3 = createAstro("https://chileelectrico.cl");
 const $$WhatsAppFloat = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$WhatsAppFloat;
@@ -141,7 +144,7 @@ COMENZAR CHAT
 </a> </div> </div>  ${renderScript($$result, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/WhatsAppFloat.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/WhatsAppFloat.astro", void 0);
 
-const $$Astro$2 = createAstro("https://servicioselectricos.cl");
+const $$Astro$2 = createAstro("https://chileelectrico.cl");
 const $$StickyCTA = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$StickyCTA;
@@ -156,7 +159,7 @@ const $$StickyCTA = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<!-- Desktop Sticky CTA (Optional, usuall Mobile Only is preferred but can add margin for desktop) --><!-- Mobile Sticky CTA -->${maybeRenderHead()}<div class="fixed bottom-0 left-0 w-full z-[100] md:hidden bg-slate-900 border-t border-amber-500/30 shadow-[0_-4px_12px_-1px_rgba(0,0,0,0.3)] p-2"> <div class="grid grid-cols-2 gap-2"> <!-- Call Button --> <a${addAttribute(`tel:${company.phone}`, "href")} class="flex flex-col items-center justify-center bg-slate-800 hover:bg-slate-700 text-white py-2.5 rounded-lg transition active:scale-95 border border-slate-700" data-gtm="phone_click_sticky"> <i class="fa-solid fa-phone text-amber-400 text-xl mb-1"></i> <span class="text-xs font-bold uppercase tracking-wide">Llamar</span> </a> <!-- WhatsApp Button --> <a${addAttribute(`https://wa.me/${company.whatsapp}?text=${whatsappText}`, "href")} class="flex flex-col items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 rounded-lg transition active:scale-95 shadow-lg" data-gtm="whatsapp_click_sticky"> <i class="fa-brands fa-whatsapp text-2xl mb-0.5"></i> <span class="text-xs font-bold uppercase tracking-wide">WhatsApp</span> </a> </div> </div> ${renderScript($$result, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/StickyCTA.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/StickyCTA.astro", void 0);
 
-const $$Astro$1 = createAstro("https://servicioselectricos.cl");
+const $$Astro$1 = createAstro("https://chileelectrico.cl");
 const $$ClientRouter = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$ClientRouter;
@@ -168,7 +171,7 @@ var __freeze = Object.freeze;
 var __defProp = Object.defineProperty;
 var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
 var _a, _b;
-const $$Astro = createAstro("https://servicioselectricos.cl");
+const $$Astro = createAstro("https://chileelectrico.cl");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Layout;
@@ -199,9 +202,9 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     "@type": "Electrician",
     "name": "Servicios El\xE9ctricos RM",
     "description": "Servicios el\xE9ctricos industriales y domiciliarios en la Regi\xF3n Metropolitana. Tableros el\xE9ctricos, empalmes rurales, gasfiter\xEDa y m\xE1s.",
-    "url": "https://servicioselectricos.cl",
+    "url": "https://chileelectrico.cl",
     "telephone": "+56912345678",
-    "email": "contacto@servicioselectricos.cl",
+    "email": "contacto@chileelectrico.cl",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Santiago",

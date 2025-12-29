@@ -647,7 +647,7 @@ async function getImage$1(options, imageConfig) {
   };
 }
 
-const $$Astro$2 = createAstro("https://servicioselectricos.cl");
+const $$Astro$2 = createAstro("https://chileelectrico.cl");
 const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Image;
@@ -676,7 +676,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}>`;
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/node_modules/astro/components/Image.astro", void 0);
 
-const $$Astro$1 = createAstro("https://servicioselectricos.cl");
+const $$Astro$1 = createAstro("https://chileelectrico.cl");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Picture;
@@ -786,7 +786,7 @@ function checkWeight(input, target) {
   return input === target;
 }
 
-const $$Astro = createAstro("https://servicioselectricos.cl");
+const $$Astro = createAstro("https://chileelectrico.cl");
 const $$Font = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Font;
@@ -807,13 +807,13 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/node_modules/astro/components/Font.astro", void 0);
 
 const assetQueryParams = undefined;
-							const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"responsiveStyles":false};
-							Object.defineProperty(imageConfig, 'assetQueryParams', {
-								value: assetQueryParams,
-								enumerable: false,
-								configurable: true,
-							});
-							const getImage = async (options) => await getImage$1(options, imageConfig);
+const imageConfig = { "endpoint": { "route": "/_image" }, "service": { "entrypoint": "astro/assets/services/sharp", "config": {} }, "domains": [], "remotePatterns": [], "responsiveStyles": false };
+Object.defineProperty(imageConfig, 'assetQueryParams', {
+  value: assetQueryParams,
+  enumerable: false,
+  configurable: true,
+});
+const getImage = async (options) => await getImage$1(options, imageConfig);
 
 const fnv1a52 = (str) => {
   const len = str.length;

@@ -34,7 +34,7 @@ export default defineConfig({
           return { ...item, priority: 0.8, changefreq: 'monthly' };
         }
         // Homepage highest
-        if (item.url === 'https://servicioselectricos.cl/' || item.url === 'https://servicioselectricos.cl') {
+        if (item.url === 'https://chileelectrico.cl/' || item.url === 'https://chileelectrico.cl') {
           return { ...item, priority: 1.0, changefreq: 'daily' };
         }
         // Default
@@ -42,7 +42,7 @@ export default defineConfig({
       }
     })
   ],
-  site: 'https://servicioselectricos.cl',
+  site: 'https://chileelectrico.cl',
 
   adapter: vercel()
 });

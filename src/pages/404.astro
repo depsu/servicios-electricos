@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Metadatos para la página 404
+const title = "Página no encontrada | Servicios Eléctricos RM";
+const description = "Lo sentimos, la página que buscas no existe o ha sido movida.";
+---
+
+<Layout title={title} description={description} noIndex={true}>
+  <div class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-20 bg-slate-50 relative overflow-hidden">
+    
+    <!-- Decorative background elements -->
+    <div class="absolute top-1/4 left-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-10 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl"></div>
+
+    <div class="relative bg-white p-8 md:p-12 rounded-3xl shadow-xl max-w-lg w-full border border-slate-100 z-10">
+        <!-- Icon -->
+        <div class="w-24 h-24 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-6 relative group">
+            <div class="absolute inset-0 bg-amber-100 rounded-full animate-ping opacity-20"></div>
+            <i class="fa-solid fa-triangle-exclamation text-5xl text-amber-500 group-hover:scale-110 transition-transform duration-300"></i>
+        </div>
+        
+        <!-- Headers -->
+        <h1 class="text-6xl font-extrabold text-slate-900 mb-2 tracking-tighter">
+            404
+        </h1>
+        
+        <div class="w-16 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+
+        <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-4">
+            ¡Parece que hubo un cortocircuito!
+        </h2>
+        
+        <p class="text-slate-600 mb-8 leading-relaxed">
+            La página que buscas no está disponible. Puede que se haya movido o que la dirección sea incorrecta.
+        </p>
+        
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-8 rounded-xl transition shadow-lg shadow-blue-600/20 active:scale-95">
+                <i class="fa-solid fa-house"></i>
+                Volver al Inicio
+            </a>
+            <a href="/contacto" class="inline-flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 hover:border-slate-300 font-bold py-3.5 px-8 rounded-xl transition active:scale-95">
+                <i class="fa-solid fa-headset"></i>
+                Reportar Problema
+            </a>
+        </div>
+    </div>
+    
+    <div class="mt-12 text-slate-400 text-sm">
+        <p>¿Necesitas ayuda urgente?</p>
+        <a href="tel:+56930153632" class="font-bold text-slate-600 hover:text-blue-600 transition mt-1 inline-block">
+            <i class="fa-solid fa-phone mr-1"></i> +56 9 3015 3632
+        </a>
+    </div>
+  </div>
+</Layout>

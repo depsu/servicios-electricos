@@ -2,7 +2,7 @@ import { e as createAstro, f as createComponent, m as maybeRenderHead, r as rend
 import 'piccolore';
 import 'clsx';
 
-const $$Astro = createAstro("https://servicioselectricos.cl");
+const $$Astro = createAstro("https://chileelectrico.cl");
 const $$TrustBar = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$TrustBar;

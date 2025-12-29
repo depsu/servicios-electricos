@@ -91,14 +91,19 @@ if (currentPath.includes('empresas-industria')) {
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         
-        // Only apply on mobile (check width or relying on class logic)
-        // Note: checking window.innerWidth < 768 is safer for mobile-only logic
-        if (window.innerWidth < 768) {
+        // Apply on mobile and small tablets
+        if (window.innerWidth < 1024) {
+             // Add buffer to prevent jitter at top
+             if (currentScroll <= 0) {
+                 nav.classList.remove('-translate-y-full');
+                 return;
+             }
+             
              if (currentScroll > lastScroll && currentScroll > 60) {
                  // Scrolling Down -> Hide
                  nav.classList.add('-translate-y-full');
-             } else {
-                 // Scrolling Up or at top -> Show
+             } else if (currentScroll < lastScroll) {
+                 // Scrolling Up -> Show
                  nav.classList.remove('-translate-y-full');
              }
         } else {

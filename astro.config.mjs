@@ -18,6 +18,7 @@ export default defineConfig({
       filter: (page) => !page.includes('/gracias') && !page.includes('/api/'),
       changefreq: 'weekly',
       priority: 0.7,
+      /** @param {any} item */
       serialize: (item) => {
         // High priority for service landing pages
         if (item.url.includes('/empresas-industria/montaje-electrico/') ||

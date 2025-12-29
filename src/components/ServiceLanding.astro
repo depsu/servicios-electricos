@@ -16,10 +16,15 @@ interface Props {
   faq?: { question: string; answer: string }[];
   techSpecs?: { label: string; value: string }[];
   processSteps?: { title: string; desc: string }[];
+
   deliverables?: string[];
+  testimonials?: { name: string; text: string; location: string; rating: number }[];
+  gallery?: { url: string; caption: string }[];
+  heroImageMobile?: string;
+  heroImageDesktop?: string;
 }
 
-const { title, subtitle, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables } = Astro.props;
+const { title, subtitle, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables, testimonials, gallery, heroImageMobile, heroImageDesktop } = Astro.props;
 
 const isIndustrial = segment === 'industrial';
 const themeColor = isIndustrial ? 'text-blue-600' : 'text-emerald-600';
@@ -48,12 +53,30 @@ const schema = {
 ---
 
 <Layout title={`${title} | Servicios Eléctricos RM`} description={intro} schema={schema}>
-  <!-- Hero -->
-  <section class={`relative py-12 md:py-20 ${isIndustrial ? 'bg-slate-900 text-white' : 'bg-emerald-900 text-white'} overflow-hidden`}>
-    <!-- Background Pattern/Overlay -->
-    <div class="absolute inset-0 z-0 opacity-10 bg-[url('/images/grid-pattern.svg')]"></div>
+  <!-- Hero Section -->
+  <section class="relative min-h-[600px] flex items-center overflow-hidden">
     
-    <div class="container mx-auto px-4 relative z-10">
+    <!-- Responsive Background Image Layer -->
+    <div class="absolute inset-0 z-0 select-none">
+        {heroImageMobile && heroImageDesktop ? (
+            <picture>
+                <source media="(max-width: 768px)" srcset={heroImageMobile} />
+                <source media="(min-width: 769px)" srcset={heroImageDesktop} />
+                <img src={heroImageDesktop} alt={title} class="w-full h-full object-cover object-center" fetchpriority="high" />
+            </picture>
+        ) : (
+            // Fallback default background if no specific images
+            <div class={`w-full h-full ${isIndustrial ? 'bg-slate-900' : 'bg-emerald-950'}`}></div>
+        )}
+        
+        <!-- Gradient Overlay for Readability (Darker to lighter) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/80 to-slate-900/40"></div>
+        
+        <!-- Subtle Grid Pattern Overlay -->
+        <div class="absolute inset-0 opacity-[0.07] bg-[url('/images/grid-pattern.svg')] mix-blend-overlay"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10 py-20 text-white">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         
         <!-- Hero Text -->
@@ -204,6 +227,53 @@ const schema = {
   )}
 
   <ProcessTimeline steps={processSteps} segment={segment} />
+
+  {/* Gallery Section */}
+  {gallery && gallery.length > 0 && (
+    <section class="py-20 bg-slate-900 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Galería de Proyectos</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+           {gallery.map(img => (
+             <div class="group relative overflow-hidden rounded-xl aspect-video bg-slate-800">
+               <img src={img.url} alt={img.caption} class="w-full h-full object-cover transition duration-500 group-hover:scale-110 opacity-70 group-hover:opacity-100" />
+               <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                 <p class="text-white font-medium text-sm">{img.caption}</p>
+               </div>
+             </div>
+           ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* Testimonials Section */}
+  {testimonials && testimonials.length > 0 && (
+      <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Lo que dicen nuestros clientes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                {testimonials.map(t => (
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
+                        <div class="text-yellow-400 text-xl mb-4">
+                            {"★".repeat(t.rating)}
+                        </div>
+                        <p class="text-slate-600 italic mb-6">"{t.text}"</p>
+                        <div class="flex items-center gap-3">
+                            <div class={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${isIndustrial ? 'bg-blue-600' : 'bg-emerald-600'}`}>
+                                {t.name.charAt(0)}
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900 text-sm">{t.name}</p>
+                                <p class="text-xs text-slate-400">{t.location}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+  )}
 
   {/* Deliverables Section */}
   {deliverables && deliverables.length > 0 && (

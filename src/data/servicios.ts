@@ -8,10 +8,14 @@ export interface Service {
     benefits: string[];
     features?: string[];
     heroImage?: string;
+    heroImageMobile?: string;
+    heroImageDesktop?: string;
     techSpecs?: { label: string; value: string }[];
     processSteps?: { title: string; desc: string }[];
     deliverables?: string[];
     faq?: { question: string; answer: string }[];
+    testimonials?: { name: string; text: string; location: string; rating: number }[];
+    gallery?: { url: string; caption: string }[];
 }
 
 export const services: Service[] = [
@@ -175,11 +179,13 @@ export const services: Service[] = [
     // ============================================================
     {
         slug: 'empalme-electrico-rural',
-        title: 'Empalmes Eléctricos Rurales',
+        title: 'Empalmes Eléctricos Rurales (Llave en Mano)',
         segment: 'hogar',
-        description: 'Gestión completa de empalmes eléctricos para parcelas, terrenos rurales y loteos. Desde el estudio de factibilidad con CGE o Enel hasta la conexión final del medidor. Instalamos postes, acometidas aéreas o subterráneas, y gestionamos toda la tramitación TE1 ante la SEC.',
-        shortDescription: 'Electricidad para tu parcela, trámite completo.',
+        description: '¿Compraste una parcela y necesitas luz? Evita rechazos y trámites eternos. Nos encargamos de TODO el proceso de empalme eléctrico (Monofásico o Trifásico) ante CGE, Enel o Chilquinta. Desde la instalación del poste hasta la certificación SEC TE1 aprobada. Garantizamos aprobación o devolvemos tu dinero.',
+        shortDescription: 'Luz para tu parcela sin trámites ni rechazos. Gestión 100% aprobada.',
         icon: 'poste',
+        heroImageMobile: '/images/empalme/banner-mobile_empalme.webp',
+        heroImageDesktop: '/images/empalme/banner-empalme.webp',
         benefits: [
             'Trámite 100% aprobado en CGE/Enel/Chilquinta',
             'Instalación de poste de hormigón o madera',
@@ -225,6 +231,16 @@ export const services: Service[] = [
             { question: '¿Qué pasa si el poste de la compañía está muy lejos?', answer: 'Instalamos postes intermedios o extensiones de línea para llegar a su propiedad.' },
             { question: '¿Trabajan con todas las compañías?', answer: 'Sí, trabajamos con CGE, Enel, Chilquinta y cooperativas eléctricas rurales.' },
             { question: '¿La visita de factibilidad tiene costo?', answer: 'No, la primera visita técnica es completamente gratuita y sin compromiso.' }
+        ],
+        testimonials: [
+            { name: "Roberto Muñoz", text: "Excelente servicio. Me instalaron el empalme en mi parcela de Lampa en tiempo récord. Se encargaron de todo el papeleo en CGE.", location: "Lampa", rating: 5 },
+            { name: "Sonia H.", text: "Tenía miedo por el tema de la SEC, pero ellos lo gestionaron todo. Muy transparentes con los costos.", location: "Buin", rating: 5 },
+            { name: "Constructora Los Andes", text: "Empresa seria y puntual. Nos han realizado ya 3 empalmes trifásicos para obras.", location: "Colina", rating: 5 }
+        ],
+        gallery: [
+            { url: "/images/placeholders/empalme-1.svg", caption: "Instalación de Poste 9m" },
+            { url: "/images/placeholders/empalme-2.svg", caption: "Tablero de Medida Certificado" },
+            { url: "/images/placeholders/empalme-3.svg", caption: "Conexión a Red CGE" }
         ]
     },
     {

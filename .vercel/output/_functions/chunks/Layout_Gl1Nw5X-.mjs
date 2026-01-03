@@ -259,7 +259,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     "description": "Servicios el\xE9ctricos industriales y domiciliarios en la Regi\xF3n Metropolitana. Tableros el\xE9ctricos, empalmes rurales, gasfiter\xEDa y m\xE1s.",
     "url": "https://chileelectrico.cl",
     "telephone": "+56912345678",
-    "email": "contacto@chileelectrico.cl",
+    "email": "rivera.ale98@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Santiago",

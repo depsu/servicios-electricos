@@ -92,19 +92,38 @@ const {
 
             <button 
                 type="submit" 
+                id="contact-submit-btn"
                 class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
                 <i class="fa-solid fa-paper-plane"></i>
-                <span>Enviar Mensaje</span>
+                <span id="btn-text">Enviar Mensaje</span>
             </button>
         </form>
 
         <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <p class="text-sm text-blue-800">
                 <i class="fa-solid fa-info-circle mr-2"></i>
-                <strong>Nota:</strong> Al enviar el formulario por primera vez, recibirás un email de confirmación. 
+                <strong>Nota:</strong> Al enviar el formulario por primera vez, recibirás un email de confirmación (Formsubmit). 
                 Haz clic en el enlace para activar el formulario.
             </p>
         </div>
     </div>
 </section>
+
+<script is:inline>
+    document.addEventListener('astro:page-load', () => {
+        const form = document.querySelector('form[action*="formsubmit.co"]');
+        if (!form) return;
+
+        const btn = document.getElementById('contact-submit-btn');
+        const btnText = document.getElementById('btn-text');
+
+        if (form && btn && btnText) {
+            form.addEventListener('submit', () => {
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                btnText.innerText = 'Enviando...';
+            });
+        }
+    });
+</script>

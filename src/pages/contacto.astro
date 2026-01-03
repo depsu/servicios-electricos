@@ -7,7 +7,7 @@ import { siteConfig } from '../config/site';
 const { company } = siteConfig;
 ---
 
-<Layout title="Contacto | Nombre Empresa" regionText="Contacto">
+<Layout title={`Contacto | ${company.name}`} regionText="Contacto">
     <Hero 
         title="Estamos aquí para <br><span class='text-blue-400'>Ayudarte</span>"
         subtitle="Completa el formulario o llámanos directamente. Respondemos en minutos."

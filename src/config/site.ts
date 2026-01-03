@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
         name: "Servicios Eléctricos RM",
         logoText: "CHILE",
         logoTextHighlight: "ELECTRICO",
-        email: "contacto@chileelectrico.cl",
+        email: "rivera.ale98@gmail.com",
         phone: "+56 9 3015 3632",
         whatsapp: "56930153632",
         address: "Región Metropolitana, Chile"

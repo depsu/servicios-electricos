@@ -1,7 +1,9 @@
----
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ContactForm from '../components/ContactForm.astro';
+import { siteConfig } from '../config/site';
+
+const { company } = siteConfig;
 ---
 
 <Layout title="Contacto | Nombre Empresa" regionText="Contacto">
@@ -26,7 +28,7 @@ import ContactForm from '../components/ContactForm.astro';
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <h3 class="font-bold text-slate-900 mb-2">Teléfono</h3>
-                    <a href="tel:+56912345678" class="text-blue-600 hover:underline">+56 9 1234 5678</a>
+                    <a href={`tel:${company.phone.replace(/\s+/g, '')}`} class="text-blue-600 hover:underline">{company.phone}</a>
                     <p class="text-sm text-slate-500 mt-2">Lun - Dom: 24/7</p>
                 </div>
 
@@ -35,7 +37,7 @@ import ContactForm from '../components/ContactForm.astro';
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <h3 class="font-bold text-slate-900 mb-2">WhatsApp</h3>
-                    <a href="https://wa.me/56912345678" class="text-green-600 hover:underline">Enviar mensaje</a>
+                    <a href={`https://wa.me/${company.whatsapp}`} class="text-green-600 hover:underline">Enviar mensaje</a>
                     <p class="text-sm text-slate-500 mt-2">Respuesta inmediata</p>
                 </div>
 
@@ -44,7 +46,7 @@ import ContactForm from '../components/ContactForm.astro';
                         <i class="fa-solid fa-envelope"></i>
                     </div>
                     <h3 class="font-bold text-slate-900 mb-2">Email</h3>
-                    <a href="mailto:contacto@ejemplo.com" class="text-purple-600 hover:underline">contacto@ejemplo.com</a>
+                    <a href={`mailto:${company.email}`} class="text-purple-600 hover:underline">{company.email}</a>
                     <p class="text-sm text-slate-500 mt-2">Respuesta en 24hrs</p>
                 </div>
             </div>

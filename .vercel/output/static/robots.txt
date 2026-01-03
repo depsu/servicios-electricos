@@ -1,0 +1,22 @@
+# Robots.txt para Servicios Eléctricos RM
+# https://chileelectrico.cl
+
+User-agent: *
+Allow: /
+
+# Bloquear páginas de sistema
+Disallow: /api/
+Disallow: /gracias/
+Disallow: /_astro/
+
+# Bloquear parámetros de tracking (evitar contenido duplicado)
+Disallow: /*?utm_*
+Disallow: /*?gclid=*
+Disallow: /*?fbclid=*
+
+# Crawl-delay para ser amigable con el servidor
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://chileelectrico.cl/sitemap-index.xml
+

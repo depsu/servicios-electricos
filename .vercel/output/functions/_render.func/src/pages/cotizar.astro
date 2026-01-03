@@ -1,0 +1,287 @@
+---
+export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ComunaSelect from '../components/ComunaSelect.astro';
+import ServiceSelect from '../components/ServiceSelect.astro';
+
+// Helper for query params
+const { searchParams } = Astro.url;
+let initialType = searchParams.get('tipo') || 'hogar';
+const selectedComuna = searchParams.get('comuna') || '';
+const selectedServicio = searchParams.get('servicio') || '';
+
+// Force 'empresa' type if the pre-selected service is industrial
+import { services } from '../data/servicios';
+if (selectedServicio) {
+    const serviceData = services.find(s => s.slug === selectedServicio);
+    if (serviceData && serviceData.segment === 'industrial') {
+        initialType = 'empresa';
+    }
+}
+---
+
+<Layout title="Cotizar Proyecto o Servicio | Servicios Eléctricos RM">
+  <div class="bg-slate-900 py-12 text-center text-white gradient-bg">
+    <h1 class="text-4xl font-bold mb-4">Cotización en Línea</h1>
+    <p class="text-slate-300 max-w-2xl mx-auto">
+      Complete el formulario para recibir una evaluación rápida y profesional.
+    </p>
+  </div>
+
+  <section class="py-12 bg-slate-50 relative">
+    <div class="container mx-auto px-4 max-w-4xl">
+      
+      <!-- Toggle Buttons -->
+      <div class="flex justify-center mb-12">
+        <div class="bg-white p-1 rounded-xl shadow-sm inline-flex">
+          <button 
+            id="btn-hogar"
+            class="px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2"
+          >
+            🏡 Hogar / Condominio
+          </button>
+          <button 
+            id="btn-empresa"
+            class="px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 flex items-center gap-2"
+          >
+            🏭 Empresa / Industria
+          </button>
+        </div>
+      </div>
+
+      <!-- Forms Container -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden relative min-h-[600px]">
+        
+        <!-- Form Hogar -->
+        <div id="form-hogar" class="p-8 md:p-12 transition-opacity duration-300 absolute inset-0 w-full overflow-y-auto">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-slate-900 text-emerald-600">Servicio Residencial</h2>
+            <p class="text-slate-500 text-sm mt-1">Visitas técnicas, reparaciones y empalmes rurales.</p>
+          </div>
+
+          <form action="/api/leads" method="POST" class="space-y-6" id="form-hogar-el">
+            <input type="hidden" name="utm_source" id="hogar_utm_source">
+            <input type="hidden" name="utm_medium" id="hogar_utm_medium">
+            <input type="hidden" name="utm_campaign" id="hogar_utm_campaign">
+            <input type="hidden" name="gclid" id="hogar_gclid">
+            <input type="hidden" name="form_type" value="hogar">
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Nombre</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 outline-none" placeholder="Su nombre">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Teléfono</label>
+                <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 outline-none" placeholder="+56 9 ...">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+               <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Comuna</label>
+                <ComunaSelect selectedSlug={selectedComuna} />
+                <!-- ComunaSelect uses name="comuna" inside -->
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Servicio</label>
+                <ServiceSelect segment="hogar" selectedSlug={selectedServicio} />
+                 <!-- ServiceSelect uses name="servicio" inside -->
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">Mensaje</label>
+              <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-emerald-500 outline-none" placeholder="Describa brevemente su problema..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-lg shadow-lg transition-transform hover:-translate-y-0.5" data-gtm="form_submit_hogar">
+              Solicitar Visita
+            </button>
+          </form>
+        </div>
+
+        <!-- Form Empresa -->
+        <div id="form-empresa" class="p-8 md:p-12 transition-opacity duration-300 absolute inset-0 w-full opacity-0 pointer-events-none overflow-y-auto">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-slate-900 text-blue-600">Cotización Industrial</h2>
+            <p class="text-slate-500 text-sm mt-1">Proyectos eléctricos, mantención y montajes.</p>
+          </div>
+
+          <form action="/api/leads" method="POST" class="space-y-6" id="form-empresa-el">
+             <input type="hidden" name="utm_source" id="empresa_utm_source">
+            <input type="hidden" name="utm_medium" id="empresa_utm_medium">
+            <input type="hidden" name="utm_campaign" id="empresa_utm_campaign">
+            <input type="hidden" name="gclid" id="empresa_gclid">
+            <input type="hidden" name="form_type" value="industrial">
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Razón Social</label>
+                <input type="text" name="company_name" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none" placeholder="Nombre Empresa SpA">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">RUT Empresa</label>
+                <input type="text" name="rut" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none" placeholder="76.xxx.xxx-x">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Nombre Contacto</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Email Corporativo</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none">
+              </div>
+            </div>
+
+             <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Tipo de Proyecto</label>
+                <ServiceSelect segment="industrial" selectedSlug={selectedServicio} className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none bg-white" />
+              </div>
+              <div>
+                 <label class="block text-sm font-bold text-slate-700 mb-2">Teléfono</label>
+                 <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none">
+              </div>
+            </div>
+            
+            <div>
+               <label class="block text-sm font-bold text-slate-700 mb-2">Detalles del Proyecto</label>
+               <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 outline-none" placeholder="Especificaciones técnicas, plazos, ubicación..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg shadow-lg transition-transform hover:-translate-y-0.5" data-gtm="form_submit_industrial">
+              Enviar Requerimiento
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <TrustBar />
+</Layout>
+
+<script define:vars={{ initialType }}>
+  // --- UTM & Tracking Logic ---
+  function getParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source: params.get('utm_source') || localStorage.getItem('utm_source') || '',
+      utm_medium: params.get('utm_medium') || localStorage.getItem('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || localStorage.getItem('utm_campaign') || '',
+      gclid: params.get('gclid') || localStorage.getItem('gclid') || ''
+    };
+  }
+
+  // Persist UTMs
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('utm_source')) localStorage.setItem('utm_source', params.get('utm_source'));
+  if (params.get('gclid')) localStorage.setItem('gclid', params.get('gclid'));
+
+  // Populate Hidden Fields
+  const trackData = getParams();
+  ['hogar', 'empresa'].forEach(formType => {
+    const fields = ['utm_source', 'utm_medium', 'utm_campaign', 'gclid'];
+    fields.forEach(field => {
+       const el = document.getElementById(`${formType}_${field}`);
+       if(el) el.value = trackData[field];
+    });
+  });
+
+  // --- Form Submission Handler ---
+  function handleFormSubmit(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    const originalText = btn.innerText;
+    
+    // Loading State
+    btn.disabled = true;
+    btn.innerText = 'Enviando...';
+
+    // Tracking Event (GTM)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: `form_submit_${type}`,
+      formLocation: 'cotizar_page'
+    });
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = `/gracias?type=${type}`;
+      } else {
+        alert('Hubo un error al enviar. Por favor intente nuevamente.');
+        btn.disabled = false;
+        btn.innerText = originalText;
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error de conexión.');
+      btn.disabled = false;
+      btn.innerText = originalText;
+    });
+  }
+
+  document.getElementById('form-hogar-el').addEventListener('submit', (e) => handleFormSubmit(e, 'b2c'));
+  document.getElementById('form-empresa-el').addEventListener('submit', (e) => handleFormSubmit(e, 'b2b'));
+
+  // --- Toggle Logic ---
+  const btnHogar = document.getElementById('btn-hogar');
+  const btnEmpresa = document.getElementById('btn-empresa');
+  const formHogarDiv = document.getElementById('form-hogar');
+  const formEmpresaDiv = document.getElementById('form-empresa');
+
+  function setType(type) {
+    if (type === 'hogar') {
+      // Styles for active Hogar
+      btnHogar.classList.add('bg-emerald-100', 'text-emerald-700');
+      btnHogar.classList.remove('text-slate-500', 'hover:bg-slate-50');
+      btnEmpresa.classList.remove('bg-blue-100', 'text-blue-700');
+      btnEmpresa.classList.add('text-slate-500', 'hover:bg-slate-50');
+
+      // Form visibility
+      formHogarDiv.classList.remove('opacity-0', 'pointer-events-none');
+      formHogarDiv.classList.add('opacity-100', 'relative');
+      formEmpresaDiv.classList.add('opacity-0', 'pointer-events-none');
+      formEmpresaDiv.classList.remove('opacity-100', 'relative');
+    } else {
+      // Styles for active Empresa
+      btnEmpresa.classList.add('bg-blue-100', 'text-blue-700');
+      btnEmpresa.classList.remove('text-slate-500', 'hover:bg-slate-50');
+      btnHogar.classList.remove('bg-emerald-100', 'text-emerald-700');
+      btnHogar.classList.add('text-slate-500', 'hover:bg-slate-50');
+
+       // Form visibility
+      formEmpresaDiv.classList.remove('opacity-0', 'pointer-events-none');
+      formEmpresaDiv.classList.add('opacity-100', 'relative');
+      formHogarDiv.classList.add('opacity-0', 'pointer-events-none');
+      formHogarDiv.classList.remove('opacity-100', 'relative');
+    }
+  }
+
+  // Initial state
+  setType(initialType);
+
+  // Event Listeners
+  btnHogar.addEventListener('click', () => setType('hogar'));
+  btnEmpresa.addEventListener('click', () => setType('empresa'));
+</script>
+
+<style>
+  .gradient-bg {
+    background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  }
+</style>

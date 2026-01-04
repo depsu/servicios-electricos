@@ -14,7 +14,7 @@ if (currentPath.includes('empresas-industria')) {
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-<nav id="service-nav" class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0">
+<nav id="service-nav" class="absolute lg:fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-17">
 
@@ -124,30 +124,7 @@ if (currentPath.includes('empresas-industria')) {
         window.closeMenu();
     });
 
-    // Scroll Behavior (Hide/Show)
-    let lastScrollService = 0;
+    // Scroll Behavior (Mobile Natural Scroll, Desktop Fixed)
     const navService = document.getElementById('service-nav');
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        if (window.innerWidth < 1024) { // Mobile and Tablet
-             if (currentScroll <= 0) {
-                 if(navService) navService.classList.remove('-translate-y-full');
-                 return;
-             }
-
-             if (currentScroll > lastScrollService && currentScroll > 60) {
-                 // Scrolling Down -> Hide
-                 if(navService) navService.classList.add('-translate-y-full');
-             } else if (currentScroll < lastScrollService) {
-                 // Scrolling Up -> Show
-                 if(navService) navService.classList.remove('-translate-y-full');
-             }
-        } else {
-             if(navService) navService.classList.remove('-translate-y-full');
-        }
-        
-        lastScrollService = currentScroll;
-    });
+    // No JS logic needed for mobile hiding if position is absolute.
 </script>

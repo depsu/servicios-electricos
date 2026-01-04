@@ -371,51 +371,59 @@ const services = [
   },
   {
     slug: "electricidad-domiciliaria",
-    title: "Electricista a Domicilio",
+    title: "Servicios Eléctricos Integrales para el Hogar",
     segment: "hogar",
-    description: "Soluciones eléctricas seguras para tu hogar. Reparación de cortos circuitos, cambios de enchufes e interruptores, instalación de iluminación LED, recableado de circuitos y regularizaciones TE1 para venta o arriendo de propiedades.",
-    shortDescription: "Seguridad eléctrica para tu familia.",
+    description: "Todo lo que tu hogar necesita en electricidad: desde urgencias y reparaciones menores hasta proyectos de renovación y certificación. Nuestros instaladores autorizados SEC garantizan seguridad, estética y cumplimiento normativo en cada trabajo.",
+    shortDescription: "Reparaciones, proyectos y certificaciones para tu hogar.",
     icon: "rayo",
     heroImageMobile: "/images/empalme/banner-mobile_empalme.webp",
     heroImageDesktop: "/images/empalme/banner-empalme.webp",
     benefits: [
-      "Arreglamos cortos circuitos y fallas eléctricas",
-      "Instalación de iluminación LED moderna",
-      "Certificados TE1 para venta/arriendo de propiedades",
-      "Electricistas autorizados SEC",
-      "Trabajo limpio y ordenado",
-      "Garantía en todas las reparaciones"
+      "Seguridad total para tu familia (Instaladores SEC)",
+      "Atención de urgencias eléctricas 24/7",
+      "Valorización de tu propiedad con iluminación moderna",
+      "Cumplimiento normativo para seguros y venta",
+      "Ahorro de energía con tecnología LED y eficiencia",
+      "Garantía real por escrito en cada trabajo"
     ],
     features: [
-      "Reparación de cortos circuitos",
-      "Cambio de enchufes e interruptores",
-      "Instalación de lámparas y focos LED",
-      "Instalación de tableros eléctricos",
-      "Recableado de circuitos antiguos",
-      "Certificaciones TE1 para propiedades"
+      "Instalación y diseño de iluminación interior/exterior",
+      "Cambio de enchufes, interruptores y dimmers",
+      "Normalización de tableros eléctricos (TDA)",
+      "Certificación TE1 para venta de propiedades",
+      "Instalación de ventiladores de techo y aires acondicionados",
+      "Recableado completo de casas antiguas",
+      "Instalación de puntos de carga para autos eléctricos",
+      "Sistemas de citofonía y video porteros",
+      'Detección y reparación de "fugas eléctricas"',
+      "Instalación de generadores de respaldo domiciliarios"
     ],
     techSpecs: [
-      { label: "Personal", value: "Electricistas clase D SEC" },
-      { label: "Normativa", value: "NCh Elec. 4/2003 / RIC" },
-      { label: "Garantía", value: "6 meses en reparaciones" },
-      { label: "Certificación", value: "TE1 para venta/arriendo" }
+      { label: "Personal", value: "Instaladores Autorizados Clase D o Superior" },
+      { label: "Normativa", value: "NCh Elec. 4/2003 y Pliegos Técnicos RIC" },
+      { label: "Materiales", value: "Certificados (Bticino, Legrand, Schneider, Phillips)" },
+      { label: "Garantía", value: "12 meses en mano de obra e instalación" },
+      { label: "Cobertura", value: "Toda la Región Metropolitana" }
     ],
     processSteps: [
-      { title: "Contacto", desc: "Cuéntanos tu problema por teléfono o WhatsApp." },
-      { title: "Visita Técnica", desc: "Evaluamos la falla y entregamos presupuesto." },
-      { title: "Reparación", desc: "Resolvemos el problema cumpliendo normativa SEC." },
-      { title: "Garantía", desc: "Entregamos boleta y garantía por escrito." }
+      { title: "Contacto Ágil", desc: "Envíanos una foto o video de tu problema por WhatsApp para una evaluación preliminar." },
+      { title: "Visita y Diagnóstico", desc: "Evaluamos en terreno la seguridad de tu instalación y proponemos la mejor solución." },
+      { title: "Ejecución Limpia", desc: "Trabajamos protegiendo tus muebles y limpieza final del área." },
+      { title: "Entrega y Garantía", desc: "Pruebas de funcionamiento, entrega de certificado (si aplica) y garantía." }
     ],
     deliverables: [
-      "Falla eléctrica reparada y probada",
-      "Boleta electrónica",
-      "Garantía por escrito",
-      "Recomendaciones de seguridad"
+      "Instalación eléctrica 100% operativa y segura",
+      "Informe técnico del trabajo realizado",
+      "Certificado TE1 (para proyectos que lo requieran)",
+      "Boleta o Factura electrónica",
+      "Recomendaciones de uso eficiente de energía"
     ],
     faq: [
-      { question: "¿Pueden hacer la regularización TE1 de mi casa?", answer: "Sí, evaluamos la instalación, hacemos las reparaciones necesarias y gestionamos el certificado TE1." },
-      { question: "¿Cuánto cuesta una visita?", answer: "El diagnóstico tiene un costo mínimo que se descuenta al contratar la reparación." },
-      { question: "¿Instalan paneles solares?", answer: "No es nuestro servicio principal, pero podemos referirlo a especialistas de confianza." }
+      { question: "¿Atienden emergencias como cortes de luz?", answer: "Sí, tenemos equipos de turno para reponer el servicio ante fallas imprevistas o cortocircuitos." },
+      { question: "¿Realizan trámites para aumento de potencia en casas?", answer: "Absolutamente. Gestionamos todo el proceso ante la compañía (CGE/Enel) si necesitas conectar aires acondicionados o calefacción eléctrica." },
+      { question: "¿Qué marcas de materiales utilizan?", answer: "Solo trabajamos con marcas certificadas y de prestigio como Legrand, Bticino, Schneider Electric o similar, garantizando durabilidad y seguridad." },
+      { question: "Mi casa es muy antigua, ¿es peligroso?", answer: 'Las instalaciones de más de 20 años suelen ser riesgosas. Ofrecemos un servicio de "Diagnóstico de Seguridad" para evaluar el estado de los cables y protecciones.' },
+      { question: "¿Instalan cargadores para autos eléctricos?", answer: "Sí, instalamos puntos de carga domiciliarios (Wallbox) cumpliendo la normativa específica para electromovilidad." }
     ]
   }
 ];

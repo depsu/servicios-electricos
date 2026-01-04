@@ -1,10 +1,10 @@
 import { e as createAstro, f as createComponent, m as maybeRenderHead, h as addAttribute, r as renderTemplate, l as defineScriptVars, k as renderComponent } from '../chunks/astro/server_CF1QfBv0.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_DTikEjAt.mjs';
+import { $ as $$Layout } from '../chunks/Layout_D-itAxiA.mjs';
 import { $ as $$TrustBar } from '../chunks/TrustBar_7Ho9578L.mjs';
 import 'clsx';
 import { c as comunas } from '../chunks/comunas_DqyMFen5.mjs';
-import { s as services } from '../chunks/servicios_CXVvBxPA.mjs';
+import { s as services } from '../chunks/servicios_DqNr8tSO.mjs';
 /* empty css                                   */
 export { renderers } from '../renderers.mjs';
 

@@ -34,7 +34,7 @@ const $$NavbarGeneric = createComponent(($$result, $$props, $$slots) => {
   } else if (currentPath.includes("hogar-condominios")) {
     whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20para%20hogar.";
   }
-  return renderTemplate(_a$2 || (_a$2 = __template$2(["", '<nav id="main-nav" class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-16"> <!-- Logo --> <a href="/" class="flex items-center gap-2" aria-label="Inicio"> <img src="/images/logo.png" alt="Servicios El\xE9ctricos RM" class="h-10 w-auto"> <div class="flex flex-col justify-center"> <span class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight"> ', '<span class="text-primary">', '</span> </span> </div> </a> <!-- Desktop Menu --> <div class="hidden md:flex items-center gap-8 font-medium text-slate-600"> <a href="/" class="hover:text-primary transition-colors">Inicio</a> <a href="/servicios" class="hover:text-primary transition-colors">Servicios</a> <a href="/nosotros" class="hover:text-primary transition-colors">Nosotros</a> <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a> <div class="flex items-center gap-4 ml-4"> <a', ` class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-bold shadow-md transition hover:-translate-y-0.5 flex items-center gap-2">
+  return renderTemplate(_a$2 || (_a$2 = __template$2(["", '<nav id="main-nav" class="absolute lg:fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-16"> <!-- Logo --> <a href="/" class="flex items-center gap-2" aria-label="Inicio"> <img src="/images/logo.png" alt="Servicios El\xE9ctricos RM" class="h-10 w-auto"> <div class="flex flex-col justify-center"> <span class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight"> ', '<span class="text-primary">', '</span> </span> </div> </a> <!-- Desktop Menu --> <div class="hidden md:flex items-center gap-8 font-medium text-slate-600"> <a href="/" class="hover:text-primary transition-colors">Inicio</a> <a href="/servicios" class="hover:text-primary transition-colors">Servicios</a> <a href="/nosotros" class="hover:text-primary transition-colors">Nosotros</a> <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a> <div class="flex items-center gap-4 ml-4"> <a', ` class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-bold shadow-md transition hover:-translate-y-0.5 flex items-center gap-2">
 WhatsApp
 </a> </div> </div> <!-- Mobile Menu Button --> <button id="generic-nav-toggle" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Abrir men\xFA"> <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> <!-- Mobile Menu Overlay --> <div id="generic-mobile-menu" class="hidden fixed inset-0 z-[100] md:hidden"> <div id="generic-menu-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div> <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl h-full flex flex-col"> <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50"> <span class="font-bold text-slate-700">Men\xFA</span> <button id="generic-close-menu" class="p-2 rounded-full hover:bg-slate-200 transition"> <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </button> </div> <div class="p-4 space-y-2 overflow-y-auto flex-1"> <a href="/" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Inicio</a> <a href="/servicios" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Servicios</a> <a href="/nosotros" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Nosotros</a> <a href="/contacto" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Contacto</a> </div> </div> </div> </nav> <script>
     const toggleBtn = document.getElementById('generic-nav-toggle');
@@ -50,35 +50,12 @@ WhatsApp
     if (closeBtn) closeBtn.addEventListener('click', toggleGenericMenu);
     if (backdrop) backdrop.addEventListener('click', toggleGenericMenu);
 
-    // Scroll Behavior (Hide/Show)
-    let lastScroll = 0;
+    // Scroll Behavior (Desktop Only)
+    // Mobile uses absolute positioning so it scrolls away naturally.
     const nav = document.getElementById('main-nav');
     
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        // Apply on mobile and small tablets
-        if (window.innerWidth < 1024) {
-             // Add buffer to prevent jitter at top
-             if (currentScroll <= 0) {
-                 nav.classList.remove('-translate-y-full');
-                 return;
-             }
-             
-             if (currentScroll > lastScroll && currentScroll > 60) {
-                 // Scrolling Down -> Hide
-                 nav.classList.add('-translate-y-full');
-             } else if (currentScroll < lastScroll) {
-                 // Scrolling Up -> Show
-                 nav.classList.remove('-translate-y-full');
-             }
-        } else {
-             // Always show on desktop
-             nav.classList.remove('-translate-y-full');
-        }
-        
-        lastScroll = currentScroll;
-    });
+    // Ensure we reset any js-added styles if resizing logic were robust, 
+    // but here we just leave it simple as requested.
 <\/script>`])), maybeRenderHead(), company.logoText, company.logoTextHighlight, addAttribute(`https://wa.me/${company.whatsapp}?text=${whatsappText}`, "href"));
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/NavbarGeneric.astro", void 0);
 
@@ -98,7 +75,7 @@ const $$NavbarService = createComponent(($$result, $$props, $$slots) => {
   } else if (currentPath.includes("hogar-condominios")) {
     whatsappText = "Hola,%20vi%20su%20web%20y%20me%20interesa%20un%20servicio%20para%20hogar.";
   }
-  return renderTemplate(_a$1 || (_a$1 = __template$1(["", " ", '<nav id="service-nav" class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-17"> <a href="/" class="flex items-center gap-1" aria-label="Inicio"> <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center"> <img src="/images/logo.png" alt="Servicios El\xE9ctricos RM" class="w-full h-full object-contain"> </div> <div class="flex flex-col justify-center -space-y-0.5"> <span class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight"> ', '<span class="text-primary">', '</span> </span> <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest"> ', ' <!-- This is where the region text goes --> </span> </div> </a> <!-- Desktop Menu --> <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm"> <a href="/" class="hover:text-primary transition-colors">Inicio</a> <a href="/empresas-industria" class="hover:text-primary transition-colors">Empresas</a> <a href="/hogar-condominios" class="hover:text-primary transition-colors">Hogar</a> <a href="/cobertura" class="hover:text-primary transition-colors">Cobertura</a> <a href="/cotizar" class="hover:text-primary transition-colors">Cotizar</a> <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a> <div class="flex items-center gap-4 ml-4"> <a', ' class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-5 py-2.5 rounded-full font-bold shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2"> <i class="fa-brands fa-whatsapp text-lg"></i>\nWhatsApp\n</a> </div> </div> <!-- Mobile Toggle --> <div class="flex items-center gap-4 lg:hidden"> <a', ' class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition"> <i class="fa-brands fa-whatsapp text-xl text-accent"></i> </a> <button onclick="openMenu()" aria-label="Abrir men\xFA de navegaci\xF3n" class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95"> <i class="fa-solid fa-bars text-2xl"></i> </button> </div> </div> </div> </nav> <!-- Mobile Menu Overlay (Fuera del Nav para evitar problemas de stacking context) --> <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300"> <!-- Backdrop --> <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div> <!-- Panel --> <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col"> <!-- Header --> <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100"> <span class="font-extrabold text-slate-900 text-lg tracking-tight">MEN\xDA</span> <button onclick="closeMenu()" aria-label="Cerrar men\xFA" class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center"> <i class="fa-solid fa-xmark text-xl"></i> </button> </div> <!-- Links --> <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2"> <a href="/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Inicio</a> <a href="/empresas-industria" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Empresas e Industria</a> <a href="/hogar-condominios" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Hogar y Condominios</a> <a href="/cobertura" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Cobertura</a> <a href="/cotizar" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Cotizar</a> <a href="/contacto" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Contacto</a> </div> <!-- Footer --> <div class="p-6 border-t border-slate-100 bg-slate-50"> <a', ` class="block w-full bg-accent hover:bg-accent-hover text-white px-5 py-3 rounded-xl font-bold text-center transition shadow-lg shadow-green-500/20"> <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
+  return renderTemplate(_a$1 || (_a$1 = __template$1(["", " ", '<nav id="service-nav" class="absolute lg:fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-transform duration-500 ease-out transform translate-y-0"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-17"> <a href="/" class="flex items-center gap-1" aria-label="Inicio"> <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center"> <img src="/images/logo.png" alt="Servicios El\xE9ctricos RM" class="w-full h-full object-contain"> </div> <div class="flex flex-col justify-center -space-y-0.5"> <span class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight"> ', '<span class="text-primary">', '</span> </span> <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest"> ', ' <!-- This is where the region text goes --> </span> </div> </a> <!-- Desktop Menu --> <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm"> <a href="/" class="hover:text-primary transition-colors">Inicio</a> <a href="/empresas-industria" class="hover:text-primary transition-colors">Empresas</a> <a href="/hogar-condominios" class="hover:text-primary transition-colors">Hogar</a> <a href="/cobertura" class="hover:text-primary transition-colors">Cobertura</a> <a href="/cotizar" class="hover:text-primary transition-colors">Cotizar</a> <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a> <div class="flex items-center gap-4 ml-4"> <a', ' class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-5 py-2.5 rounded-full font-bold shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2"> <i class="fa-brands fa-whatsapp text-lg"></i>\nWhatsApp\n</a> </div> </div> <!-- Mobile Toggle --> <div class="flex items-center gap-4 lg:hidden"> <a', ' class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition"> <i class="fa-brands fa-whatsapp text-xl text-accent"></i> </a> <button onclick="openMenu()" aria-label="Abrir men\xFA de navegaci\xF3n" class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95"> <i class="fa-solid fa-bars text-2xl"></i> </button> </div> </div> </div> </nav> <!-- Mobile Menu Overlay (Fuera del Nav para evitar problemas de stacking context) --> <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300"> <!-- Backdrop --> <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div> <!-- Panel --> <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col"> <!-- Header --> <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100"> <span class="font-extrabold text-slate-900 text-lg tracking-tight">MEN\xDA</span> <button onclick="closeMenu()" aria-label="Cerrar men\xFA" class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center"> <i class="fa-solid fa-xmark text-xl"></i> </button> </div> <!-- Links --> <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2"> <a href="/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Inicio</a> <a href="/empresas-industria" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Empresas e Industria</a> <a href="/hogar-condominios" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Hogar y Condominios</a> <a href="/cobertura" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Cobertura</a> <a href="/cotizar" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Cotizar</a> <a href="/contacto" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Contacto</a> </div> <!-- Footer --> <div class="p-6 border-t border-slate-100 bg-slate-50"> <a', ` class="block w-full bg-accent hover:bg-accent-hover text-white px-5 py-3 rounded-xl font-bold text-center transition shadow-lg shadow-green-500/20"> <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
 </a> </div> </div> </div> <script>
     // Funciones globales exactamente como en el HTML original
     window.openMenu = function() {
@@ -126,32 +103,9 @@ const $$NavbarService = createComponent(($$result, $$props, $$slots) => {
         window.closeMenu();
     });
 
-    // Scroll Behavior (Hide/Show)
-    let lastScrollService = 0;
+    // Scroll Behavior (Mobile Natural Scroll, Desktop Fixed)
     const navService = document.getElementById('service-nav');
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        if (window.innerWidth < 1024) { // Mobile and Tablet
-             if (currentScroll <= 0) {
-                 if(navService) navService.classList.remove('-translate-y-full');
-                 return;
-             }
-
-             if (currentScroll > lastScrollService && currentScroll > 60) {
-                 // Scrolling Down -> Hide
-                 if(navService) navService.classList.add('-translate-y-full');
-             } else if (currentScroll < lastScrollService) {
-                 // Scrolling Up -> Show
-                 if(navService) navService.classList.remove('-translate-y-full');
-             }
-        } else {
-             if(navService) navService.classList.remove('-translate-y-full');
-        }
-        
-        lastScrollService = currentScroll;
-    });
+    // No JS logic needed for mobile hiding if position is absolute.
 <\/script>`])), renderScript($$result, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/NavbarService.astro?astro&type=script&index=0&lang.ts"), maybeRenderHead(), company.logoText, company.logoTextHighlight, renderSlot($$result, $$slots["default"]), addAttribute(`https://wa.me/${company.whatsapp}?text=${whatsappText}`, "href"), addAttribute(`https://wa.me/${company.whatsapp}?text=${whatsappText}`, "href"), addAttribute(`https://wa.me/${company.whatsapp}?text=${whatsappText}`, "href"));
 }, "/Users/alejandroriveracarrasco/proyectos-personales/servicios-electricos/src/components/NavbarService.astro", void 0);
 

@@ -173,6 +173,55 @@ export const services: Service[] = [
             { question: '¿Se pueden pintar del color corporativo?', answer: 'Sí, ofrecemos acabado RAL personalizado a pedido.' }
         ]
     },
+    {
+        slug: 'aumento-de-capacidad-electrica',
+        title: 'Aumento de Capacidad Eléctrica',
+        segment: 'industrial',
+        description: 'Gestión integral para el aumento de potencia eléctrica en industrias y comercios. Proyectos de aumento de empalme monofásico a trifásico, o ampliación de kW disponibles. Realizamos el estudio de carga, la ingeniería de detalles, el montaje de nuevos tableros y la tramitación completa ante la compañía eléctrica y SEC (TE1).',
+        shortDescription: 'Aumente la potencia de su empalme para nuevas máquinas y equipos.',
+        icon: 'rayo',
+        benefits: [
+            'Permite instalar nuevas maquinarias y equipos de clima',
+            'Evita cortes de energía por sobrecarga de protecciones',
+            'Regularización normativa ante la SEC y compañías',
+            'Optimización de la tarifa eléctrica contratada',
+            'Mejora la seguridad operativa de la instalación',
+            'Valorización de la propiedad industrial'
+        ],
+        features: [
+            'Estudio de Carga y Factibilidad Técnica',
+            'Cambio de Empalme (Aéreo o Subterráneo)',
+            'Tramitación TE1 de Aumento de Capacidad',
+            'Normalización de Tableros Generales',
+            'Cambio de Medidor y Protecciones de Cabecera',
+            'Coordinación con CGE / Enel / Chilquinta'
+        ],
+        techSpecs: [
+            { label: 'Tipos de Aumento', value: 'Monofásico a Trifásico / Aumento de kW Trifásico' },
+            { label: 'Capacidades', value: 'Desde 10kW hasta 500kW+' },
+            { label: 'Normativa', value: 'NCh Elec. 4/2003 / RIC / Pliegos Técnicos' },
+            { label: 'Tiempo Tramitación', value: '30 a 60 días (depende de Cía. Eléctrica)' },
+            { label: 'Ingeniería', value: 'Incluida (Memoria y Planos As-Built)' }
+        ],
+        processSteps: [
+            { title: 'Levantamiento', desc: 'Evaluación de consumo actual y proyección de cargas futuras.' },
+            { title: 'Ingeniería', desc: 'Diseño del nuevo empalme y tableros. Ingreso de solicitud a la Cía.' },
+            { title: 'Ejecución', desc: 'Adecuación de tableros y acometida según nueva norma.' },
+            { title: 'Certificación', desc: 'Inscripción TE1 en SEC y firma de contrato con Cía. Eléctrica.' }
+        ],
+        deliverables: [
+            'Empalme con nueva capacidad operativa',
+            'Certificado TE1 de Aumento de Capacidad',
+            'Tablero General Normalizado',
+            'Planos Eléctricos Actualizados',
+            'Protocolo de Medida y Puesta en Servicio'
+        ],
+        faq: [
+            { question: '¿Cuánto demora el proceso de aumento?', answer: 'Típicamente entre 1 a 2 meses. Depende principalmente de los tiempos de respuesta de la compañía distribuidora para la factibilidad y conexión.' },
+            { question: '¿Necesito cambiar todo el cableado?', answer: 'Solo si la sección actual de los conductores no soporta la nueva corriente. Evaluamos esto en la visita técnica para reutilizar lo posible.' },
+            { question: '¿Pueden tramitar aumentos en media tensión?', answer: 'Sí, también gestionamos proyectos de subestaciones y empalmes en media tensión (AT/MT).' }
+        ]
+    },
 
     // ============================================================
     // B2C HOGAR / RURAL - PRIORITY 1
@@ -348,6 +397,8 @@ export const services: Service[] = [
         description: 'Soluciones eléctricas seguras para tu hogar. Reparación de cortos circuitos, cambios de enchufes e interruptores, instalación de iluminación LED, recableado de circuitos y regularizaciones TE1 para venta o arriendo de propiedades.',
         shortDescription: 'Seguridad eléctrica para tu familia.',
         icon: 'rayo',
+        heroImageMobile: '/images/empalme/banner-mobile_empalme.webp',
+        heroImageDesktop: '/images/empalme/banner-empalme.webp',
         benefits: [
             'Arreglamos cortos circuitos y fallas eléctricas',
             'Instalación de iluminación LED moderna',

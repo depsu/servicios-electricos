@@ -12,9 +12,10 @@ interface Props {
     image?: string;
     schema?: object;
     regionText?: string;
+    noIndex?: boolean;
 }
 
-const { title, description = "Servicios eléctricos profesionales en Región Metropolitana. Industrial y Domiciliario.", image = "/images/og-default.jpg", schema, regionText = "Región Metropolitana" } = Astro.props;
+const { title, description = "Servicios eléctricos profesionales en Región Metropolitana. Industrial y Domiciliario.", image = "/images/og-default.jpg", schema, regionText = "Región Metropolitana", noIndex = false } = Astro.props;
 const { font } = siteConfig.theme;
 
 // Map fonts to Google Fonts URLs and Tailwind classes
@@ -59,7 +60,11 @@ import { ClientRouter } from 'astro:transitions';
         <link rel="canonical" href={Astro.url.href} />
 
         <!-- Robots -->
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <!-- Robots -->
+        {noIndex 
+            ? <meta name="robots" content="noindex, nofollow" />
+            : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        }
 
         <!-- Geo Meta Tags (Chile) -->
         <meta name="geo.region" content="CL-RM" />
@@ -137,7 +142,7 @@ import { ClientRouter } from 'astro:transitions';
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <ClientRouter />
 	</head>
-	<body class={`bg-slate-50 antialiased pb-24 md:pb-0 pt-20 md:pt-24 ${currentFont.family}`}>
+	<body class={`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`}>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQ44WHJ3"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

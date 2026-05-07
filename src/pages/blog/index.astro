@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+    .filter(p => !p.slug.startsWith('articulo-ejemplo'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const seoSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog ChileEléctrico",
+    "description": "Auditorías eléctricas, instalaciones industriales y mantenimiento profesional en Región Metropolitana.",
+    "url": "https://chileelectrico.cl/blog/",
+    "publisher": {
+        "@type": "Organization",
+        "name": "ChileEléctrico"
+    }
+};
+---
+
+<Layout
+    title="Blog | ChileEléctrico - Auditorías y Servicios Eléctricos en RM"
+    description="Artículos prácticos sobre auditoría eléctrica, sistemas de respaldo, tableros, normativa SEC y casos reales de proyectos industriales y domiciliarios en Chile."
+    schema={seoSchema}
+>
+    <section class="bg-slate-900 text-white py-20 px-6">
+        <div class="container mx-auto max-w-4xl text-center">
+            <span class="text-amber-400 text-xs font-bold tracking-[0.4em] uppercase">Recursos</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mt-4 leading-tight">Blog ChileEléctrico</h1>
+            <p class="text-slate-300 mt-6 text-lg max-w-2xl mx-auto">
+                Auditorías eléctricas, sistemas de respaldo, normativa SEC y casos reales de proyectos industriales y domiciliarios en Chile.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {posts.map(post => (
+                    <BlogCard
+                        title={post.data.title}
+                        description={post.data.description}
+                        publishDate={post.data.pubDate}
+                        image={post.data.image}
+                        url={`/blog/${post.slug}`}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+</Layout>

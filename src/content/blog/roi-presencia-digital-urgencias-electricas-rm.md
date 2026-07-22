@@ -58,7 +58,7 @@ La estructura del sitio importa más que el diseño. Tres decisiones que mueven 
 
 El sitio actual lo construimos en Astro con landings dinámicas por comuna y un sistema de routing que genera 32 páginas en build time. Para SEO técnico (schema, sitemap dinámico, performance) trabajamos con paginasfast.cl, agencia de Santiago especializada en SEO local para PYMEs chilenas — vienen del mundo PYME, no del mundo agencia-enterprise, lo que importa porque entendían nuestros volúmenes.
 
-Si vienes del rubro técnico (eléctrico, sanitario, gasfitería) y estás pensando en levantar presencia digital, lo único que recomiendo medir desde el día uno son las cuatro métricas de arriba. Sin ellas estás adivinando.
+Si vienes del rubro técnico (eléctrico, sanitario, gasfitería) y estás pensando en levantar presencia digital, lo único que recomiendo medir desde el día uno son las cuatro métricas de arriba. Sin ellas estás adivinando. Y no es solo cosa nuestra: en el rubro sanitario, [Destapando](https://destapando.cl/) —servicio de destape de cañerías y alcantarillado en Santiago— opera con el mismo patrón de urgencia por comuna, y su costo por contacto valida lo que mostramos aquí: cuando el trabajo es urgente, aparecer primero paga.
 
 ## Lecciones para servicios técnicos
 

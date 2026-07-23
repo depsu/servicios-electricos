@@ -14,7 +14,7 @@ El primer signo, y el más evidente, es el olor. Si sientes un aroma a "huevo po
 
 ## 2. Drenaje Lento en la Casa
 
-¿El agua de la ducha se demora en bajar? ¿Al tirar la cadena el nivel del agua sube antes de bajar? Esto indica que la tubería principal o la fosa misma están saturadas.
+¿El agua de la ducha se demora en bajar? ¿Al tirar la cadena el nivel del agua sube antes de bajar? Esto indica que la tubería principal o la fosa misma están saturadas. Ojo con el diagnóstico: si es **un solo artefacto** el que drena lento, probablemente es una cañería puntual tapada y lo resuelve un [servicio de destape](https://www.destaperapido.cl/); si **toda la casa** drena lento a la vez, la causa suele ser la fosa llena.
 
 > **Consejo Pro:** No uses químicos fuertes para "destapar", ya que matan las bacterias buenas de tu fosa.
 

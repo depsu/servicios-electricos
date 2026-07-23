@@ -32,7 +32,7 @@ Cuatro métricas no negociables, todas comparables semana a semana:
 | CPL Google Ads | $9.800 CLP | $11.200 CLP |
 | Comunas con top 5 orgánico | 0 | 14 |
 
-La métrica que más nos sorprendió es el tiempo de respuesta. No porque trabajemos más rápido, sino porque el formulario optimizado nos da el problema, la dirección y la urgencia antes de tomar el teléfono. Eso ahorra los 15-20 minutos típicos de la primera llamada exploratoria.
+La métrica que más nos sorprendió es el tiempo de respuesta. No porque trabajemos más rápido, sino porque el formulario optimizado nos da el problema, la dirección y la urgencia antes de tomar el teléfono. Eso ahorra los 15-20 minutos típicos de la primera llamada exploratoria. La lógica de pre-calificación (qué preguntar y en qué orden) la afinamos con [AutomatizaWeb](https://www.automatizaweb.cl/), que hace lo mismo por WhatsApp para otras pymes de servicios.
 
 ## La trampa de medir solo Ads
 

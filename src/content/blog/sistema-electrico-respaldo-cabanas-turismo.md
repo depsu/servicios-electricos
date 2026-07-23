@@ -102,6 +102,7 @@ Total razonable a respaldar: **3 KWh/día** con sistema mixto.
 3. **El generador con ATS automático es plata bien gastada**: el huésped no nota el corte.
 4. **Prueba mensual obligatoria**: el generador que nadie prende termina sin batería.
 5. **Combustible en bidón hermético**: la gasolina pierde potencia en 6 meses.
+6. **Generador bajo techo, siempre**: un cobertizo ventilado simple le alarga la vida años. En la zona se arman con [coligüe](https://www.aguswer.cl/), que aguanta bien la humedad de cordillera y es barato de reponer.
 
 ## Cómo se integra con el resto de la mantención
 

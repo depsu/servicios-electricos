@@ -56,6 +56,8 @@ Plan de remediación en 30 días. Costo total: $1.8M. Comparado con la pérdida 
 
 Para alojamiento turístico, conviene coordinar con la mantención sanitaria. Vimos esto con [Cabañas Santa Regina](https://cabanassantaregina.cl/blog/como-cuidamos-nuestras-cabanas) en Termas de Chillán: hacemos auditoría eléctrica el mismo trimestre que su limpieza de fosa séptica para minimizar interrupción.
 
+Un caso aparte son las instalaciones con requerimientos acústicos: un estudio de grabación no solo necesita la auditoría estándar, sino además **tierra técnica** para eliminar el ruido eléctrico de las tomas de audio. [Fuego Estudio documentó bien su instalación](https://fuegoestudio.cl/blog/instalacion-electrica-estudio-grabacion-tierra-tecnica/) — vale la pena leerlo si tu rubro depende de equipos sensibles.
+
 ## Costos referenciales 2026
 
 | Servicio | Rango (CLP, sin IVA) |

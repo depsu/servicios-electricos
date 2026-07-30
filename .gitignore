@@ -1,1 +1,7 @@
 node_modules
+
+# Salida de compilacion: la genera Vercel en cada deploy.
+# Si se guarda aqui, Vercel la usa tal cual y NO compila (asi el blog quedo
+# meses sin publicarse, y la funcion de servidor viajaba con binarios de Mac).
+dist
+.vercel/output

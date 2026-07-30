@@ -1,6 +1,6 @@
 ---
 title: "Tableros eléctricos en restaurantes: 5 errores que cuestan caro"
-description: "Errores comunes en tableros eléctricos de restaurantes y cocinas comerciales en Chile. Caso real con un sushi en Santiago y cómo lo solucionamos."
+description: "Los cinco errores que encontramos una y otra vez en tableros eléctricos de restaurantes y cocinas comerciales en Chile, y cómo se corrigen."
 pubDate: 2026-05-05
 author: "Equipo ChileEléctrico"
 image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop"
@@ -10,9 +10,9 @@ featured: false
 
 Un restaurante tiene una instalación eléctrica completamente distinta a una oficina o casa. La carga térmica de la cocina, la cantidad de equipos motorizados (campanas, hornos, freidoras), la humedad y el horario extendido generan condiciones que solo un electricista que trabaja con gastronómicos entiende.
 
-## Caso real: cocina de sushi en zona oriente
+## Los cinco errores que vemos siempre
 
-Una cadena de sushi en Santiago nos contrató después de tres incidentes en 6 meses: dos veces se les fue la luz en horario peak y una vez se quemó un controlador del horno de tempura. Auditamos el tablero general y encontramos los 5 errores que vemos siempre en cocinas comerciales mal instaladas.
+Una cocina comercial concentra en pocos metros cuadrados una cantidad de carga eléctrica que ninguna instalación doméstica tiene: hornos, campanas, cámaras de frío y equipos que arrancan todos a la misma hora. Estos son los cinco errores que encontramos una y otra vez al auditar el tablero de un restaurante.
 
 ## Error 1: Dimensionamiento por carga teórica, no real
 
@@ -48,31 +48,28 @@ Los equipos en zona húmeda (lavaplatos industrial, fregadero, máquina de hielo
 
 ## Error 4: Cableado expuesto en zonas calientes
 
-Encontramos cables sin protección térmica adecuada pasando a 20 cm sobre el horno de tempura. La aislación termoplástica empieza a degradarse a 70 °C, y el horno irradiaba más que eso. Era cuestión de tiempo que se generara un cortocircuito.
+Es habitual encontrar cables sin protección térmica adecuada pasando a pocos centímetros por encima de un horno. La aislación termoplástica empieza a degradarse a 70 °C, y un horno de alta temperatura irradia más que eso: con el tiempo, ese tramo termina en cortocircuito.
 
 **Solución:** Reemplazo con cable XLPE (aislación reticulada, soporta 90 °C continuos) y reroute por canal alejado de fuentes calientes.
 
 ## Error 5: No tener línea de respaldo para refrigeración
 
-Si el restaurante pierde refrigeración 4 horas, todo el pescado fresco se pierde. Eso es entre $500.000 y $2M en producto, según el día.
+Si el restaurante pierde refrigeración durante unas horas, se pierde el producto fresco completo. En un local que trabaja con pescado o carne, esa pérdida en una sola noche puede superar con holgura lo que cuesta prevenirla.
 
 **Solución:** Generador eléctrico mínimo de 3 KVA conectado vía ATS (transferencia automática) que arranca en menos de 10 segundos cuando se va la luz, dedicado solo a refrigeradores.
 
-## Lo que cuesta hacer las cosas bien
+## Qué incluye un plan de mejora completo
 
-Para una cocina sushi mediana (60 m² de cocina, 12 equipos eléctricos), el plan de mejora completo costó:
+Cuando hay que dejar bien la instalación de una cocina comercial, el trabajo suele contemplar:
 
-| Trabajo | Costo (CLP) |
-|-|-|
-| Re-dimensionamiento + nuevo TG | $1.350.000 |
-| Sub-tableros y reorganización | $850.000 |
-| Cableado XLPE en zonas calientes | $450.000 |
-| Protectores diferenciales nuevos | $180.000 |
-| Generador 3 KVA + ATS | $980.000 |
-| Auditoría SEC final + documentación | $250.000 |
-| **Total proyecto** | **$4.060.000** |
+- **Re-dimensionamiento del tablero general** según la carga real, no la del proyecto original.
+- **Sub-tableros y reorganización** de circuitos por zona (frío, cocción, salón).
+- **Cableado XLPE** en los tramos expuestos a calor.
+- **Protecciones diferenciales** nuevas donde falten.
+- **Generador con ATS** dedicado a refrigeración.
+- **Auditoría SEC final** y documentación (TE1 actualizada).
 
-Comparado con el riesgo: un solo incidente de pérdida de refrigeración puede pagar la mitad de la inversión. Y la tranquilidad de operar sin temor a apagones se valora cada noche.
+El valor depende de los metros de cocina, la cantidad de equipos y el estado del tablero actual, así que lo cotizamos después de ver la instalación. Lo que sí podemos decir es cómo se compara: un solo incidente de pérdida de refrigeración en un local que trabaja con producto fresco suele costar una fracción importante de la inversión completa.
 
 ## Plan de mantención post-instalación
 

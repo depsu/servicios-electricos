@@ -1,6 +1,6 @@
 ---
 title: "Auditoría eléctrica anual: por qué tu PYME debería hacerla cada año"
-description: "Por qué una auditoría eléctrica SEC anual evita multas, baja primas de seguro y reduce riesgo operacional. Caso real con PYME de servicios en Santiago."
+description: "Qué revisa una auditoría eléctrica SEC, cada cuánto conviene hacerla y las señales de alerta que no deberías dejar pasar en tu PYME."
 pubDate: 2026-05-07
 author: "Equipo ChileEléctrico"
 image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop"
@@ -28,20 +28,20 @@ Al final entregamos informe técnico con priorización de hallazgos (crítico / 
 
 La auditoría no es solo para "pasar la SEC". Tres beneficios concretos:
 
-1. **Reducción de prima de seguro**: Las aseguradoras chilenas (Mapfre, BCI Seguros, etc.) bajan la prima entre 5% y 12% cuando entregas certificado de auditoría reciente.
-2. **Deducción tributaria**: El gasto en mantención eléctrica se deduce 100% del impuesto. Para PYMES en régimen Pro PYME, esto es relevante. En Arriaza Consulting explican bien cómo registrar correctamente este tipo de gastos.
-3. **Continuidad operacional**: Cada hora de paralización por falla eléctrica cuesta ingresos directos + clientes molestos.
+1. **Respaldo frente a tu aseguradora**: ante un siniestro eléctrico, contar con un certificado de auditoría reciente y emitido por instalador autorizado respalda que la instalación estaba mantenida. Las condiciones concretas dependen de cada póliza: consúltalas con tu corredor.
+2. **Tratamiento del gasto**: la mantención eléctrica es un gasto operacional de la empresa. Cómo se registra y qué efecto tributario tiene depende de tu régimen y de tu situación particular — eso lo define tu contador, no nosotros.
+3. **Continuidad operacional**: cada hora de paralización por falla eléctrica cuesta ingresos directos y clientes molestos.
 
-## Caso real: PYME de 18 personas en Vitacura
+## Los hallazgos que aparecen una y otra vez
 
-Una empresa con la que trabajamos llegó después de un cortocircuito que dejó sin luz 6 horas el día más crítico del mes. Auditamos y encontramos:
+Estos son los problemas que encontramos con más frecuencia al auditar una instalación que lleva años sin revisión:
 
-- TG con 14 años sin mantención, breakers principales con temperatura de operación 18 °C sobre tolerancia.
-- Puesta a tierra con resistencia de 87 Ω (lo permitido es <25 Ω).
-- 4 enchufes con conexión inversa (fase y neutro cambiados).
-- 1 tablero secundario sin protección diferencial.
+- Tablero general con más de una década sin mantención, con breakers principales operando por sobre su temperatura de tolerancia.
+- Puesta a tierra fuera de norma: la NCh Elec.4/2003 exige menos de 25 Ω y es habitual medir varias veces ese valor.
+- Enchufes con conexión inversa (fase y neutro cambiados).
+- Tableros secundarios sin protección diferencial.
 
-Plan de remediación en 30 días. Costo total: $1.8M. Comparado con la pérdida operacional del incidente ($3.2M en facturación + clientes molestos), pagó por sí sola.
+Ninguno de estos se ve a simple vista, y cualquiera de ellos puede dejar una operación detenida por un día completo.
 
 ## Frecuencia recomendada
 
@@ -54,21 +54,20 @@ Plan de remediación en 30 días. Costo total: $1.8M. Comparado con la pérdida 
 | Industria pesada | Cada 6 meses | Mensual |
 | Cabañas turísticas | Cada 12 meses | Cada 6 meses |
 
-Para alojamiento turístico, conviene coordinar con la mantención sanitaria. Vimos esto con [Cabañas Santa Regina](https://www.xn--cabaassantaregina-ixb.cl/blog/como-cuidamos-nuestras-cabanas.html) en Termas de Chillán: hacemos auditoría eléctrica el mismo trimestre que su limpieza de fosa séptica para minimizar interrupción.
+Para alojamiento turístico conviene coordinar la auditoría eléctrica con el resto de la mantención del recinto —sanitaria incluida— y hacerlas en la misma ventana de baja ocupación, para interrumpir el servicio una sola vez. [Cabañas Santa Regina](https://www.xn--cabaassantaregina-ixb.cl/blog/como-cuidamos-nuestras-cabanas.html), en Termas de Chillán, explica bien cómo organizan ese tipo de mantenciones en temporada baja.
 
 Un caso aparte son las instalaciones con requerimientos acústicos: un estudio de grabación no solo necesita la auditoría estándar, sino además **tierra técnica** para eliminar el ruido eléctrico de las tomas de audio. [Fuego Estudio documentó bien su instalación](https://fuegoestudio.cl/blog/instalacion-electrica-estudio-grabacion-tierra-tecnica) — vale la pena leerlo si tu rubro depende de equipos sensibles.
 
-## Costos referenciales 2026
+## De qué depende el precio
 
-| Servicio | Rango (CLP, sin IVA) |
-|-|-|
-| Auditoría oficina hasta 50 m² | $180.000 – $250.000 |
-| Auditoría oficina 50–200 m² | $280.000 – $450.000 |
-| Auditoría industria liviana | $550.000 – $900.000 |
-| Termografía de tableros | $90.000 (extra) |
-| Medición de aislación (megger) | $70.000 (extra) |
+No publicamos una tarifa fija porque el valor de una auditoría depende de cosas que solo se saben al ver la instalación:
 
-Todos los servicios incluyen informe técnico, certificado SEC firmado por instalador autorizado clase A o B, y plan de remediación.
+- **Superficie y cantidad de tableros** a revisar.
+- **Tipo de instalación**: no es lo mismo una oficina que una industria liviana con maquinaria.
+- **Ensayos adicionales** que pida el caso: termografía de tableros, medición de aislación con megger.
+- **Accesibilidad**: instalaciones en altura o en espacios confinados toman más tiempo.
+
+Escríbenos con esos datos y te enviamos un valor cerrado antes de ir. Todos nuestros servicios incluyen informe técnico, certificado SEC firmado por instalador autorizado clase A o B, y plan de remediación.
 
 ## Banderas rojas que detectamos seguido
 
@@ -87,7 +86,7 @@ Si alguno de estos síntomas aparece, no esperes auditoría programada — agend
 3. **Mes 12**: auditoría de seguimiento + actualización de informe.
 4. **Cada 6 meses**: inspección visual interna por personal interno con checklist.
 
-Lo más barato es agendar contrato anual con instalador autorizado. Sale entre 30% y 40% más económico que pagar visitas separadas.
+Si puedes, agenda un contrato anual con un instalador autorizado en vez de ir pagando visitas sueltas: sale más conveniente y, sobre todo, evita que la revisión se postergue "para el próximo mes" hasta que aparece la falla.
 
 ## Cómo verificar que tu instalador es legítimo
 

@@ -29,7 +29,7 @@ Al final entregamos informe técnico con priorización de hallazgos (crítico / 
 La auditoría no es solo para "pasar la SEC". Tres beneficios concretos:
 
 1. **Reducción de prima de seguro**: Las aseguradoras chilenas (Mapfre, BCI Seguros, etc.) bajan la prima entre 5% y 12% cuando entregas certificado de auditoría reciente.
-2. **Deducción tributaria**: El gasto en mantención eléctrica se deduce 100% del impuesto. Para PYMES en régimen Pro PYME, esto es relevante. En [Arriaza Consulting](https://arriazaconsulting.cl/blog/regimen-pro-pyme-transparente-vs-general) explican bien cómo registrar correctamente este tipo de gastos.
+2. **Deducción tributaria**: El gasto en mantención eléctrica se deduce 100% del impuesto. Para PYMES en régimen Pro PYME, esto es relevante. En Arriaza Consulting explican bien cómo registrar correctamente este tipo de gastos.
 3. **Continuidad operacional**: Cada hora de paralización por falla eléctrica cuesta ingresos directos + clientes molestos.
 
 ## Caso real: PYME de 18 personas en Vitacura
@@ -54,9 +54,9 @@ Plan de remediación en 30 días. Costo total: $1.8M. Comparado con la pérdida 
 | Industria pesada | Cada 6 meses | Mensual |
 | Cabañas turísticas | Cada 12 meses | Cada 6 meses |
 
-Para alojamiento turístico, conviene coordinar con la mantención sanitaria. Vimos esto con [Cabañas Santa Regina](https://cabanassantaregina.cl/blog/como-cuidamos-nuestras-cabanas) en Termas de Chillán: hacemos auditoría eléctrica el mismo trimestre que su limpieza de fosa séptica para minimizar interrupción.
+Para alojamiento turístico, conviene coordinar con la mantención sanitaria. Vimos esto con [Cabañas Santa Regina](https://www.xn--cabaassantaregina-ixb.cl/blog/como-cuidamos-nuestras-cabanas.html) en Termas de Chillán: hacemos auditoría eléctrica el mismo trimestre que su limpieza de fosa séptica para minimizar interrupción.
 
-Un caso aparte son las instalaciones con requerimientos acústicos: un estudio de grabación no solo necesita la auditoría estándar, sino además **tierra técnica** para eliminar el ruido eléctrico de las tomas de audio. [Fuego Estudio documentó bien su instalación](https://fuegoestudio.cl/blog/instalacion-electrica-estudio-grabacion-tierra-tecnica/) — vale la pena leerlo si tu rubro depende de equipos sensibles.
+Un caso aparte son las instalaciones con requerimientos acústicos: un estudio de grabación no solo necesita la auditoría estándar, sino además **tierra técnica** para eliminar el ruido eléctrico de las tomas de audio. [Fuego Estudio documentó bien su instalación](https://fuegoestudio.cl/blog/instalacion-electrica-estudio-grabacion-tierra-tecnica) — vale la pena leerlo si tu rubro depende de equipos sensibles.
 
 ## Costos referenciales 2026
 

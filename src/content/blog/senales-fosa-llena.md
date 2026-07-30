@@ -2,7 +2,7 @@
 title: "5 Señales de que tu Fosa Séptica necesita Limpieza Urgente"
 description: "Aprende a identificar los síntomas antes de que ocurra un desastre. Malos olores, drenaje lento y más."
 pubDate: 2024-03-15
-author: "Ing. Juan Pérez"
+author: "Equipo ChileEléctrico"
 image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop"
 tags: ["mantenimiento", "consejos", "urgencia"]
 featured: true
@@ -24,4 +24,4 @@ Si notas que el pasto sobre la fosa está mucho más verde y crece más rápido 
 
 ## ¿Qué hacer?
 
-Si identificas uno o más de estos problemas, lo mejor es llamar a un servicio certificado de inmediato. En **Nombre Empresa** atendemos urgencias 24/7.
+Si identificas uno o más de estos problemas, lo mejor es llamar a un servicio certificado de limpieza de fosas de inmediato.

@@ -5,12 +5,17 @@ import ProjectsGrid from '../components/ProjectsGrid.astro';
 import CallToAction from '../components/CallToAction.astro';
 import { comunas } from '../data/comunas';
 
-// Filter top coverage areas
-const topIndustrial = comunas.filter(c => c.type === 'industrial').slice(0, 3);
-const topRural = comunas.filter(c => c.type === 'premium' || c.type === 'rural').slice(0, 3);
+// Agrupación de cobertura: se muestran TODAS las comunas para que
+// ninguna página de cobertura quede huérfana a dos clics de la home.
+const topIndustrial = comunas.filter(c => c.type === 'industrial');
+const topRural = comunas.filter(c => c.type === 'premium' || c.type === 'rural');
+const topVolumen = comunas.filter(c => c.type === 'volumen');
 ---
 
-<Layout title="Servicios Eléctricos RM | Industrial y Domiciliario">
+<Layout
+  title="Servicios Eléctricos RM | Industrial y Domiciliario"
+  description="Servicios eléctricos industriales y domiciliarios en la Región Metropolitana: tableros, montaje eléctrico, empalmes rurales y gasfitería. Cuadrillas móviles con cobertura en Lampa, Colina, Buin, Melipilla y San Bernardo."
+>
   
   <!-- Hero Split -->
   <section class="relative bg-slate-900 text-white overflow-hidden">
@@ -151,6 +156,26 @@ const topRural = comunas.filter(c => c.type === 'premium' || c.type === 'rural')
                   </a>
                 ))}
               </div>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                Zona Sur Poniente
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {topVolumen.map(comuna => (
+                  <a href={`/cobertura/${comuna.slug}`} class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-amber-50 hover:text-amber-700 transition-colors">
+                    {comuna.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <a href="/cobertura/" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline">
+                Ver todas las zonas de cobertura
+              </a>
             </div>
           </div>
         </div>

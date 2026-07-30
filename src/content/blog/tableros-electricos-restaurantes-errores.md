@@ -12,7 +12,7 @@ Un restaurante tiene una instalación eléctrica completamente distinta a una of
 
 ## Caso real: cocina de sushi en zona oriente
 
-[Una cadena de sushi en Santiago](https://sushiapp.cl) nos contrató después de tres incidentes en 6 meses: dos veces se les fue la luz en horario peak y una vez se quemó un controlador del horno de tempura. Auditamos el tablero general y encontramos los 5 errores que vemos siempre en cocinas comerciales mal instaladas.
+Una cadena de sushi en Santiago nos contrató después de tres incidentes en 6 meses: dos veces se les fue la luz en horario peak y una vez se quemó un controlador del horno de tempura. Auditamos el tablero general y encontramos los 5 errores que vemos siempre en cocinas comerciales mal instaladas.
 
 ## Error 1: Dimensionamiento por carga teórica, no real
 

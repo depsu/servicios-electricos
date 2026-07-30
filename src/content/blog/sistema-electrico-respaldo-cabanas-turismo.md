@@ -22,7 +22,7 @@ Resultado: en zonas como Termas de Chillán, Pucón o Cajón del Maipo, los cort
 
 ## Caso real: complejo de cabañas en Las Trancas
 
-El equipo de [Cabañas Santa Regina](https://cabanassantaregina.cl/blog/como-cuidamos-nuestras-cabanas), en Valle Las Trancas, nos contrató después de un fin de semana largo con corte de 6 horas en plena lluvia. Implementamos sistema mixto:
+El equipo de [Cabañas Santa Regina](https://www.xn--cabaassantaregina-ixb.cl/blog/como-cuidamos-nuestras-cabanas.html), en Valle Las Trancas, nos contrató después de un fin de semana largo con corte de 6 horas en plena lluvia. Implementamos sistema mixto:
 
 - Generador a gasolina 5 KVA por cabaña (carga total: luces, refrigerador, bombas).
 - Sistema solar fotovoltaico mínimo (250W) para iluminación crítica y comunicación.

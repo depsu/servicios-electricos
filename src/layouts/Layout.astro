@@ -18,6 +18,11 @@ interface Props {
 const { title, description = "Servicios eléctricos profesionales en Región Metropolitana. Industrial y Domiciliario.", image = "/images/og-default.jpg", schema, regionText = "Región Metropolitana", noIndex = false } = Astro.props;
 const { font } = siteConfig.theme;
 
+// URL canónica normalizada: siempre con barra final y sin query,
+// para que /nosotros y /nosotros/ apunten a la misma URL que el sitemap.
+const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, Astro.site ?? Astro.url.origin).href;
+
 // Map fonts to Google Fonts URLs and Tailwind classes
 const fontConfig = {
     sans: {
@@ -57,7 +62,7 @@ import { ClientRouter } from 'astro:transitions';
 		<title>{title}</title>
 
         <!-- Canonical URL -->
-        <link rel="canonical" href={Astro.url.href} />
+        <link rel="canonical" href={canonicalURL} />
 
         <!-- Robots -->
         <!-- Robots -->
@@ -77,19 +82,19 @@ import { ClientRouter } from 'astro:transitions';
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
+        <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL(image, Astro.url)} />
+        <meta property="og:image" content={new URL(image, canonicalURL)} />
         <meta property="og:locale" content="es_CL" />
         <meta property="og:site_name" content="Servicios Eléctricos RM" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:url" content={canonicalURL} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={new URL(image, Astro.url)} />
+        <meta property="twitter:image" content={new URL(image, canonicalURL)} />
         
         <!-- Page-specific Schema -->
         {schema && (
@@ -103,8 +108,7 @@ import { ClientRouter } from 'astro:transitions';
             "name": "Servicios Eléctricos RM",
             "description": "Servicios eléctricos industriales y domiciliarios en la Región Metropolitana. Tableros eléctricos, empalmes rurales, gasfitería y más.",
             "url": "https://chileelectrico.cl",
-            "telephone": "+56912345678",
-            "email": "rivera.ale98@gmail.com",
+            "telephone": "+56930153632",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Santiago",
@@ -127,9 +131,9 @@ import { ClientRouter } from 'astro:transitions';
             "priceRange": "$$",
             "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                "opens": "08:00",
-                "closes": "20:00"
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
             },
             "sameAs": []
         })} />

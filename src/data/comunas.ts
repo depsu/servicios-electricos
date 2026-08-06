@@ -6,6 +6,10 @@ export interface Comuna {
     microZones: string[]; // e.g. "Valle Grande", "ENEA"
     intro: string;
     responseTime: string;
+    // SEO: el `intro` se ve en el hero de la página. Si ese texto no le sirve al que
+    // busca en Google (p.ej. habla solo de industria y la búsqueda es de casa),
+    // aquí va la descripción que verá en el resultado.
+    metaDescription?: string;
 }
 
 export const comunas: Comuna[] = [
@@ -35,7 +39,10 @@ export const comunas: Comuna[] = [
         serviceFocus: ['montaje-electrico/tableros-electricos', 'montaje-electrico/escalerillas-portacables'],
         microZones: ['Industrial Puerta Sur', 'Nos', 'Lo Herrera'],
         intro: 'Cobertura total para plantas productivas y maestranzas en San Bernardo.',
-        responseTime: 'Disponibilidad 24/7 para plantas productivas'
+        responseTime: 'Disponibilidad 24/7 para plantas productivas',
+        // "electricista san bernardo" es búsqueda de hogar y el intro habla solo de
+        // industria: por eso sale en Google y nadie hace clic.
+        metaDescription: 'Electricistas certificados SEC en San Bernardo, tanto para casas y condominios como para plantas industriales: Nos, Lo Herrera y Puerta Sur. Cuéntanos qué necesitas.'
     },
 
     // --- RURAL / HOGAR ---

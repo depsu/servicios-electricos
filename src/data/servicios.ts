@@ -4,6 +4,14 @@ export interface Service {
     segment: 'industrial' | 'hogar';
     description: string;
     shortDescription: string;
+    // SEO: solo si el <title>/<meta description> debe diferir del título visible.
+    // Sirve para usar las palabras con que la gente busca de verdad en Google,
+    // sin cambiar el H1 ni los nombres de los menús.
+    metaTitle?: string;
+    metaDescription?: string;
+    // Encabezado visible de la página, si debe ser distinto del nombre corto
+    // que se usa en menús y tarjetas.
+    h1?: string;
     icon: string;
     benefits: string[];
     features?: string[];
@@ -177,6 +185,10 @@ export const services: Service[] = [
         slug: 'aumento-de-capacidad-electrica',
         title: 'Aumento de Capacidad Eléctrica',
         segment: 'industrial',
+        // La gente busca "aumento de potencia" y "aumento de amperaje", no "capacidad".
+        metaTitle: 'Aumento de Potencia y Amperaje | Empalme y SEC',
+        metaDescription: '¿Se cortan las protecciones al conectar más máquinas? Subimos la potencia de tu empalme a trifásico o más kW, con el trámite ante la compañía y la SEC.',
+        h1: 'Aumento de Potencia Eléctrica',
         description: 'Gestión integral para el aumento de potencia eléctrica en industrias y comercios. Proyectos de aumento de empalme monofásico a trifásico, o ampliación de kW disponibles. Realizamos el estudio de carga, la ingeniería de detalles, el montaje de nuevos tableros y la tramitación completa ante la compañía eléctrica y SEC (TE1).',
         shortDescription: 'Aumente la potencia de su empalme para nuevas máquinas y equipos.',
         icon: 'rayo',
@@ -394,6 +406,11 @@ export const services: Service[] = [
         slug: 'electricidad-domiciliaria',
         title: 'Servicios Eléctricos Integrales para el Hogar',
         segment: 'hogar',
+        // "eléctrico domiciliario" / "electricista a domicilio" cae hoy en la portada;
+        // esta página debe quedarse con esa búsqueda.
+        metaTitle: 'Electricista a Domicilio en RM | Urgencias 24/7',
+        metaDescription: 'Electricista a domicilio en la Región Metropolitana: urgencias, reparaciones, iluminación y certificación. Instaladores autorizados SEC y garantía por escrito.',
+        h1: 'Electricista a Domicilio para tu Hogar',
         description: 'Todo lo que tu hogar necesita en electricidad: desde urgencias y reparaciones menores hasta proyectos de renovación y certificación. Nuestros instaladores autorizados SEC garantizan seguridad, estética y cumplimiento normativo en cada trabajo.',
         shortDescription: 'Reparaciones, proyectos y certificaciones para tu hogar.',
         icon: 'rayo',

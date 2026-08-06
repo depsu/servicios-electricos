@@ -2,45 +2,83 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 
+// Mismo destino que el formulario de /contacto (ContactForm.astro y QuickForm.astro).
+// Antes esta función solo escribía el lead en la consola del servidor y respondía 200:
+// la persona veía "gracias" y el dato se perdía. Ahora se reenvía de verdad.
+const DESTINO = 'https://formsubmit.co/ajax/rivera.ale982@gmail.com';
+
+// Etiquetas legibles para el correo que llega (formsubmit arma la tabla con estas claves).
+const ETIQUETAS: Record<string, string> = {
+    name: 'Nombre',
+    company_name: 'Razón social',
+    rut: 'RUT',
+    email: 'Email',
+    phone: 'Teléfono',
+    comuna: 'Comuna',
+    servicio: 'Servicio',
+    message: 'Mensaje',
+    form_type: 'Tipo de formulario',
+    utm_source: 'Origen (utm_source)',
+    utm_medium: 'Medio (utm_medium)',
+    utm_campaign: 'Campaña (utm_campaign)',
+    gclid: 'Google Ads (gclid)',
+};
+
 export const POST: APIRoute = async ({ request }) => {
     try {
         const data = await request.formData();
 
-        // Validate minimum data
         const name = data.get('name');
-        const email = data.get('email');
         const phone = data.get('phone');
 
         if (!name || !phone) {
             return new Response(JSON.stringify({
-                message: "Faltan datos obligatorios"
-            }), { status: 400 });
+                message: 'Faltan datos obligatorios',
+            }), { status: 400, headers: { 'Content-Type': 'application/json' } });
         }
 
-        // Capture Tracking Data
-        const tracking = {
-            utm_source: data.get('utm_source'),
-            utm_medium: data.get('utm_medium'),
-            utm_campaign: data.get('utm_campaign'),
-            gclid: data.get('gclid'),
-            submittedAt: new Date().toISOString()
+        const esEmpresa = data.get('form_type') === 'industrial';
+
+        // Armamos el cuerpo con nombres legibles y sin campos vacíos.
+        const payload: Record<string, string> = {
+            _subject: esEmpresa
+                ? 'Nueva cotización industrial desde chileelectrico.cl'
+                : 'Nueva solicitud de visita desde chileelectrico.cl',
+            _template: 'table',
+            _captcha: 'false',
         };
 
-        // Placeholder: In a real app, send to Email/Database/CRM
-        console.log('--- LEAD RECEIVED ---');
-        console.log('Contact:', { name, email, phone });
-        console.log('Tracking:', tracking);
-        console.log('---------------------');
+        for (const [clave, valor] of data.entries()) {
+            if (typeof valor !== 'string' || valor.trim() === '') continue;
+            payload[ETIQUETAS[clave] ?? clave] = valor.trim();
+        }
+        payload['Recibido'] = new Date().toISOString();
 
-        // Simulate Success
-        return new Response(JSON.stringify({
-            message: "Lead received successfully",
-            id: "LEAD-" + Math.floor(Math.random() * 10000)
-        }), { status: 200 });
+        const envio = await fetch(DESTINO, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
 
+        if (!envio.ok) {
+            const detalle = await envio.text().catch(() => '');
+            console.error('formsubmit rechazó el lead', envio.status, detalle.slice(0, 300));
+            return new Response(JSON.stringify({
+                message: 'No pudimos enviar tu solicitud. Intenta nuevamente o escríbenos por WhatsApp.',
+            }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+        }
+
+        return new Response(JSON.stringify({ message: 'Solicitud enviada' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
     } catch (error) {
+        console.error('Error procesando el lead', error);
         return new Response(JSON.stringify({
-            message: "Error processing request"
-        }), { status: 500 });
+            message: 'No pudimos procesar tu solicitud. Intenta nuevamente o escríbenos por WhatsApp.',
+        }), { status: 500, headers: { 'Content-Type': 'application/json' } });
     }
-}
+};

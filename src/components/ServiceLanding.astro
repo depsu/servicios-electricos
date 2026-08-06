@@ -10,6 +10,9 @@ import { siteConfig } from '../config/site';
 interface Props {
   title: string;
   subtitle?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  h1?: string;
   segment: 'industrial' | 'hogar';
   intro: string;
   benefits: string[];
@@ -25,7 +28,13 @@ interface Props {
   heroImageDesktop?: string;
 }
 
-const { title, subtitle, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables, testimonials, gallery, heroImageMobile, heroImageDesktop } = Astro.props;
+const { title, subtitle, metaTitle, metaDescription, h1, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables, testimonials, gallery, heroImageMobile, heroImageDesktop } = Astro.props;
+
+// El título visible (H1) manda en la página; el de Google puede diferir para
+// coincidir con lo que la gente escribe al buscar.
+const seoTitle = metaTitle ?? `${title} | Servicios Eléctricos RM`;
+const seoDescription = metaDescription ?? intro;
+const encabezado = h1 ?? title;
 
 const isIndustrial = segment === 'industrial';
 const themeColor = isIndustrial ? 'text-blue-600' : 'text-emerald-600';
@@ -44,17 +53,13 @@ const schema = {
     "image": "https://chileelectrico.cl/images/logo.png",
     "areaServed": "Región Metropolitana"
   },
-  "serviceType": isIndustrial ? "Industrial Electrical Service" : "Residential Electrical Service",
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "CLP",
-    "price": "0" // Price upon request
-  }
+  "serviceType": isIndustrial ? "Industrial Electrical Service" : "Residential Electrical Service"
+  // Sin bloque "offers": el sitio no publica precios y declarar price "0" le decía
+  // a Google que el servicio es gratis.
 };
 ---
 
-<Layout title={`${title} | Servicios Eléctricos RM`} description={intro} schema={schema}>
+<Layout title={seoTitle} description={seoDescription} schema={schema}>
   <!-- Hero Section -->
   <section class="relative min-h-[600px] flex items-center overflow-hidden">
     
@@ -87,7 +92,7 @@ const schema = {
               {isIndustrial ? '⚡ SERVICIO INDUSTRIAL / B2B' : '🏡 SERVICIO HOGAR / RURAL'}
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              {title}
+              {encabezado}
             </h1>
             <p class="text-lg md:text-xl opacity-90 mb-8 leading-relaxed max-w-lg">
               {intro}

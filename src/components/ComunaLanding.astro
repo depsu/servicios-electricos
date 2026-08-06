@@ -13,9 +13,16 @@ interface Props {
   serviceFocus?: string[];
   proofPoints?: string[];
   faq?: { question: string; answer: string }[];
+  metaDescription?: string;
 }
 
-const { name, slug, type, intro, microZones, responseTime, serviceFocus, proofPoints, faq } = Astro.props;
+const { name, slug, type, intro, microZones, responseTime, serviceFocus, proofPoints, faq, metaDescription } = Astro.props;
+
+// La gente busca "electricista <comuna>" en singular; el título va con esa palabra
+// primero, y aclara que atendemos hogar y empresa (si no, el que busca para su casa
+// ve un texto industrial y no entra).
+const seoTitle = `Electricista en ${name} | Hogar y Empresa`;
+const seoDescription = metaDescription ?? intro;
 
 let heroBg = '';
 if(type === 'industrial') heroBg = 'bg-slate-900';
@@ -40,7 +47,7 @@ const schema = {
 };
 ---
 
-<Layout title={`Electricistas en ${name} | Servicios Certificados`} description={intro} schema={schema}>
+<Layout title={seoTitle} description={seoDescription} schema={schema}>
   <section class={`py-20 ${heroBg} text-white text-center`}>
      <div class="container mx-auto px-4">
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Servicios Eléctricos en <span class="text-yellow-400">{name}</span></h1>

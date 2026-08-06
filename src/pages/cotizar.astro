@@ -221,18 +221,21 @@ if (selectedServicio) {
       method: form.method,
       body: formData
     })
-    .then(response => {
+    .then(async response => {
       if (response.ok) {
         window.location.href = `/gracias?type=${type}`;
-      } else {
-        alert('Hubo un error al enviar. Por favor intente nuevamente.');
-        btn.disabled = false;
-        btn.innerText = originalText;
+        return;
       }
+      // Mostramos el motivo real que manda el servidor, para que la persona
+      // sepa que su solicitud NO llegó y pueda escribirnos por otra vía.
+      const datos = await response.json().catch(() => ({}));
+      alert(datos.message || 'No pudimos enviar tu solicitud. Escríbenos por WhatsApp.');
+      btn.disabled = false;
+      btn.innerText = originalText;
     })
     .catch(err => {
       console.error(err);
-      alert('Error de conexión.');
+      alert('No pudimos conectar. Revisa tu conexión o escríbenos por WhatsApp.');
       btn.disabled = false;
       btn.innerText = originalText;
     });

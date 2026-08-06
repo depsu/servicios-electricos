@@ -6,6 +6,7 @@ import type { APIRoute } from 'astro';
 // Antes esta función solo escribía el lead en la consola del servidor y respondía 200:
 // la persona veía "gracias" y el dato se perdía. Ahora se reenvía de verdad.
 const DESTINO = 'https://formsubmit.co/ajax/rivera.ale982@gmail.com';
+const ORIGEN = 'https://chileelectrico.cl';
 
 // Etiquetas legibles para el correo que llega (formsubmit arma la tabla con estas claves).
 const ETIQUETAS: Record<string, string> = {
@@ -54,18 +55,26 @@ export const POST: APIRoute = async ({ request }) => {
         }
         payload['Recibido'] = new Date().toISOString();
 
+        // El envío sale del servidor, así que no lleva Origin propio. Sin esa cabecera
+        // formsubmit no reconoce el sitio y responde "ábrelo desde un servidor web".
         const envio = await fetch(DESTINO, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
+                'Origin': ORIGEN,
+                'Referer': `${ORIGEN}/cotizar/`,
             },
             body: JSON.stringify(payload),
         });
 
-        if (!envio.ok) {
-            const detalle = await envio.text().catch(() => '');
-            console.error('formsubmit rechazó el lead', envio.status, detalle.slice(0, 300));
+        // formsubmit responde 200 incluso cuando NO envió (formulario sin activar,
+        // por ejemplo). Hay que mirar el campo "success" del cuerpo, no el código.
+        const respuesta = await envio.json().catch(() => ({}) as Record<string, unknown>);
+        const enviado = envio.ok && String(respuesta?.success) !== 'false';
+
+        if (!enviado) {
+            console.error('formsubmit no envió el lead:', envio.status, JSON.stringify(respuesta).slice(0, 300));
             return new Response(JSON.stringify({
                 message: 'No pudimos enviar tu solicitud. Intenta nuevamente o escríbenos por WhatsApp.',
             }), { status: 502, headers: { 'Content-Type': 'application/json' } });

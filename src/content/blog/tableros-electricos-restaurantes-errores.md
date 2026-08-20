@@ -3,7 +3,8 @@ title: "Tableros eléctricos en restaurantes: 5 errores que cuestan caro"
 description: "Los cinco errores que encontramos una y otra vez en tableros eléctricos de restaurantes y cocinas comerciales en Chile, y cómo se corrigen."
 pubDate: 2026-05-05
 author: "Equipo ChileEléctrico"
-image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop"
+image: "../../assets/blog/tableros-electricos-restaurantes-errores.png"
+imageAlt: "Cocina profesional de restaurante en acero inoxidable con el tablero eléctrico en el muro lateral"
 tags: ["restaurantes", "tableros", "industrial"]
 featured: false
 ---

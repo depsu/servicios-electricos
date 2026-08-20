@@ -24,7 +24,7 @@ if (currentPath.includes('empresas-industria')) {
                 </div>
                 <div class="flex flex-col justify-center -space-y-0.5">
                     <span class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">
-                        {company.logoText}<span class="text-primary">{company.logoTextHighlight}</span>
+                        {company.logoText}<span class="text-primary-ink">{company.logoTextHighlight}</span>
                     </span>
                     <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
                         <slot /> <!-- This is where the region text goes -->
@@ -52,10 +52,10 @@ if (currentPath.includes('empresas-industria')) {
 
             <!-- Mobile Toggle -->
             <div class="flex items-center gap-4 lg:hidden">
-                <a href={`https://wa.me/${company.whatsapp}?text=${whatsappText}`} class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                <a href={`https://wa.me/${company.whatsapp}?text=${whatsappText}`} aria-label="Escribir por WhatsApp" class="flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
                     <i class="fa-brands fa-whatsapp text-xl text-accent"></i>
                 </a>
-                <button onclick="openMenu()" aria-label="Abrir menú de navegación" class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                <button onclick="openMenu()" aria-label="Abrir menú de navegación" class="p-3 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
                     <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>

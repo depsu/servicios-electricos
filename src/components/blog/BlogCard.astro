@@ -1,22 +1,29 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
     title: string;
     description: string;
     publishDate: Date;
-    image?: string;
+    image?: ImageMetadata;
+    imageAlt?: string;
     url: string;
 }
 
-const { title, description, publishDate, image, url } = Astro.props;
+const { title, description, publishDate, image, imageAlt, url } = Astro.props;
 ---
 
 <article class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-all duration-300 group h-full flex flex-col">
     {image && (
         <a href={url} class="block relative h-48 overflow-hidden">
-            <img 
-                src={image} 
-                alt={title} 
+            <Image
+                src={image}
+                alt={imageAlt ?? title}
+                widths={[320, 640]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
             />
         </a>
     )}

@@ -3,7 +3,8 @@ title: "Auditoría eléctrica anual: por qué tu PYME debería hacerla cada año
 description: "Qué revisa una auditoría eléctrica SEC, cada cuánto conviene hacerla y las señales de alerta que no deberías dejar pasar en tu PYME."
 pubDate: 2026-05-07
 author: "Equipo ChileEléctrico"
-image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop"
+image: "../../assets/blog/auditoria-electrica-anual-pyme.png"
+imageAlt: "Cámara termográfica y multímetro frente a un tablero eléctrico abierto en una pequeña empresa"
 tags: ["auditoría", "PYME", "SEC"]
 featured: true
 ---

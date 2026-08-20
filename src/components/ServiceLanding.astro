@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import QuickForm from '../components/QuickForm.astro';
 import CallToAction from '../components/CallToAction.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -26,9 +28,11 @@ interface Props {
   gallery?: { url: string; caption: string }[];
   heroImageMobile?: string;
   heroImageDesktop?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
-const { title, subtitle, metaTitle, metaDescription, h1, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables, testimonials, gallery, heroImageMobile, heroImageDesktop } = Astro.props;
+const { title, subtitle, metaTitle, metaDescription, h1, segment, intro, benefits, features, faq, techSpecs, processSteps, deliverables, testimonials, gallery, heroImageMobile, heroImageDesktop, image, imageAlt } = Astro.props;
 
 // El título visible (H1) manda en la página; el de Google puede diferir para
 // coincidir con lo que la gente escribe al buscar.
@@ -53,7 +57,8 @@ const schema = {
     "image": "https://chileelectrico.cl/images/logo.png",
     "areaServed": "Región Metropolitana"
   },
-  "serviceType": isIndustrial ? "Industrial Electrical Service" : "Residential Electrical Service"
+  "serviceType": isIndustrial ? "Industrial Electrical Service" : "Residential Electrical Service",
+  ...(image ? { "image": new URL(image.src, "https://chileelectrico.cl").href } : {})
   // Sin bloque "offers": el sitio no publica precios y declarar price "0" le decía
   // a Google que el servicio es gratis.
 };
@@ -65,7 +70,17 @@ const schema = {
     
     <!-- Responsive Background Image Layer -->
     <div class="absolute inset-0 z-0 select-none">
-        {heroImageMobile && heroImageDesktop ? (
+        {image ? (
+            <Image
+              src={image}
+              alt={imageAlt ?? title}
+              widths={[640, 1024, 1600]}
+              sizes="100vw"
+              class="w-full h-full object-cover object-center"
+              loading="eager"
+              fetchpriority="high"
+            />
+        ) : heroImageMobile && heroImageDesktop ? (
             <picture>
                 <source media="(max-width: 768px)" srcset={heroImageMobile} />
                 <source media="(min-width: 769px)" srcset={heroImageDesktop} />
@@ -120,7 +135,7 @@ const schema = {
             </div>
 
             <div class="flex flex-wrap gap-4 md:hidden">
-              <a href={whatsappUrl} class={`px-8 py-3 rounded-xl font-bold shadow-lg text-center w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white transition active:scale-95`}>
+              <a href={whatsappUrl} class={`px-8 py-3 rounded-xl font-bold shadow-lg text-center w-full flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white transition active:scale-95`}>
                 <i class="fa-brands fa-whatsapp text-xl"></i>
                 Cotiza Gratis por WhatsApp
               </a>
@@ -151,27 +166,27 @@ const schema = {
     <section class="py-12 bg-slate-50 border-b border-slate-200">
       <div class="container mx-auto px-4 text-center">
         <h3 class="text-slate-500 font-bold uppercase tracking-widest text-sm mb-8">Experiencia Multisectorial</h3>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale hover:grayscale-0 transition-all duration-500">
             <!-- Placeholders for logos -->
             <div class="flex flex-col items-center gap-2 group">
                 <i class="fa-solid fa-industry text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
-                <span class="text-xs font-bold text-slate-400">Manufactura</span>
+                <span class="text-xs font-bold text-slate-600">Manufactura</span>
             </div>
             <div class="flex flex-col items-center gap-2 group">
                 <i class="fa-solid fa-warehouse text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
-                <span class="text-xs font-bold text-slate-400">Logística</span>
+                <span class="text-xs font-bold text-slate-600">Logística</span>
             </div>
             <div class="flex flex-col items-center gap-2 group">
                 <i class="fa-solid fa-building text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
-                <span class="text-xs font-bold text-slate-400">Corporativo</span>
+                <span class="text-xs font-bold text-slate-600">Corporativo</span>
             </div>
             <div class="flex flex-col items-center gap-2 group">
                 <i class="fa-solid fa-hospital text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
-                <span class="text-xs font-bold text-slate-400">Salud</span>
+                <span class="text-xs font-bold text-slate-600">Salud</span>
             </div>
              <div class="flex flex-col items-center gap-2 group">
                 <i class="fa-solid fa-cart-shopping text-4xl text-slate-700 group-hover:text-blue-600 transition"></i>
-                <span class="text-xs font-bold text-slate-400">Retail</span>
+                <span class="text-xs font-bold text-slate-600">Retail</span>
             </div>
         </div>
       </div>
@@ -267,7 +282,7 @@ const schema = {
                             </div>
                             <div>
                                 <p class="font-bold text-slate-900 text-sm">{t.name}</p>
-                                <p class="text-xs text-slate-400">{t.location}</p>
+                                <p class="text-xs text-slate-600">{t.location}</p>
                             </div>
                         </div>
                     </div>
@@ -304,7 +319,7 @@ const schema = {
             <p class="text-slate-600 mt-2">La diferencia entre un trabajo y una solución profesional.</p>
         </div>
 
-        <div class="overflow-x-auto pt-6">
+        <div class="overflow-x-auto pt-6" tabindex="0" role="region" aria-label="Ficha técnica del servicio">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr>
@@ -319,28 +334,28 @@ const schema = {
                 <tbody class="text-sm">
                     <tr class="border-b border-slate-100">
                         <td class="p-4 font-semibold text-slate-700">Certificación SEC</td>
-                        <td class="p-4 text-center font-bold text-green-600"><i class="fa-solid fa-check-circle mr-1"></i> SI, AL DÍA</td>
-                        <td class="p-4 text-center text-slate-400"><i class="fa-solid fa-circle-question mr-1"></i> Dudoso</td>
+                        <td class="p-4 text-center font-bold text-green-700"><i class="fa-solid fa-check-circle mr-1"></i> SI, AL DÍA</td>
+                        <td class="p-4 text-center text-slate-600"><i class="fa-solid fa-circle-question mr-1"></i> Dudoso</td>
                     </tr>
                     <tr class="border-b border-slate-100 bg-slate-50/50">
                         <td class="p-4 font-semibold text-slate-700">Garantía por Escrito</td>
-                        <td class="p-4 text-center font-bold text-green-600">12 MESES</td>
-                        <td class="p-4 text-center text-slate-400">Verbal / Ninguna</td>
+                        <td class="p-4 text-center font-bold text-green-700">12 MESES</td>
+                        <td class="p-4 text-center text-slate-600">Verbal / Ninguna</td>
                     </tr>
                     <tr class="border-b border-slate-100">
                         <td class="p-4 font-semibold text-slate-700">Facturación</td>
-                        <td class="p-4 text-center font-bold text-green-600">FACTURA / BOLETA</td>
-                        <td class="p-4 text-center text-slate-400">Solo Efectivo</td>
+                        <td class="p-4 text-center font-bold text-green-700">FACTURA / BOLETA</td>
+                        <td class="p-4 text-center text-slate-600">Solo Efectivo</td>
                     </tr>
                     <tr class="border-b border-slate-100 bg-slate-50/50">
                         <td class="p-4 font-semibold text-slate-700">Tiempos de Entrega</td>
-                        <td class="p-4 text-center font-bold text-green-600">GARANTIZADOS</td>
-                        <td class="p-4 text-center text-slate-400">Inciertos</td>
+                        <td class="p-4 text-center font-bold text-green-700">GARANTIZADOS</td>
+                        <td class="p-4 text-center text-slate-600">Inciertos</td>
                     </tr>
                     <tr>
                          <td class="p-4 font-semibold text-slate-700">Herramientas Normadas</td>
-                        <td class="p-4 text-center font-bold text-green-600"><i class="fa-solid fa-check mr-1"></i> SI (Calibradas)</td>
-                        <td class="p-4 text-center text-slate-400">Básicas</td>
+                        <td class="p-4 text-center font-bold text-green-700"><i class="fa-solid fa-check mr-1"></i> SI (Calibradas)</td>
+                        <td class="p-4 text-center text-slate-600">Básicas</td>
                     </tr>
                 </tbody>
             </table>

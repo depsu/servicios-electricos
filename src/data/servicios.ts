@@ -1,3 +1,13 @@
+import type { ImageMetadata } from 'astro';
+import imgTableros from '../assets/servicios/tableros-electricos.png';
+import imgEscalerillas from '../assets/servicios/escalerillas-portacables.png';
+import imgBandejas from '../assets/servicios/bandejas-portaconductores.png';
+import imgAumento from '../assets/servicios/aumento-de-capacidad-electrica.png';
+import imgEmpalme from '../assets/servicios/empalme-electrico-rural.png';
+import imgGasfiteria from '../assets/servicios/gasfiteria-a-domicilio.png';
+import imgPintura from '../assets/servicios/pintura-interior-exterior.png';
+import imgDomiciliaria from '../assets/servicios/electricidad-domiciliaria.png';
+
 export interface Service {
     slug: string;
     title: string;
@@ -15,6 +25,9 @@ export interface Service {
     icon: string;
     benefits: string[];
     features?: string[];
+    // Imagen propia del servicio (src/assets): Astro la optimiza y sirve en webp.
+    image?: ImageMetadata;
+    imageAlt?: string;
     heroImage?: string;
     heroImageMobile?: string;
     heroImageDesktop?: string;
@@ -32,6 +45,8 @@ export const services: Service[] = [
     // ============================================================
     {
         slug: 'montaje-electrico/tableros-electricos',
+        image: imgTableros,
+        imageAlt: 'Tablero eléctrico industrial abierto, con interruptores automáticos alineados, barras de cobre y cableado etiquetado',
         title: 'Tableros Eléctricos Industriales',
         segment: 'industrial',
         description: 'Diseño, fabricación, montaje y certificación SEC de tableros eléctricos de fuerza y control para industria, minería y centros logísticos. Trabajamos con las mejores marcas del mercado (Schneider Electric, Legrand, ABB) y entregamos documentación técnica completa.',
@@ -85,6 +100,8 @@ export const services: Service[] = [
     },
     {
         slug: 'montaje-electrico/escalerillas-portacables',
+        image: imgEscalerillas,
+        imageAlt: 'Escalerillas porta-cables galvanizadas montadas bajo el techo de una nave industrial, con cables tendidos en paralelo',
         title: 'Escalerillas Porta-cables',
         segment: 'industrial',
         description: 'Instalación profesional de sistemas de canalización de alto tráfico. Escalerillas tipo escalera en acero galvanizado en caliente, aluminio o acero inoxidable para naves industriales, bodegas y centros de distribución. Cumplimiento de normas sísmicas NCh433.',
@@ -136,6 +153,8 @@ export const services: Service[] = [
     },
     {
         slug: 'montaje-electrico/bandejas-portaconductores',
+        image: imgBandejas,
+        imageAlt: 'Bandejas portaconductores recorriendo el muro de una sala técnica, con los circuitos separados y ordenados',
         title: 'Bandejas Portaconductores',
         segment: 'industrial',
         description: 'Sistemas de bandejas ranuradas, lisas y de fondo perforado para distribución eléctrica y corrientes débiles en oficinas, bodegas, data centers y retail. Solución estética y funcional para cableado horizontal y vertical.',
@@ -183,6 +202,8 @@ export const services: Service[] = [
     },
     {
         slug: 'aumento-de-capacidad-electrica',
+        image: imgAumento,
+        imageAlt: 'Tablero de acometida eléctrica con interruptor general de mayor capacidad y medidor trifásico en el muro de una bodega',
         title: 'Aumento de Capacidad Eléctrica',
         segment: 'industrial',
         // La gente busca "aumento de potencia" y "aumento de amperaje", no "capacidad".
@@ -240,6 +261,8 @@ export const services: Service[] = [
     // ============================================================
     {
         slug: 'empalme-electrico-rural',
+        image: imgEmpalme,
+        imageAlt: 'Poste de empalme eléctrico rural con caja de medidor y protecciones, instalado en una parcela de la zona central',
         title: 'Empalmes Eléctricos Rurales (Llave en Mano)',
         segment: 'hogar',
         description: '¿Compraste una parcela y necesitas luz? Evita rechazos y trámites eternos. Nos encargamos de TODO el proceso de empalme eléctrico (Monofásico o Trifásico) ante CGE, Enel o Chilquinta. Desde la instalación del poste hasta la certificación SEC TE1 aprobada. Garantizamos aprobación o devolvemos tu dinero.',
@@ -306,6 +329,8 @@ export const services: Service[] = [
     },
     {
         slug: 'gasfiteria-a-domicilio',
+        image: imgGasfiteria,
+        imageAlt: 'Instalación de gasfitería bajo un lavaplatos, con cañerías de cobre y PPR nuevas y llaves de paso',
         title: 'Gasfitería a Domicilio',
         segment: 'hogar',
         description: 'Servicio profesional de gasfitería para emergencias y proyectos. Detección y reparación de fugas, destape de cañerías, instalación de calefont, termos, llaves y artefactos sanitarios. Llegamos rápido y dejamos limpio.',
@@ -356,6 +381,8 @@ export const services: Service[] = [
     },
     {
         slug: 'pintura-interior-exterior',
+        image: imgPintura,
+        imageAlt: 'Fachada de una casa a medio pintar, con cintas de enmascarar en los bordes de las ventanas',
         title: 'Pintura de Casas y Fachadas',
         segment: 'hogar',
         description: 'Servicio de pintura profesional para renovación de espacios interiores y exteriores. Terminaciones finas, tratamiento de muros dañados, reparación de grietas y limpieza total al finalizar. Usamos pinturas lavables de primera calidad.',
@@ -404,6 +431,8 @@ export const services: Service[] = [
     },
     {
         slug: 'electricidad-domiciliaria',
+        image: imgDomiciliaria,
+        imageAlt: 'Tablero eléctrico domiciliario abierto, con automáticos, diferencial y los circuitos etiquetados',
         title: 'Servicios Eléctricos Integrales para el Hogar',
         segment: 'hogar',
         // "eléctrico domiciliario" / "electricista a domicilio" cae hoy en la portada;

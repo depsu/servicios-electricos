@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -28,7 +29,7 @@ const articleSchema = {
     "publisher": { "@type": "Organization", "name": "ChileEléctrico", "url": "https://chileelectrico.cl" },
     "mainEntityOfPage": { "@type": "WebPage", "@id": url },
     "url": url,
-    "image": post.data.image,
+    "image": post.data.image ? new URL(post.data.image.src, "https://chileelectrico.cl").href : undefined,
     "inLanguage": "es-CL"
 };
 ---
@@ -36,7 +37,7 @@ const articleSchema = {
 <Layout
     title={`${post.data.title} | ChileEléctrico`}
     description={post.data.description}
-    image={post.data.image}
+    image={post.data.image?.src}
     schema={articleSchema}
 >
     <article class="py-16 px-6 bg-white">
@@ -62,7 +63,15 @@ const articleSchema = {
             </header>
 
             {post.data.image && (
-                <img src={post.data.image} alt={post.data.title} class="w-full h-72 md:h-96 object-cover rounded-2xl mb-10" loading="lazy" />
+                <Image
+                    src={post.data.image}
+                    alt={post.data.imageAlt ?? post.data.title}
+                    widths={[640, 1024, 1280]}
+                    sizes="(min-width: 768px) 768px, 100vw"
+                    class="w-full h-72 md:h-96 object-cover rounded-2xl mb-10"
+                    loading="eager"
+                    fetchpriority="high"
+                />
             )}
 
             <div class="prose prose-lg max-w-none prose-headings:text-slate-900 prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-amber-600 prose-a:font-semibold prose-a:underline prose-strong:text-slate-900 prose-li:my-1 prose-table:border prose-th:bg-slate-100 prose-th:p-3 prose-td:p-3 prose-td:border">

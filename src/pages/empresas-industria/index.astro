@@ -4,6 +4,9 @@ import Hero from '../../components/Hero.astro';
 import FeatureSection from '../../components/FeatureSection.astro';
 import CallToAction from '../../components/CallToAction.astro';
 import { services } from '../../data/servicios';
+import { Image } from 'astro:assets';
+import imgEmpresas from '../../assets/paginas/empresas-industria.png';
+import imgTableros from '../../assets/servicios/tableros-electricos.png';
 
 const industrialServices = services.filter(s => s.segment === 'industrial');
 
@@ -38,7 +41,8 @@ const benefits = [
   <Hero 
     title="Montaje Eléctrico y Mantención <br><span class='text-blue-400'>Industrial</span>"
     subtitle="Expertos en tableros, escalerillas y media tensión para bodegas, plantas productivas y centros logísticos."
-    bgImage="https://images.unsplash.com/photo-1565514020176-db7936a28243?q=80&w=1600&auto=format&fit=crop"
+    bgImage={imgEmpresas}
+    bgImageAlt="Interior de una nave industrial con luminarias LED y canalizaciones eléctricas a la vista"
     badgeText="Servicio B2B"
   />
 
@@ -80,10 +84,13 @@ const benefits = [
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-12 items-center">
         <div class="w-full md:w-1/2">
-           <img 
-            src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1200&auto=format&fit=crop" 
-            alt="Ingeniero en obra" 
+           <Image
+            src={imgTableros}
+            alt="Tablero eléctrico industrial abierto, con las protecciones y el cableado ordenados y etiquetados"
+            widths={[640, 1024]}
+            sizes="(min-width: 768px) 50vw, 100vw"
             class="rounded-2xl shadow-lg"
+            loading="lazy"
           />
         </div>
         <div class="w-full md:w-1/2">

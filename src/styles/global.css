@@ -33,6 +33,10 @@
      Representa: Energía, Electricidad, Urgencia */
   --color-primary: #f59e0b;        /* amber-500 */
   --color-primary-hover: #d97706;  /* amber-600 */
+  /* El ámbar de marca sirve como FONDO, pero como texto sobre blanco llega solo a
+     2.15:1 y la norma AA pide 4.5:1. Para texto sobre claro se usa este tono, que
+     mantiene la marca y sí se lee. */
+  --color-primary-ink: #b45309;    /* amber-700 — 5:1 sobre blanco */
   
   /* SECONDARY - Azul Industrial Profundo
      Representa: Profesionalismo, Confianza, Industria */
@@ -56,6 +60,7 @@
 }
 
 /* Utility classes for custom colors */
+.text-primary-ink { color: var(--color-primary-ink); }
 .bg-electric { background-color: var(--color-electric); }
 .text-electric { color: var(--color-electric); }
 .border-electric { border-color: var(--color-electric); }

@@ -5,6 +5,7 @@ import TrustBar from '../../components/TrustBar.astro';
 import CallToAction from '../../components/CallToAction.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import { services } from '../../data/servicios';
+import imgHogar from '../../assets/paginas/hogar-condominios.png';
 
 const homeServices = services.filter(s => s.segment === 'hogar');
 ---
@@ -16,7 +17,8 @@ const homeServices = services.filter(s => s.segment === 'hogar');
   <Hero 
     title="Expertos en su Hogar <br><span class='text-emerald-500'>Rápido y Garantizado</span>"
     subtitle="Electricidad, empalmes rurales, gasfitería y pintura. Atención limpia y segura para su casa o condominio."
-    bgImage="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1600&auto=format&fit=crop"
+    bgImage={imgHogar}
+    bgImageAlt="Living comedor de una casa con la iluminación empotrada encendida"
     badgeText="Servicio Residencial"
   />
 

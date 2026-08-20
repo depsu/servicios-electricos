@@ -2,11 +2,15 @@
 import ServiceStatus from './ServiceStatus.astro';
 import QuickForm from './QuickForm.astro';
 import { siteConfig } from '../config/site';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
     title: string;
     subtitle: string;
-    bgImage: string;
+    // Acepta una imagen del proyecto (src/assets, la optimiza Astro) o una URL suelta.
+    bgImage: string | ImageMetadata;
+    bgImageAlt?: string;
     badgeText?: string;
     showStatus?: boolean;
     showQuickForm?: boolean;
@@ -17,6 +21,7 @@ const {
     title, 
     subtitle, 
     bgImage, 
+    bgImageAlt,
     badgeText = "Especialistas en la Zona", 
     showStatus = true, 
     showQuickForm = false,
@@ -28,7 +33,19 @@ const { company } = siteConfig;
 
 <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
     <div class="absolute inset-0 w-full h-full overflow-hidden z-0">
-        <img src={bgImage} alt={title} class="absolute top-0 left-0 w-full h-full object-cover opacity-40">
+        {typeof bgImage === 'string' ? (
+            <img src={bgImage} alt={bgImageAlt ?? title} class="absolute top-0 left-0 w-full h-full object-cover opacity-40">
+        ) : (
+            <Image
+              src={bgImage}
+              alt={bgImageAlt ?? title}
+              widths={[640, 1024, 1600]}
+              sizes="100vw"
+              class="absolute top-0 left-0 w-full h-full object-cover opacity-40"
+              loading="eager"
+              fetchpriority="high"
+            />
+        )}
         <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/30 rounded-full blur-[120px] z-10"></div>
     </div>

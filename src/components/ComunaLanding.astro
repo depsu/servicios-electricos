@@ -2,6 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import CallToAction from '../components/CallToAction.astro';
 import TrustBar from '../components/TrustBar.astro';
+import { Image } from 'astro:assets';
+import { services } from '../data/servicios';
+import imgIndustrial from '../assets/cobertura/industrial.png';
+import imgRural from '../assets/cobertura/rural.png';
+import imgPremium from '../assets/cobertura/premium.png';
+import imgVolumen from '../assets/cobertura/volumen.png';
 
 interface Props {
   name: string;
@@ -24,16 +30,39 @@ const { name, slug, type, intro, microZones, responseTime, serviceFocus, proofPo
 const seoTitle = `Electricista en ${name} | Hogar y Empresa`;
 const seoDescription = metaDescription ?? intro;
 
+// Imagen del tipo de zona. Es la única imagen de la página: sin ella, las nueve
+// páginas de cobertura son texto plano y Google las lee como la misma.
+const imagenes = {
+  industrial: { src: imgIndustrial, alt: 'Bodegas y galpones de un parque industrial de la Región Metropolitana' },
+  rural: { src: imgRural, alt: 'Camino rural de la Región Metropolitana con postes del tendido eléctrico' },
+  premium: { src: imgPremium, alt: 'Casa de condominio residencial con jardín en la zona nororiente de Santiago' },
+  volumen: { src: imgVolumen, alt: 'Calle residencial de una comuna de Santiago con casas y tendido aéreo' },
+};
+const imagen = imagenes[type];
+
 let heroBg = '';
 if(type === 'industrial') heroBg = 'bg-slate-900';
 else if(type === 'premium') heroBg = 'bg-stone-900';
 else heroBg = 'bg-emerald-900';
 
-const schema = {
+// Enlaces a los servicios fuertes de la comuna. Sin esto, las páginas de cobertura
+// no pasan nada de autoridad a las páginas que venden.
+const serviciosDeLaComuna = (serviceFocus ?? [])
+  .map(focus => services.find(s => s.slug === focus))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  .map(s => ({
+    title: s.title,
+    shortDescription: s.shortDescription,
+    href: `/${s.segment === 'industrial' ? 'empresas-industria' : 'hogar-condominios'}/${s.slug}`,
+  }));
+
+const schema: Record<string, unknown>[] = [{
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": `Electricistas en ${name}`,
   "description": intro,
+  "image": new URL(imagen.src.src, "https://chileelectrico.cl").href,
+  "url": `https://chileelectrico.cl/cobertura/${slug}/`,
   "address": {
     "@type": "PostalAddress",
     "addressRegion": "Región Metropolitana",
@@ -44,12 +73,38 @@ const schema = {
     "name": name
   },
   "priceRange": "$$"
-};
+}];
+
+// FAQPage solo si hay preguntas reales: declarar un bloque vacío es un error en
+// Search Console, no un extra.
+if (faq && faq.length > 0) {
+  schema.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+    }))
+  });
+}
 ---
 
 <Layout title={seoTitle} description={seoDescription} schema={schema}>
-  <section class={`py-20 ${heroBg} text-white text-center`}>
-     <div class="container mx-auto px-4">
+  <section class={`relative py-20 ${heroBg} text-white text-center overflow-hidden`}>
+     <div class="absolute inset-0 z-0">
+       <Image
+         src={imagen.src}
+         alt={imagen.alt}
+         widths={[640, 1024, 1600]}
+         sizes="100vw"
+         class="w-full h-full object-cover object-center"
+         loading="eager"
+         fetchpriority="high"
+       />
+       <div class="absolute inset-0 bg-slate-950/75"></div>
+     </div>
+     <div class="container mx-auto px-4 relative z-10">
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Servicios Eléctricos en <span class="text-yellow-400">{name}</span></h1>
         <p class="text-xl max-w-2xl mx-auto opacity-90 mb-8">{intro}</p>
         <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur">
@@ -81,32 +136,60 @@ const schema = {
           <h3 class="text-xl font-bold text-slate-900 mb-4">¿Por qué elegirnos en {name}?</h3>
           <ul class="space-y-4">
             {(proofPoints || ["Atención Garantizada", "Técnicos Locales", "Precios Justos"]).map(point => (
-                <li class="flex items-center gap-3">
-                  <span class="text-green-500 text-xl">✓</span>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-500 text-xl leading-6">✓</span>
                   <span class="text-slate-700">{point}</span>
                 </li>
             ))}
           </ul>
-
-          {faq && faq.length > 0 && (
-             <div class="mt-8 pt-8 border-t border-slate-200">
-                <h4 class="font-bold text-slate-900 mb-4">Preguntas Frecuentes en {name}</h4>
-                <div class="space-y-4">
-                    {faq.map(item => (
-                        <div>
-                            <p class="font-semibold text-sm text-slate-800">{item.question}</p>
-                            <p class="text-sm text-slate-600">{item.answer}</p>
-                        </div>
-                    ))}
-                </div>
-             </div>
-          )}
         </div>
       </div>
     </div>
   </section>
 
-  <CallToAction 
+  {serviciosDeLaComuna.length > 0 && (
+    <section class="py-20 bg-slate-50 border-y border-slate-200">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-slate-900 mb-3 text-center">Lo que más nos piden en {name}</h2>
+        <p class="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+          Estos son los servicios que más ejecutamos en la zona. Entre a cada uno para ver cómo trabajamos.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {serviciosDeLaComuna.map(servicio => (
+            <a
+              href={servicio.href}
+              class="block bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-400 hover:shadow-lg transition group"
+            >
+              <h3 class="font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition">{servicio.title}</h3>
+              <p class="text-sm text-slate-600 mb-4">{servicio.shortDescription}</p>
+              <span class="text-sm font-bold text-blue-600">Ver el servicio &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {faq && faq.length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-slate-900 mb-10 text-center">Preguntas frecuentes en {name}</h2>
+        <div class="space-y-4">
+          {faq.map(item => (
+            <details class="group bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+              <summary class="cursor-pointer list-none px-6 py-5 flex items-start justify-between gap-4 font-bold text-slate-900 hover:bg-slate-100 transition">
+                <span>{item.question}</span>
+                <span class="text-blue-600 text-xl leading-6 transition-transform group-open:rotate-45 shrink-0">+</span>
+              </summary>
+              <div class="px-6 pb-5 text-slate-600 leading-relaxed">{item.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CallToAction
     title={`Cotizar en ${name}`}
     subtitle="Estamos cerca. Contáctenos para una visita hoy mismo."
     ctaText="Pedir Presupuesto"

@@ -75,5 +75,12 @@ export default defineConfig({
   ],
   site: 'https://chileelectrico.cl',
 
+  // El sitemap real que genera Astro es sitemap-index.xml, que es el que declara
+  // robots.txt. Pero /sitemap.xml es la dirección que prueban Google y las
+  // herramientas de SEO, y ahí caía la página 404.
+  redirects: {
+    '/sitemap.xml': { status: 301, destination: '/sitemap-index.xml' },
+  },
+
   adapter: vercel()
 });

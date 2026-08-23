@@ -40,7 +40,7 @@ const homeServices = services.filter(s => s.segment === 'hogar');
             </div>
             <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600">{service.title}</h3>
             <p class="text-slate-600 text-sm mb-4">{service.shortDescription}</p>
-            <span class="text-emerald-600 font-bold text-sm border-b-2 border-transparent group-hover:border-emerald-600 transition-colors">
+            <span class="text-emerald-700 font-bold text-sm border-b-2 border-transparent group-hover:border-emerald-700 transition-colors">
               Ver más
             </span>
           </a>
@@ -90,6 +90,15 @@ const homeServices = services.filter(s => s.segment === 'hogar');
       }
     ]}
   />
+
+  <section class="py-12 bg-slate-50 border-y border-slate-200 text-center">
+    <div class="container mx-auto px-4">
+      <p class="text-slate-600 mb-3">¿Quiere ver cómo quedan los trabajos terminados?</p>
+      <a href="/hogar-condominios/proyectos" class="inline-flex items-center min-h-11 text-emerald-700 font-bold hover:underline">
+        Ver trabajos en casas y condominios &rarr;
+      </a>
+    </div>
+  </section>
 
   <CallToAction 
     title="Mejore su Hogar Hoy" 

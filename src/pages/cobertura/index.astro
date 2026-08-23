@@ -1,16 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { comunas } from '../../data/comunas';
+import { Image } from 'astro:assets';
+import imgTerreno from '../../assets/paginas/cobertura-terreno.png';
 
-const sortedComunas = comunas.sort((a, b) => a.name.localeCompare(b.name));
+const sortedComunas = [...comunas].sort((a, b) => a.name.localeCompare(b.name));
 ---
 
-<Layout title="Cobertura en Región Metropolitana | Servicios Eléctricos RM" description="Conozca nuestras zonas de cobertura en la Región Metropolitana. Atención rápida en Lampa, Colina, Buin, Paine y más.">
-  <section class="py-20 bg-slate-900 text-white text-center">
-    <div class="container mx-auto px-4">
+<Layout title="Cobertura en Región Metropolitana | Servicios Eléctricos RM" description="Electricistas en Lampa, Pudahuel y ENEA, San Bernardo, Chicureo, Buin, Paine, Melipilla, Talagante y Peñaflor. Vea los sectores que cubrimos en cada comuna.">
+  <section class="relative py-20 bg-slate-900 text-white text-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <Image
+        src={imgTerreno}
+        alt="Camioneta de servicio eléctrico en un camino de la periferia de Santiago, junto a postes del tendido"
+        widths={[640, 1024, 1600]}
+        sizes="100vw"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-slate-950/75"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">Zonas de Cobertura</h1>
-      <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+      <p class="text-xl text-slate-200 max-w-2xl mx-auto">
         Llegamos donde otros no llegan. Nuestros equipos móviles están distribuidos estratégicamente para asegurar una respuesta rápida.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white border-b border-slate-200">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Cómo cubrimos la Región Metropolitana</h2>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        La Región Metropolitana no se atiende igual en todas partes. Un galpón en el parque
+        industrial de ENEA necesita intervenir de noche para no frenar la operación; una parcela
+        en Paine necesita medir primero cuán lejos queda el poste más cercano; y una casa en
+        San Bernardo, la mayoría de las veces, necesita un tablero con protección diferencial
+        que nunca tuvo.
+      </p>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        Por eso las cuadrillas están repartidas por zona en vez de salir todas desde un punto:
+        <strong>el eje norte</strong> (Lampa, Valle Grande, Colina y Chicureo), <strong>el poniente
+        industrial</strong> (Pudahuel, ENEA y Lo Boza), <strong>el eje sur</strong> (San Bernardo,
+        Buin y Paine) y <strong>el sur poniente</strong> (Talagante, Peñaflor y Melipilla).
+      </p>
+      <p class="text-slate-600 leading-relaxed">
+        En cada comuna encontrará los sectores que cubrimos, el tipo de trabajo que más nos piden
+        ahí y las preguntas propias de esa zona. Si su comuna no aparece en la lista, pregunte
+        igual: la cobertura es de toda la región y estas son las zonas donde tenemos presencia
+        reforzada.
       </p>
     </div>
   </section>
@@ -35,8 +74,13 @@ const sortedComunas = comunas.sort((a, b) => a.name.localeCompare(b.name));
             <p class="text-sm text-slate-600 mb-4 line-clamp-2">
               {comuna.intro}
             </p>
-            <div class="flex items-center text-sm font-medium text-slate-500">
-               <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {comuna.microZones.map(zona => (
+                <span class="text-xs px-2 py-1 bg-white border border-slate-200 rounded text-slate-600">{zona}</span>
+              ))}
+            </div>
+            <div class="flex items-center text-sm font-medium text-slate-600">
+               <span class="w-2 h-2 rounded-full bg-green-600 mr-2"></span>
                Llegada: {comuna.responseTime}
             </div>
           </a>

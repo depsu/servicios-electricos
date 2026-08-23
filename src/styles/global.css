@@ -44,7 +44,10 @@
   
   /* ACCENT - Verde Seguridad / Éxito
      Representa: Certificación SEC, Garantía, Aprobado */
-  --color-accent: #10b981;         /* emerald-500 */
+  /* Todos los usos de accent son botones con TEXTO BLANCO encima. El emerald-500
+     original daba 2,54:1 y la norma AA pide 4,5:1; este verde pasa y sigue leyéndose
+     como el verde de WhatsApp. */
+  --color-accent: #047857;         /* emerald-700 — 4,8:1 con blanco */
   --color-accent-hover: #059669;   /* emerald-600 */
   
   /* ELECTRIC - Azul Eléctrico Brillante

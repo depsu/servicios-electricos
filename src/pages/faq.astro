@@ -1,32 +1,146 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FAQ from '../components/FAQ.astro';
+import CallToAction from '../components/CallToAction.astro';
 
-const faqs = [
+// Las preguntas son las que la gente escribe de verdad en Google ("por qué salta
+// el automático", "qué es el TE1", "cuánto demora un empalme rural"). Nada de
+// precios ni de cifras del negocio: eso lo confirma el cliente, no la web.
+const grupos = [
     {
-        question: "¿Cuánto cuesta el servicio?",
-        answer: "Nuestros precios varían según el tipo de servicio. Para obtener un presupuesto exacto y sin compromiso, contáctanos."
+        title: 'Cómo trabajamos',
+        items: [
+            {
+                question: "¿Cuánto cuesta el servicio?",
+                answer: "Depende del trabajo, y por eso no publicamos una lista de precios que después no se cumpla. Lo que sí es fijo: el valor se conversa <strong>antes</strong> de ejecutar. En trabajos chicos se cotiza por teléfono o WhatsApp con una foto; en instalaciones y proyectos hace falta una visita técnica para medir lo que hay."
+            },
+            {
+                question: "¿La visita técnica tiene costo?",
+                answer: "La visita de factibilidad para un empalme rural no tiene costo, porque es el paso que define si el proyecto es viable. Para un diagnóstico en una casa o una empresa, el valor de la visita se dice al agendar; nunca aparece como sorpresa en la boleta."
+            },
+            {
+                question: "¿Atienden urgencias los fines de semana?",
+                answer: "Sí, hay equipos de turno para emergencias en la Región Metropolitana, incluidos domingos y festivos. Al llamar le damos una hora estimada real según dónde esté la cuadrilla, no una promesa genérica."
+            },
+            {
+                question: "¿Entregan garantía por el trabajo?",
+                answer: "Sí, con garantía por escrito. Cubre la mano de obra y la instalación ejecutada. Los materiales mantienen además la garantía del fabricante."
+            },
+            {
+                question: "¿Emiten factura?",
+                answer: "Sí. Trabajamos con empresas y con particulares, y emitimos boleta o factura electrónica según lo que necesite."
+            },
+            {
+                question: "¿Qué comunas atienden?",
+                answer: "Toda la Región Metropolitana, con presencia reforzada en Lampa y Valle Grande, Pudahuel y ENEA, San Bernardo, Chicureo y Colina, Buin, Paine, Melipilla, Talagante y Peñaflor. Puede ver el detalle de cada zona en la sección de <a href='/cobertura/' class='text-blue-700 font-semibold hover:underline'>cobertura</a>."
+            }
+        ]
     },
     {
-        question: "¿Atienden urgencias los fines de semana?",
-        answer: "Sí, contamos con equipos de turno <strong>24/7</strong> para atender emergencias en toda la región, incluyendo domingos y festivos."
+        title: 'Empalmes, trámites y la SEC',
+        items: [
+            {
+                question: "¿Qué es la declaración TE1 y por qué la necesito?",
+                answer: "Es el documento con que un instalador eléctrico autorizado declara la instalación ante la Superintendencia de Electricidad y Combustibles (SEC). Sin esa declaración, la empresa distribuidora <strong>no conecta el medidor definitivo</strong>. Además, una instalación sin declarar puede traerle problemas al vender la propiedad o al contratar un seguro."
+            },
+            {
+                question: "¿Cuánto demora un empalme eléctrico nuevo?",
+                answer: "El plazo lo marca la aprobación del proyecto y la conexión de la distribuidora, no la instalación en sí. El poste, la caja y las protecciones se montan en pocos días; la aprobación ante la SEC y el medidor definitivo dependen de tiempos de la empresa eléctrica. En la visita de factibilidad se estima el plazo con lo que se ve en terreno."
+            },
+            {
+                question: "Mi terreno está lejos del poste más cercano, ¿se puede igual?",
+                answer: "Casi siempre sí, pero la distancia cambia el proyecto: puede requerir postes intermedios, y eso mueve el costo y el plazo. Por eso lo primero es medir en terreno la distancia real al punto de conexión."
+            },
+            {
+                question: "¿Conviene un empalme monofásico o trifásico?",
+                answer: "Depende de los equipos que va a usar. Para una casa sola suele bastar el monofásico. Si hay bombas de agua o riego, galpón, taller o climatización, el trifásico reparte mejor la carga y evita caídas de tensión al partir los motores. Se define con el listado de consumos, no a ojo."
+            },
+            {
+                question: "¿Ustedes hacen el trámite con la compañía eléctrica?",
+                answer: "Sí, el empalme rural se entrega llave en mano: factibilidad, proyecto e ingreso a la SEC, instalación física y coordinación con la distribuidora (Enel o CGE, según el sector) hasta el medidor definitivo. Usted no hace la fila."
+            },
+            {
+                question: "Compré una casa y el medidor está a nombre del dueño anterior, ¿lo pueden regularizar?",
+                answer: "El cambio de titular lo hace la distribuidora. Ahora bien, si la instalación nunca fue declarada o no cumple la norma vigente, primero hay que regularizarla: se revisa en terreno qué falta y se declara ante la SEC."
+            }
+        ]
     },
     {
-        question: "¿Entregan garantía por el trabajo?",
-        answer: "Absolutamente. Todos nuestros servicios incluyen garantía por escrito para tu tranquilidad."
+        title: 'Problemas típicos en la casa',
+        items: [
+            {
+                question: "¿Por qué salta el automático del tablero?",
+                answer: "Un automático salta porque está haciendo su trabajo: hay más consumo del que aguanta ese circuito, o hay una falla en él. Si salta siempre el mismo, el problema está en ese circuito. <strong>No lo fuerce a subir una y otra vez</strong>: cada rearme sobre una falla calienta la instalación."
+            },
+            {
+                question: "¿Qué diferencia hay entre el automático y el diferencial?",
+                answer: "El automático protege la <em>instalación</em> contra sobrecarga y cortocircuito. El diferencial protege a <em>las personas</em>: corta cuando detecta una fuga de corriente, como la que pasa cuando alguien toca un cable o entra humedad. Muchas casas construidas hace décadas tienen automáticos pero no diferencial, y ese es uno de los cambios más pedidos."
+            },
+            {
+                question: "Siento olor a quemado cerca del tablero, ¿qué hago?",
+                answer: "Corte la energía desde el interruptor general y llame de inmediato. Olor a quemado, tizne alrededor de un enchufe o una zona tibia en el tablero son señales de un contacto flojo calentándose, y es el paso previo a un incendio. No espere a que se repita."
+            },
+            {
+                question: "Las luces parpadean o bajan cuando parte un electrodoméstico, ¿es normal?",
+                answer: "Un parpadeo muy breve al partir un motor grande puede ser normal, pero si pasa seguido indica una caída de tensión: conductor subdimensionado, empalme al límite o una conexión floja. Conviene medirlo antes de que se transforme en una falla."
+            },
+            {
+                question: "¿Puedo instalar un cargador de auto eléctrico en mi casa?",
+                answer: "Sí. Necesita un circuito propio desde el tablero con su protección dedicada, y hay que verificar que el empalme aguante esa carga adicional; si no aguanta, primero se aumenta la capacidad. El punto de carga se declara ante la SEC, igual que cualquier instalación nueva."
+            },
+            {
+                question: "¿Hacen también gasfitería, o solo electricidad?",
+                answer: "Las dos. En sectores rurales es lo habitual resolver electricidad y agua en la misma visita, y eso le ahorra un viaje y una coordinación."
+            }
+        ]
+    },
+    {
+        title: 'Para empresas e industria',
+        items: [
+            {
+                question: "¿Pueden trabajar sin detener la operación de la bodega?",
+                answer: "Sí. En centros de distribución y plantas lo normal es intervenir de noche o el fin de semana. La ventana de trabajo se acuerda antes de partir, y se coordina qué circuitos se cortan y por cuánto rato."
+            },
+            {
+                question: "¿Qué documentación entregan al terminar un montaje?",
+                answer: "Protocolo de recepción, plano as-built del trazado y la declaración ante la SEC cuando el trabajo lo requiere. Es lo que necesita para una auditoría interna y para que el próximo que intervenga sepa qué hay instalado."
+            },
+            {
+                question: "¿Cómo sé si necesito aumentar la capacidad eléctrica?",
+                answer: "Las señales típicas son protecciones que operan sin causa aparente, caídas de tensión al partir equipos y no poder sumar maquinaria nueva. Se evalúa el consumo real y la proyección de cargas, y con eso se define si basta adecuar el tablero o hay que aumentar el empalme ante la distribuidora."
+            },
+            {
+                question: "¿Hacen mantención preventiva de tableros?",
+                answer: "Sí: revisión de protecciones, reapriete de conexiones y termografía para detectar puntos calientes antes de que fallen. Es lo que evita la parada no programada, que siempre cuesta más que la mantención."
+            },
+            {
+                question: "¿Cuál es la diferencia entre escalerillas y bandejas portaconductores?",
+                answer: "La escalerilla es abierta y ventilada: sirve para tramos largos de cables de potencia. La bandeja de fondo sólido protege mejor y se usa para control e instrumentación. En la mayoría de las instalaciones se usan ambas, separadas por tipo de circuito para evitar interferencias."
+            }
+        ]
     }
 ];
 ---
 
 <Layout
-    title="Preguntas Frecuentes | ChileEléctrico, Servicios Eléctricos RM"
-    description="Respuestas a las dudas más comunes: cómo se cotiza un trabajo eléctrico, atención de urgencias los fines de semana y garantía por escrito de cada servicio en la Región Metropolitana."
+    title="Preguntas Frecuentes | Electricistas en la Región Metropolitana"
+    description="Empalmes, declaración TE1 ante la SEC, automáticos que saltan, diferenciales, cargadores de auto eléctrico y mantención de tableros: respuestas claras a las dudas más comunes."
     regionText="Ayuda"
 >
     <div class="pt-32 pb-12 bg-slate-900 text-center text-white">
         <h1 class="text-4xl font-bold mb-4">Centro de Ayuda</h1>
-        <p class="text-slate-300">Respuestas rápidas a tus dudas más comunes</p>
+        <p class="text-slate-300 max-w-xl mx-auto px-4">
+            Las dudas que más nos llegan, respondidas sin vueltas: trámites ante la SEC,
+            empalmes, fallas típicas en la casa y trabajos en empresas.
+        </p>
     </div>
 
-    <FAQ items={faqs} />
+    <FAQ groups={grupos} title="" />
+
+    <CallToAction
+        title="¿Su duda no está acá?"
+        subtitle="Cuéntenos qué necesita y le respondemos con lo que se puede hacer y qué implica."
+        ctaText="Escribir ahora"
+        ctaLink="/contacto"
+    />
 </Layout>

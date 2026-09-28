@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { comunas } from '../data/comunas';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
@@ -115,18 +116,11 @@ import { ClientRouter } from 'astro:transitions';
                 "addressRegion": "Región Metropolitana",
                 "addressCountry": "CL"
             },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.4489,
-                "longitude": -70.6693
-            },
+            // Sin "geo": eran las coordenadas genéricas del centro de Santiago, no un local del
+            // negocio. Las zonas atendidas salen del mismo catálogo que genera /cobertura/.
             "areaServed": [
-                { "@type": "City", "name": "Lampa" },
-                { "@type": "City", "name": "Pudahuel" },
-                { "@type": "City", "name": "San Bernardo" },
-                { "@type": "City", "name": "Chicureo" },
-                { "@type": "City", "name": "Buin" },
-                { "@type": "City", "name": "Melipilla" }
+                { "@type": "AdministrativeArea", "name": "Región Metropolitana de Santiago" },
+                ...comunas.map((c) => ({ "@type": "Place", "name": c.name }))
             ],
             "priceRange": "$$",
             "openingHoursSpecification": {
@@ -138,12 +132,14 @@ import { ClientRouter } from 'astro:transitions';
             "sameAs": []
         })} />
         
-        <!-- Dynamic Font Loading -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href={currentFont.url} rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Sin Google Fonts: la hoja de Inter bloqueaba el primer dibujo de la página y la fuente
+             nunca se aplicaba (font-sans de Tailwind es la pila del sistema). Medido 28-sep-2026:
+             el LCP móvil de la portada era el H1 esperando esa hoja. -->
+        <!-- Íconos: la hoja de Font Awesome se carga sin bloquear el dibujo (media=print y
+             luego all). Los íconos aparecen un instante después; el texto no los espera. -->
+        <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
         <ClientRouter />
 	</head>
 	<body class={`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`}>

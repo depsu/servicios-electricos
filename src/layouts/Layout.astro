@@ -142,7 +142,6 @@ import { ClientRouter } from 'astro:transitions';
              el LCP móvil de la portada era el H1 esperando esa hoja. -->
         <!-- Íconos: la hoja de Font Awesome se carga sin bloquear el dibujo (media=print y
              luego all). Los íconos aparecen un instante después; el texto no los espera. -->
-        <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
         <ClientRouter />

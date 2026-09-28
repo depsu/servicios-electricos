@@ -1,5 +1,6 @@
 ---
 title: "Motor que se detiene o el térmico salta: cómo saber si la falla es eléctrica o mecánica"
+metaTitle: "Motor industrial que se detiene: ¿falla eléctrica o mecánica?"
 description: "Cinco comprobaciones que hace un electricista industrial antes de cambiar un motor, y qué hacer cuando el problema es un eje, un buje o un engranaje."
 pubDate: 2026-09-24
 author: "Equipo ChileEléctrico"

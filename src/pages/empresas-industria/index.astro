@@ -7,6 +7,12 @@ import { services } from '../../data/servicios';
 import { Image } from 'astro:assets';
 import imgEmpresas from '../../assets/paginas/empresas-industria.png';
 import imgTableros from '../../assets/servicios/tableros-electricos.png';
+import SeccionesSeo from '../../components/SeccionesSeo.astro';
+import FaqSimple from '../../components/FaqSimple.astro';
+import { seoPaginas } from '../../data/seo-paginas';
+import { faqSchema } from '../../lib/enlazar';
+
+const seo = seoPaginas['empresas-industria'] ?? {};
 
 const industrialServices = services.filter(s => s.segment === 'industrial');
 
@@ -35,11 +41,12 @@ const benefits = [
 ---
 
 <Layout
-  title="Servicios Industriales | Tableros y Montaje Eléctrico"
-  description="Montaje eléctrico industrial en la Región Metropolitana: tableros, escalerillas portacables, bandejas portaconductores y aumento de capacidad para bodegas, plantas y centros logísticos."
+  title={seo.metaTitle ?? "Servicios Industriales | Tableros y Montaje Eléctrico"}
+  description={seo.metaDescription ?? "Montaje eléctrico industrial en la Región Metropolitana: tableros, escalerillas portacables, bandejas portaconductores y aumento de capacidad para bodegas, plantas y centros logísticos."}
+  schema={faqSchema(seo.faqExtra) ?? undefined}
 >
   <Hero 
-    title="Montaje Eléctrico y Mantención <br><span class='text-blue-400'>Industrial</span>"
+    title={seo.h1 ?? "Montaje Eléctrico y Mantención <br><span class='text-blue-400'>Industrial</span>"}
     subtitle="Expertos en tableros, escalerillas y media tensión para bodegas, plantas productivas y centros logísticos."
     bgImage={imgEmpresas}
     bgImageAlt="Interior de una nave industrial con luminarias LED y canalizaciones eléctricas a la vista"
@@ -52,14 +59,14 @@ const benefits = [
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-slate-900">Soluciones Industriales</h2>
         <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Diseñamos y ejecutamos proyectos eléctricos de alta complejidad.</p>
-        <a href="/empresas-industria/proyectos" class="inline-flex items-center min-h-11 mt-4 text-blue-700 font-semibold hover:underline">
+        <a href="/empresas-industria/proyectos/" class="inline-flex items-center min-h-11 mt-4 text-blue-700 font-semibold hover:underline">
           Ver proyectos industriales ejecutados &rarr;
         </a>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         {industrialServices.map(service => (
-          <a href={`/empresas-industria/${service.slug}`} class="group p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-blue-500 transition-all duration-300 bg-slate-50">
+          <a href={`/empresas-industria/${service.slug}/`} class="group p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-blue-500 transition-all duration-300 bg-slate-50">
             <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 px-2 text-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
               ⚡
             </div>
@@ -114,10 +121,14 @@ const benefits = [
     </div>
   </section>
 
+  <SeccionesSeo secciones={seo.seoSections} />
+
+  <FaqSimple items={seo.faqExtra} />
+
   <CallToAction 
     title="Cotice su Proyecto Industrial" 
     subtitle="Obtenga una evaluación técnica y presupuesto detallado."
     ctaText="Cotizar con Planos"
-    ctaLink="/cotizar?tipo=empresa"
+    ctaLink="/cotizar/?tipo=empresa"
   />
 </Layout>

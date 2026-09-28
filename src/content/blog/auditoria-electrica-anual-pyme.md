@@ -1,5 +1,6 @@
 ---
 title: "Auditoría eléctrica anual: por qué tu PYME debería hacerla cada año"
+metaTitle: "Auditoría eléctrica anual para PYME: qué revisar y por qué"
 description: "Qué revisa una auditoría eléctrica SEC, cada cuánto conviene hacerla y las señales de alerta que no deberías dejar pasar en tu PYME."
 pubDate: 2026-05-07
 author: "Equipo ChileEléctrico"
@@ -17,10 +18,10 @@ Una auditoría SEC para PYME estándar revisa:
 
 - **Tablero general (TG)**: temperatura de breakers, apriete de conexiones, balance de fases.
 - **Empalme**: dimensionamiento vs consumo real.
-- **Puesta a tierra**: medición con telurómetro (debe ser <25 Ω).
+- **Puesta a tierra**: medición con telurómetro contra lo que exige el pliego RIC N°06 (ver [la guía de puesta a tierra](/blog/puesta-a-tierra-malla-a-tierra-casa/)).
 - **Conductores**: estado de aislación con megger.
 - **Protecciones diferenciales**: prueba de disparo a 30 mA.
-- **Iluminación**: cumplimiento NCh Elec.4/2003.
+- **Iluminación**: cumplimiento de los pliegos técnicos RIC vigentes.
 - **UPS y generadores de respaldo**: prueba de switch automático.
 
 Al final entregamos informe técnico con priorización de hallazgos (crítico / alto / medio / bajo) y plan de remediación.
@@ -38,7 +39,7 @@ La auditoría no es solo para "pasar la SEC". Tres beneficios concretos:
 Estos son los problemas que encontramos con más frecuencia al auditar una instalación que lleva años sin revisión:
 
 - Tablero general con más de una década sin mantención, con breakers principales operando por sobre su temperatura de tolerancia.
-- Puesta a tierra fuera de norma: la NCh Elec.4/2003 exige menos de 25 Ω y es habitual medir varias veces ese valor.
+- Puesta a tierra fuera de norma: el pliego RIC N°06 fija un máximo de 20 Ω para la tierra de servicio y es habitual medir varias veces ese valor.
 - Enchufes con conexión inversa (fase y neutro cambiados).
 - Tableros secundarios sin protección diferencial.
 

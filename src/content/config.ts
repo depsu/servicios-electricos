@@ -4,6 +4,8 @@ const blogCollection = defineCollection({
     type: 'content',
     schema: ({ image }) => z.object({
         title: z.string(),
+        // Título para Google (unos 60 caracteres). Si falta, se usa title + marca.
+        metaTitle: z.string().optional(),
         description: z.string(),
         pubDate: z.date(),
         author: z.string().default('Equipo Editorial'),

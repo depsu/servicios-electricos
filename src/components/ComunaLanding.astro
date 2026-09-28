@@ -53,7 +53,7 @@ const serviciosDeLaComuna = (serviceFocus ?? [])
   .map(s => ({
     title: s.title,
     shortDescription: s.shortDescription,
-    href: `/${s.segment === 'industrial' ? 'empresas-industria' : 'hogar-condominios'}/${s.slug}`,
+    href: `/${s.segment === 'industrial' ? 'empresas-industria' : 'hogar-condominios'}/${s.slug}/`,
   }));
 
 const schema: Record<string, unknown>[] = [{
@@ -193,6 +193,6 @@ if (faq && faq.length > 0) {
     title={`Cotizar en ${name}`}
     subtitle="Estamos cerca. Contáctenos para una visita hoy mismo."
     ctaText="Pedir Presupuesto"
-    ctaLink={`/cotizar?comuna=${slug}`}
+    ctaLink={`/cotizar/?comuna=${slug}`}
   />
 </Layout>

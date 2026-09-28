@@ -35,7 +35,7 @@ const articleSchema = {
 ---
 
 <Layout
-    title={`${post.data.title} | ChileEléctrico`}
+    title={post.data.metaTitle ?? `${post.data.title} | ChileEléctrico`}
     description={post.data.description}
     image={post.data.image?.src}
     schema={articleSchema}

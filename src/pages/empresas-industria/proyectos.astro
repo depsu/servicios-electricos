@@ -27,7 +27,9 @@ const projects = [
 ];
 ---
 
-<Layout title="Proyectos Industriales | Servicios Eléctricos RM" description="Casos de éxito en montaje eléctrico industrial, tableros y certificación SEC.">
+{/* noindex: página delgada (poco más de 100 palabras) con fotos de banco, no de trabajos propios.
+    Vuelve al índice cuando tenga fotos y descripciones de trabajos reales. */}
+<Layout noIndex={true} title="Proyectos Industriales | Servicios Eléctricos RM" description="Casos de éxito en montaje eléctrico industrial, tableros y certificación SEC.">
     <section class="bg-slate-900 py-20 text-center text-white">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">Proyectos Industriales</h1>
@@ -69,6 +71,6 @@ const projects = [
         title="¿Tiene un proyecto en mente?" 
         subtitle="Conversamos sobre sus requerimientos técnicos y plazos."
         ctaText="Cotizar Proyecto"
-        ctaLink="/cotizar?tipo=empresa"
+        ctaLink="/cotizar/?tipo=empresa"
     />
 </Layout>

@@ -7,17 +7,33 @@ import { comunas } from '../data/comunas';
 import { Image } from 'astro:assets';
 import imgHero from '../assets/paginas/home-hero.png';
 import imgTerreno from '../assets/paginas/cobertura-terreno.png';
+import SeccionesSeo from '../components/SeccionesSeo.astro';
+import { seoPaginas } from '../data/seo-paginas';
+
+const seo = seoPaginas['portada'] ?? {};
 
 // Agrupación de cobertura: se muestran TODAS las comunas para que
 // ninguna página de cobertura quede huérfana a dos clics de la home.
-const topIndustrial = comunas.filter(c => c.type === 'industrial');
-const topRural = comunas.filter(c => c.type === 'premium' || c.type === 'rural');
-const topVolumen = comunas.filter(c => c.type === 'volumen');
+// Grupos por dónde queda la comuna, no por su tipo de cliente: con las comunas urbanas
+// nuevas, "Zona Norte y Rural" y "Zona Sur Poniente" ya no calzaban.
+const grupos = [
+  { titulo: 'Polos industriales', color: 'bg-blue-600', hover: 'hover:bg-blue-50 hover:text-blue-700',
+    slugs: ['lampa-valle-grande', 'pudahuel-enea-lo-boza', 'san-bernardo'] },
+  { titulo: 'Parcelas y sectores rurales', color: 'bg-emerald-500', hover: 'hover:bg-emerald-50 hover:text-emerald-700',
+    slugs: ['chicureo-colina', 'buin', 'paine', 'melipilla', 'talagante', 'penaflor'] },
+  { titulo: 'Sector oriente', color: 'bg-violet-500', hover: 'hover:bg-violet-50 hover:text-violet-700',
+    slugs: ['las-condes-vitacura', 'lo-barnechea-la-dehesa', 'providencia', 'nunoa', 'la-reina', 'penalolen'] },
+  { titulo: 'Sur de Santiago', color: 'bg-amber-500', hover: 'hover:bg-amber-50 hover:text-amber-700',
+    slugs: ['la-florida', 'san-miguel'] },
+].map((g) => ({ ...g, comunas: g.slugs.map((sl) => comunas.find((c) => c.slug === sl)).filter((c) => c !== undefined) }));
+// Ninguna comuna del catálogo puede quedar fuera de la portada (sería una página sin enlace).
+const sinGrupo = comunas.filter((c) => !grupos.some((g) => g.slugs.includes(c.slug)));
+if (sinGrupo.length) throw new Error('Comunas sin grupo en la portada: ' + sinGrupo.map((c) => c.slug).join(', '));
 ---
 
 <Layout
-  title="Servicios Eléctricos RM | Electricistas Certificados SEC"
-  description="Electricistas certificados SEC en toda la Región Metropolitana, para tu casa o para tu empresa. Cuéntanos qué necesitas y te cotizamos antes de empezar el trabajo."
+  title={seo.metaTitle ?? "Servicios Eléctricos RM | Electricistas Certificados SEC"}
+  description={seo.metaDescription ?? "Electricistas certificados SEC en toda la Región Metropolitana, para tu casa o para tu empresa. Cuéntanos qué necesitas y te cotizamos antes de empezar el trabajo."}
 >
   
   <!-- Hero Split -->
@@ -133,51 +149,25 @@ const topVolumen = comunas.filter(c => c.type === 'volumen');
             Llegamos donde su proyecto nos necesite
           </h2>
           <p class="text-slate-600 mb-8 text-lg">
-            Contamos con cuadrillas móviles estratégicamente ubicadas para asegurar tiempos de respuesta rápidos tanto en zonas industriales como residenciales rurales.
+            Contamos con cuadrillas móviles estratégicamente ubicadas para asegurar tiempos de respuesta rápidos en zonas industriales, parcelas y comunas residenciales de Santiago.
           </p>
           
           <div class="space-y-6">
+            {grupos.map((g) => (
             <div>
               <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                Polos Industriales
+                <span class={`w-2 h-2 rounded-full ${g.color}`}></span>
+                {g.titulo}
               </h3>
               <div class="flex flex-wrap gap-2">
-                {topIndustrial.map(comuna => (
-                  <a href={`/cobertura/${comuna.slug}`} class="px-3 min-h-11 inline-flex items-center bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors">
-                    {comuna.name}
+                {g.comunas.map((comuna) => (
+                  <a href={`/cobertura/${comuna!.slug}/`} class={`px-3 min-h-11 inline-flex items-center bg-slate-100 text-slate-600 rounded-full text-sm transition-colors ${g.hover}`}>
+                    {comuna!.name}
                   </a>
                 ))}
               </div>
             </div>
-
-            <div>
-              <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                Zona Norte y Rural
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                {topRural.map(comuna => (
-                  <a href={`/cobertura/${comuna.slug}`} class="px-3 min-h-11 inline-flex items-center bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
-                    {comuna.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                Zona Sur Poniente
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                {topVolumen.map(comuna => (
-                  <a href={`/cobertura/${comuna.slug}`} class="px-3 min-h-11 inline-flex items-center bg-slate-100 text-slate-600 rounded-full text-sm hover:bg-amber-50 hover:text-amber-700 transition-colors">
-                    {comuna.name}
-                  </a>
-                ))}
-              </div>
-            </div>
+            ))}
 
             <div>
               <a href="/cobertura/" class="inline-flex items-center gap-2 min-h-11 text-blue-600 font-semibold hover:underline">
@@ -201,12 +191,14 @@ const topVolumen = comunas.filter(c => c.type === 'volumen');
     </div>
   </section>
 
+  <SeccionesSeo secciones={seo.seoSections} fondo="blanco" />
+
   <ProjectsGrid />
 
   <CallToAction 
     title="¿Listo para comenzar?"
     subtitle="Cotiza tu proyecto industrial o servicio domiciliario hoy mismo."
     ctaText="Solicitar Cotización"
-    ctaLink="/cotizar"
+    ctaLink="/cotizar/"
   />
 </Layout>

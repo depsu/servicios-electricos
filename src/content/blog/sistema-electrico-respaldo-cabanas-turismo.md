@@ -1,5 +1,6 @@
 ---
 title: "Sistema eléctrico de respaldo en cabañas turísticas: ¿generador o solar?"
+metaTitle: "Respaldo eléctrico en cabañas turísticas: generador o solar"
 description: "Comparación práctica generador a combustión vs sistema solar fotovoltaico para cabañas turísticas en zonas rurales con cortes de energía frecuentes."
 pubDate: 2026-05-06
 author: "Equipo ChileEléctrico"

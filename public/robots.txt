@@ -7,15 +7,13 @@ Allow: /
 # Bloquear páginas de sistema
 Disallow: /api/
 Disallow: /gracias/
-Disallow: /_astro/
+# /_astro/ NO se bloquea: ahí viven las imágenes optimizadas, el CSS y el JS. Bloquearlo
+# le impedía a Google ver las fotos (búsqueda de imágenes) y renderizar la página.
 
 # Bloquear parámetros de tracking (evitar contenido duplicado)
 Disallow: /*?utm_*
 Disallow: /*?gclid=*
 Disallow: /*?fbclid=*
-
-# Crawl-delay para ser amigable con el servidor
-Crawl-delay: 1
 
 # Sitemaps
 Sitemap: https://chileelectrico.cl/sitemap-index.xml

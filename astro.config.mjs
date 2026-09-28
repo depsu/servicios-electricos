@@ -37,7 +37,8 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/gracias') && !page.includes('/api/'),
+      // Fuera del sitemap: lo que no se indexa (gracias, api) y las dos páginas de proyectos en noindex.
+      filter: (page) => !page.includes('/gracias') && !page.includes('/api/') && !page.endsWith('/proyectos/'),
       changefreq: 'weekly',
       priority: 0.7,
       /** @param {any} item */

@@ -283,5 +283,249 @@ export const comunas: Comuna[] = [
                 answer: 'El cambio de titular lo hace la distribuidora, pero si la instalación no está declarada o no cumple la norma, primero hay que regularizarla. Se revisa en terreno qué falta y se declara ante la SEC.'
             }
         ]
+    },
+
+    // --- URBANO / HOGAR (Santiago) ---
+    // Demanda medida en GSC (ago-2026): estas búsquedas caían en la portada entre el
+    // puesto 59 y el 77 por no tener página propia. El molde ya está probado:
+    // /cobertura/san-bernardo/ rankea 4,0 en "electricidad san bernardo".
+    {
+        slug: 'nunoa',
+        name: 'Ñuñoa',
+        type: 'volumen',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'gasfiteria-a-domicilio'],
+        microZones: ['Plaza Ñuñoa', 'Villa Frei', 'Irarrázaval', 'Estadio Nacional'],
+        intro: 'Electricistas a domicilio en Ñuñoa, con la experiencia que pide la casa antigua: tableros, circuitos nuevos y ampliaciones.',
+        responseTime: 'Visitas técnicas de Lunes a Sábado',
+        metaDescription: 'Electricista a domicilio en Ñuñoa: cambio de tablero, protección diferencial, circuitos nuevos y ampliaciones en Plaza Ñuñoa, Villa Frei e Irarrázaval. Trabajo declarado ante la SEC.',
+        proofPoints: [
+            'Buena parte de Ñuñoa es vivienda antigua con instalación original: tableros sin diferencial y circuitos pensados para mucha menos carga de la que hoy se usa',
+            'Ampliaciones y remodelaciones: el segundo piso o la cocina nueva casi siempre necesitan circuito propio, no colgarse del que ya existe',
+            'Trabajo limpio en casa habitada: se protege el piso, se pica lo mínimo y se retiran los escombros al terminar'
+        ],
+        faq: [
+            {
+                question: 'Mi casa en Ñuñoa es antigua y salta el automático seguido, ¿qué hay que revisar?',
+                answer: 'En viviendas antiguas lo habitual es que un solo circuito alimente media casa, así que basta con juntar estufa, hervidor y lavadora para llegar al límite. Conviene medir el consumo real por circuito antes de tocar el tablero: si el conductor está sano, la solución es repartir la carga en circuitos separados; si el cable ya trabajó caliente, hay que reponer ese tramo.'
+            },
+            {
+                question: '¿Vale la pena cambiar el tablero de una casa antigua?',
+                answer: 'Sí cuando no tiene protección diferencial, que es la que corta ante una fuga a tierra y evita la electrocución. Muchas viviendas construidas antes de que fuera exigible no la tienen. El cambio incluye revisar la puesta a tierra: un diferencial sin tierra en condiciones protege menos.'
+            },
+            {
+                question: 'Voy a remodelar la cocina, ¿necesito circuito nuevo?',
+                answer: 'Casi siempre. Horno eléctrico, encimera y microondas juntos superan lo que aguanta un circuito de enchufes común. Lo correcto es un circuito dedicado con su propia protección, dimensionado según los equipos que va a instalar.'
+            }
+        ]
+    },
+    {
+        slug: 'providencia',
+        name: 'Providencia',
+        type: 'volumen',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'montaje-electrico/tableros-electricos'],
+        microZones: ['Los Leones', 'Pedro de Valdivia', 'Manuel Montt', 'Barrio Italia'],
+        intro: 'Eléctrico a domicilio en Providencia para departamentos, oficinas y casas: fallas, tableros y circuitos nuevos.',
+        responseTime: 'Visitas técnicas de Lunes a Sábado',
+        metaDescription: 'Eléctrico a domicilio en Providencia: departamentos, oficinas y casas en Los Leones, Pedro de Valdivia, Manuel Montt y Barrio Italia. Tableros, circuitos y fallas.',
+        proofPoints: [
+            'Trabajo en edificios: coordinamos con administración y conserjería el acceso, el horario permitido y el corte cuando el tablero es compartido',
+            'Departamentos con equipos que la instalación original no contemplaba, como aire acondicionado o carga de vehículo eléctrico: primero se revisa qué aguanta el empalme',
+            'Oficinas y locales de Barrio Italia: circuitos separados para equipos y trabajo declarado ante la SEC cuando corresponde'
+        ],
+        faq: [
+            {
+                question: '¿Atienden departamentos o solo casas?',
+                answer: 'Departamentos también, y es lo más frecuente en Providencia. Conviene avisar a la administración antes: en varios edificios el acceso a shafts y al tablero general requiere autorización y un horario definido.'
+            },
+            {
+                question: 'Quiero instalar aire acondicionado, ¿el departamento lo soporta?',
+                answer: 'Depende de la potencia contratada y del estado del tablero. Un equipo split de tamaño medio suele necesitar circuito propio con su protección; si el empalme quedó justo, primero hay que revisar si corresponde aumentar la capacidad. Se mide antes de instalar, no después.'
+            },
+            {
+                question: 'Se cortó la luz solo en mi departamento y el edificio está normal, ¿qué es?',
+                answer: 'Lo más probable es que actuara una protección propia del departamento o que haya una falla desde el medidor hacia adentro. Si el tablero del departamento está sano y sigue sin luz, la falla suele estar en el tramo del medidor, que está en zona común: ahí se coordina con la administración para intervenir.'
+            }
+        ]
+    },
+    {
+        slug: 'la-florida',
+        name: 'La Florida',
+        type: 'volumen',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'gasfiteria-a-domicilio'],
+        microZones: ['Vicuña Mackenna', 'Walker Martínez', 'Rojas Magallanes', 'Bellavista de La Florida'],
+        intro: 'Electricista a domicilio en La Florida: tableros, enchufes sin corriente, ampliaciones y segundo piso.',
+        responseTime: 'Visitas técnicas de Lunes a Sábado',
+        metaDescription: 'Electricista a domicilio en La Florida: cambio de tablero, protección diferencial, circuitos para ampliación y segundo piso en Rojas Magallanes, Walker Martínez y Bellavista.',
+        proofPoints: [
+            'Casas de villa ampliadas por etapas: lo habitual es encontrar la ampliación colgada del circuito original, que no fue calculado para eso',
+            'Cambio de tablero con protección diferencial y revisión de la puesta a tierra en la misma visita',
+            'Electricidad y gasfitería con el mismo equipo, útil cuando la ampliación incluye baño o cocina'
+        ],
+        faq: [
+            {
+                question: 'Amplié la casa y ahora se corta la luz cuando enciendo varias cosas, ¿por qué?',
+                answer: 'Porque la ampliación quedó alimentada por un circuito que no fue dimensionado para esa carga. La solución no es cambiar el automático por uno más grande: eso solo saca la protección y deja el cable expuesto a calentarse: , sino llevar un circuito nuevo con conductor adecuado y su protección.'
+            },
+            {
+                question: 'Tengo enchufes que no dan corriente en una pieza, ¿es grave?',
+                answer: 'Puede ser un contacto suelto en la caja o un tramo cortado, y conviene revisarlo pronto: los contactos flojos calientan y son una causa común de incendio de origen eléctrico. Se ubica el punto con instrumento y se repara el tramo, sin picar toda la muralla.'
+            },
+            {
+                question: '¿Puedo subir la potencia contratada de la casa?',
+                answer: 'Sí, es un trámite ante la distribuidora que exige que la instalación interior esté en condiciones y declarada. Primero se revisa el tablero, el conductor de acometida y la puesta a tierra; si algo no cumple, se corrige antes de pedir el aumento.'
+            }
+        ]
+    },
+    {
+        slug: 'penalolen',
+        name: 'Peñalolén',
+        type: 'volumen',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'gasfiteria-a-domicilio'],
+        microZones: ['Peñalolén Alto', 'Grecia', 'San Luis de Macul', 'Quebrada de Macul'],
+        intro: 'Electricistas a domicilio en Peñalolén, tanto para casas de villa como para viviendas del sector alto.',
+        responseTime: 'Visitas técnicas de Lunes a Sábado',
+        metaDescription: 'Electricista a domicilio en Peñalolén: tableros, circuitos nuevos, iluminación exterior y regularización en Grecia, San Luis de Macul y Peñalolén Alto.',
+        proofPoints: [
+            'La comuna mezcla villa consolidada y vivienda del sector alto con terreno: las necesidades van del cambio de tablero a la iluminación exterior y el portón',
+            'Puesta a tierra medida, no supuesta: en terrenos con relleno el valor real puede estar muy lejos de lo que exige la norma',
+            'Regularización de instalaciones que nunca fueron declaradas ante la SEC, necesaria al vender o al contratar un seguro'
+        ],
+        faq: [
+            {
+                question: 'Quiero iluminación en el patio y el portón eléctrico, ¿va en el mismo circuito de la casa?',
+                answer: 'No conviene. La iluminación exterior y el portón se alimentan mejor desde un circuito propio, con conductor apto para intemperie y protección diferencial: así una falla afuera, con lluvia de por medio, no deja la casa completa sin luz.'
+            },
+            {
+                question: '¿Cómo sé si mi casa tiene puesta a tierra en buen estado?',
+                answer: 'Se mide con instrumento; no basta con ver que exista la barra. Si el valor es alto, el diferencial puede no actuar como debe. La medición es rápida y queda registrada en el informe de la visita.'
+            },
+            {
+                question: 'Mi casa nunca fue declarada ante la SEC, ¿se puede regularizar ahora?',
+                answer: 'Sí. Se revisa la instalación en terreno, se corrige lo que no cumple (normalmente tablero, protecciones y tierra) y un instalador autorizado la declara. Es lo que piden al vender la propiedad o cuando la aseguradora lo exige.'
+            }
+        ]
+    },
+    {
+        slug: 'san-miguel',
+        name: 'San Miguel',
+        type: 'volumen',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'gasfiteria-a-domicilio'],
+        microZones: ['Gran Avenida', 'Ciudad del Niño', 'El Llano', 'Departamental'],
+        intro: 'Eléctrico a domicilio en San Miguel: casas antiguas del barrio y departamentos nuevos de Gran Avenida.',
+        responseTime: 'Visitas técnicas de Lunes a Sábado',
+        metaDescription: 'Eléctrico a domicilio en San Miguel: cambio de tablero, circuitos nuevos y fallas en Gran Avenida, El Llano, Ciudad del Niño y Departamental.',
+        proofPoints: [
+            'Dos San Miguel en la misma comuna: la casa antigua del barrio, con instalación original, y la torre nueva de Gran Avenida, con tablero moderno pero cargas que crecieron',
+            'Cambio de tablero y separación de circuitos en viviendas donde toda la casa cuelga de una sola protección',
+            'Electricidad y gasfitería en la misma visita, que ahorra un viaje cuando la falla es de cocina o baño'
+        ],
+        faq: [
+            {
+                question: 'Vivo en un departamento de Gran Avenida y saltan las protecciones, ¿lo puede ver un eléctrico particular?',
+                answer: 'Sí, todo lo que está desde el medidor hacia adentro del departamento. Si la falla está en el tablero general o en zonas comunes, corresponde a la administración del edificio y se le informa con lo que se midió.'
+            },
+            {
+                question: 'La casa tiene un solo automático para todo, ¿se puede separar?',
+                answer: 'Sí, y es lo recomendable. Con circuitos separados (iluminación, enchufes, cocina), una falla deja sin servicio solo una parte y es mucho más fácil de ubicar. Se hace desde el tablero, sin rehacer la instalación completa.'
+            },
+            {
+                question: '¿Entregan algún documento del trabajo?',
+                answer: 'Sí: informe de lo ejecutado y, cuando el trabajo lo requiere, la declaración ante la SEC hecha por instalador autorizado. Ese documento es el que le piden al vender o ante un seguro.'
+            }
+        ]
+    },
+    {
+        slug: 'la-reina',
+        name: 'La Reina',
+        type: 'premium',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'pintura-interior-exterior'],
+        microZones: ['Príncipe de Gales', 'Larraín', 'Villa La Reina', 'La Reina Alta'],
+        intro: 'Electricistas para casas de La Reina: tableros, iluminación de jardín, bombas y terminaciones cuidadas.',
+        responseTime: 'Agendamiento con día y hora',
+        metaDescription: 'Electricista en La Reina: cambio de tablero, iluminación exterior, bombas de riego y circuitos nuevos en Príncipe de Gales, Larraín y La Reina Alta. Trabajo limpio y agendado.',
+        proofPoints: [
+            'Casa con jardín: iluminación exterior, bomba de riego y quincho piden circuitos propios y material apto para intemperie',
+            'Trabajo limpio en casa habitada: se cubre el piso, se pica lo mínimo indispensable y se retiran los escombros',
+            'Visita agendada con día y hora, sin ventanas de espera abiertas'
+        ],
+        faq: [
+            {
+                question: 'La bomba de riego hace saltar la protección, ¿qué puede ser?',
+                answer: 'Si salta al momento de partir, suele faltar capacidad para el peak de arranque del motor. Si salta después de un rato andando, apunta más a humedad o a aislación dañada en el tramo enterrado, algo común cuando la canalización del jardín se hizo con material de interior. Son dos causas distintas y se distinguen midiendo antes de cambiar nada.'
+            },
+            {
+                question: '¿Se puede iluminar el jardín sin picar los pisos terminados?',
+                answer: 'En general sí. El trazado se resuelve por zonas de tierra, cornisas o canalización a la vista bien resuelta, y se elige el recorrido antes de partir. Lo que no se debe hacer es usar cable de interior en el exterior, aunque quede escondido.'
+            },
+            {
+                question: '¿Hacen también la reparación de la muralla después del trabajo eléctrico?',
+                answer: 'Sí, incluimos la reposición y pintura de lo intervenido cuando se acuerda en el presupuesto. Es lo que evita que quede el parche a la vista después de una canalización.'
+            }
+        ]
+    },
+    {
+        slug: 'lo-barnechea-la-dehesa',
+        name: 'Lo Barnechea / La Dehesa',
+        type: 'premium',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'pintura-interior-exterior'],
+        microZones: ['La Dehesa', 'El Arrayán', 'Los Trapenses', 'Cerro 18'],
+        intro: 'Servicio eléctrico para casas de Lo Barnechea y La Dehesa: tableros, exteriores, portones y terminaciones finas.',
+        responseTime: 'Agendamiento con día y hora',
+        metaDescription: 'Electricistas en Lo Barnechea y La Dehesa: tableros, iluminación exterior, portones, riego y aumento de capacidad en El Arrayán y Los Trapenses. Terminaciones cuidadas.',
+        proofPoints: [
+            'Casas grandes con mucha carga repartida: piscina, riego, portón y climatización rara vez caben en la instalación con que se construyó la casa',
+            'Terminaciones finas: canalización planificada para no dañar revestimientos, y reposición de lo intervenido',
+            'Acceso resuelto antes de llegar: autorización de portería y horario permitido se avisan con anticipación'
+        ],
+        faq: [
+            {
+                question: 'Sumé piscina y climatización y el tablero quedó chico, ¿qué corresponde hacer?',
+                answer: 'Primero medir el consumo real y compararlo con la potencia contratada. Muchas veces alcanza con reordenar el tablero y llevar circuitos dedicados; cuando no, corresponde tramitar el aumento de capacidad ante la distribuidora, que exige la instalación interior en condiciones y declarada.'
+            },
+            {
+                question: 'El portón eléctrico deja de funcionar cuando llueve, ¿es del motor?',
+                answer: 'No siempre. Es frecuente que la alimentación o las cajas del exterior no sean estancas y entre humedad, lo que hace actuar el diferencial o corroe los contactos. Se revisa primero la canalización exterior y la conexión, antes de cambiar el motor.'
+            },
+            {
+                question: 'En mi condominio la portería no deja entrar sin autorización previa, ¿cómo lo resuelven?',
+                answer: 'Se avisa con anticipación quién entra y con qué materiales, para que la administración lo registre antes del día de la visita. Es lo que evita perder la hora agendada esperando en la portería, sobre todo cuando el trabajo necesita subir herramienta o escalera.'
+            }
+        ]
+    },
+    // Demanda medida (DataForSEO, sep-2026): "electricista las condes" 590/mes y
+    // "electricista vitacura" 260/mes. Ambas comunas están en la zona de concesión de
+    // Enel Distribución (enel.cl). Los sectores son barrios reales de cada comuna.
+    {
+        slug: 'las-condes-vitacura',
+        name: 'Las Condes / Vitacura',
+        type: 'premium',
+        serviceFocus: ['electricidad-domiciliaria', 'aumento-de-capacidad-electrica', 'montaje-electrico/bandejas-portaconductores'],
+        microZones: ['El Golf', 'Nueva Las Condes', 'Los Dominicos', 'San Carlos de Apoquindo', 'Santa María de Manquehue', 'Jardín del Este'],
+        intro: 'Electricista en Las Condes y Vitacura para departamentos en altura, casas con jardín y oficinas: tableros, respaldo ante cortes e iluminación.',
+        responseTime: 'Visitas de Lunes a Sábado y urgencias 24/7',
+        metaDescription: 'Electricista en Las Condes y Vitacura: tableros, generador de respaldo, dimmers y oficinas en El Golf, Los Dominicos y Santa María de Manquehue.',
+        proofPoints: [
+            'Generador de respaldo en casa, conectado con tablero de transferencia: la casa se desconecta de la red antes de que el generador tome la carga',
+            'Plantas de oficina: bandejas sobre el cielo falso, circuitos rotulados y plano de rutas al entregar',
+            'Iluminación regulable que no parpadea: el dimmer se elige según la ampolleta LED que va a controlar, no al revés'
+        ],
+        faq: [
+            {
+                question: '¿Qué distribuidora eléctrica atiende Las Condes y Vitacura?',
+                answer: 'Enel Distribución. Las dos comunas están dentro de su zona de concesión, así que el cambio de medidor, un empalme nuevo o un aumento de potencia se tramitan ante Enel. Cuando el trabajo lo requiere, esa coordinación la hacemos nosotros.'
+            },
+            {
+                question: 'Quiero un generador para no quedarme sin luz en un corte largo, ¿cómo se conecta a la casa?',
+                answer: 'A través de un tablero de transferencia, que desconecta la vivienda de la red de Enel antes de conectar el generador. Nunca con un alargador enchufado a un enchufe de la casa: eso puede devolver tensión hacia la calle y poner en riesgo a quien esté reparando la línea. Primero se define qué circuitos quedan en respaldo, por ejemplo refrigerador, luces, portón y bomba, y con esa lista se elige la potencia del equipo.'
+            },
+            {
+                question: 'Cambié las ampolletas por LED y ahora parpadean o zumban con el dimmer, ¿hay que rehacer la instalación?',
+                answer: 'Casi nunca. Lo habitual es que el regulador haya sido diseñado para ampolletas incandescentes y no se entienda con la carga baja de un LED. Se revisa que la ampolleta sea regulable y se reemplaza el dimmer por uno compatible; el cableado suele quedar igual.'
+            },
+            {
+                question: 'Estamos habilitando una oficina en un edificio de El Golf, ¿pueden trabajar sin cortar la luz a los otros pisos?',
+                answer: 'En general sí, porque la obra se alimenta desde el tablero de la propia planta, que es lo que se interviene. Si hace falta tocar el tablero general o subir por el shaft, el permiso lo da la administración, que también fija la ventana de trabajo, normalmente fuera del horario de oficina. Al terminar se entregan los circuitos etiquetados y el plano de distribución de rutas.'
+            }
+        ]
     }
 ];

@@ -6,16 +6,23 @@ import CallToAction from '../../components/CallToAction.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import { services } from '../../data/servicios';
 import imgHogar from '../../assets/paginas/hogar-condominios.png';
+import SeccionesSeo from '../../components/SeccionesSeo.astro';
+import FaqSimple from '../../components/FaqSimple.astro';
+import { seoPaginas } from '../../data/seo-paginas';
+import { faqSchema } from '../../lib/enlazar';
+
+const seo = seoPaginas['hogar-condominios'] ?? {};
 
 const homeServices = services.filter(s => s.segment === 'hogar');
 ---
 
 <Layout
-  title="Servicios Hogar y Condominios | Electricista y Gasfíter"
-  description="Electricidad domiciliaria, empalme eléctrico rural, gasfitería a domicilio y pintura para casas y condominios de la Región Metropolitana. Técnicos identificados y garantía escrita."
+  title={seo.metaTitle ?? "Servicios Hogar y Condominios | Electricista y Gasfíter"}
+  description={seo.metaDescription ?? "Electricidad domiciliaria, empalme eléctrico rural, gasfitería a domicilio y pintura para casas y condominios de la Región Metropolitana. Técnicos identificados y garantía escrita."}
+  schema={faqSchema(seo.faqExtra) ?? undefined}
 >
   <Hero 
-    title="Expertos en su Hogar <br><span class='text-emerald-500'>Rápido y Garantizado</span>"
+    title={seo.h1 ?? "Expertos en su Hogar <br><span class='text-emerald-500'>Rápido y Garantizado</span>"}
     subtitle="Electricidad, empalmes rurales, gasfitería y pintura. Atención limpia y segura para su casa o condominio."
     bgImage={imgHogar}
     bgImageAlt="Living comedor de una casa con la iluminación empotrada encendida"
@@ -34,7 +41,7 @@ const homeServices = services.filter(s => s.segment === 'hogar');
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {homeServices.map(service => (
-          <a href={`/hogar-condominios/${service.slug}`} class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <a href={`/hogar-condominios/${service.slug}/`} class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4 text-2xl group-hover:scale-110 transition-transform">
               {service.icon === 'poste' ? '⚡' : service.icon === 'gota' ? '💧' : service.icon === 'brocha' ? '🖌️' : '🔧'}
             </div>
@@ -94,16 +101,20 @@ const homeServices = services.filter(s => s.segment === 'hogar');
   <section class="py-12 bg-slate-50 border-y border-slate-200 text-center">
     <div class="container mx-auto px-4">
       <p class="text-slate-600 mb-3">¿Quiere ver cómo quedan los trabajos terminados?</p>
-      <a href="/hogar-condominios/proyectos" class="inline-flex items-center min-h-11 text-emerald-700 font-bold hover:underline">
+      <a href="/hogar-condominios/proyectos/" class="inline-flex items-center min-h-11 text-emerald-700 font-bold hover:underline">
         Ver trabajos en casas y condominios &rarr;
       </a>
     </div>
   </section>
 
+  <SeccionesSeo secciones={seo.seoSections} />
+
+  <FaqSimple items={seo.faqExtra} />
+
   <CallToAction 
     title="Mejore su Hogar Hoy" 
     subtitle="Agende una visita técnica o pida un presupuesto rápido vía WhatsApp."
     ctaText="Solicitar Visita"
-    ctaLink="/cotizar?tipo=hogar"
+    ctaLink="/cotizar/?tipo=hogar"
   />
 </Layout>

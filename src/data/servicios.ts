@@ -1,4 +1,6 @@
 import type { ImageMetadata } from 'astro';
+import { seoServicios } from './seo-servicios';
+import { serviciosNuevos } from './servicios-nuevos';
 import imgTableros from '../assets/servicios/tableros-electricos.png';
 import imgEscalerillas from '../assets/servicios/escalerillas-portacables.png';
 import imgBandejas from '../assets/servicios/bandejas-portaconductores.png';
@@ -37,9 +39,11 @@ export interface Service {
     faq?: { question: string; answer: string }[];
     testimonials?: { name: string; text: string; location: string; rating: number }[];
     gallery?: { url: string; caption: string }[];
+    // Secciones propias para SEO (H2 + párrafos con enlaces internos [texto](/ruta/)).
+    seoSections?: { h2: string; paragraphs: string[] }[];
 }
 
-export const services: Service[] = [
+const base: Service[] = [
     // ============================================================
     // B2B INDUSTRIAL - PRIORITY 1 (High Ticket)
     // ============================================================
@@ -69,7 +73,7 @@ export const services: Service[] = [
             'Tableros de Alumbrado y Fuerza Normal'
         ],
         techSpecs: [
-            { label: 'Normativa', value: 'NCh Elec. 4/2003 / RIC / IEC 61439' },
+            { label: 'Normativa', value: 'Pliegos técnicos RIC (DS N°8/2019) / IEC 61439' },
             { label: 'Índice IP', value: 'IP54 / IP65 / IP66 según ambiente' },
             { label: 'Material Gabinete', value: 'Acero Carbono RAL7035 / Inox 304' },
             { label: 'Voltaje Nominal', value: '380V / 440V / 660V trifásico' },
@@ -232,7 +236,7 @@ export const services: Service[] = [
         techSpecs: [
             { label: 'Tipos de Aumento', value: 'Monofásico a Trifásico / Aumento de kW Trifásico' },
             { label: 'Capacidades', value: 'Desde 10kW hasta 500kW+' },
-            { label: 'Normativa', value: 'NCh Elec. 4/2003 / RIC / Pliegos Técnicos' },
+            { label: 'Normativa', value: 'Pliegos técnicos RIC (DS N°8/2019)' },
             { label: 'Tiempo Tramitación', value: '30 a 60 días (depende de Cía. Eléctrica)' },
             { label: 'Ingeniería', value: 'Incluida (Memoria y Planos As-Built)' }
         ],
@@ -292,7 +296,7 @@ export const services: Service[] = [
             { label: 'Voltaje', value: '220V monofásico / 380V trifásico' },
             { label: 'Poste', value: 'Hormigón armado 9m o madera impregnada' },
             { label: 'Compañías', value: 'CGE / Enel / Chilquinta / Cooperativas' },
-            { label: 'Normativa', value: 'TE1 / RIC / NCh Elec. 4/2003' }
+            { label: 'Normativa', value: 'TE1 / Pliegos técnicos RIC (DS N°8/2019)' }
         ],
         processSteps: [
             { title: 'Factibilidad', desc: 'Visitamos tu terreno para verificar punto de conexión más cercano (sin costo).' },
@@ -333,7 +337,7 @@ export const services: Service[] = [
         imageAlt: 'Instalación de gasfitería bajo un lavaplatos, con cañerías de cobre y PPR nuevas y llaves de paso',
         title: 'Gasfitería a Domicilio',
         segment: 'hogar',
-        description: 'Servicio profesional de gasfitería para emergencias y proyectos. Detección y reparación de fugas, destape de cañerías, instalación de calefont, termos, llaves y artefactos sanitarios. Llegamos rápido y dejamos limpio.',
+        description: 'Servicio profesional de gasfitería para emergencias y proyectos. Detección y reparación de filtraciones de agua, destape de cañerías, instalación de termos, llaves y artefactos sanitarios. Llegamos rápido y dejamos limpio.',
         shortDescription: 'Reparaciones y urgencias, llegamos rápido.',
         icon: 'gota',
         benefits: [
@@ -347,7 +351,7 @@ export const services: Service[] = [
         features: [
             'Reparación de fugas de agua',
             'Destape de cañerías y desagües',
-            'Instalación de calefont a gas',
+            'Instalación de calefont (la conexión a gas la hace un instalador de gas autorizado por la SEC)',
             'Instalación de termos eléctricos',
             'Cambio de llaves y grifería',
             'Instalación de WC, lavamanos y duchas'
@@ -467,7 +471,7 @@ export const services: Service[] = [
         ],
         techSpecs: [
             { label: 'Personal', value: 'Instaladores Autorizados Clase D o Superior' },
-            { label: 'Normativa', value: 'NCh Elec. 4/2003 y Pliegos Técnicos RIC' },
+            { label: 'Normativa', value: 'Pliegos técnicos RIC (DS N°8/2019)' },
             { label: 'Materiales', value: 'Certificados (Bticino, Legrand, Schneider, Phillips)' },
             { label: 'Garantía', value: '12 meses en mano de obra e instalación' },
             { label: 'Cobertura', value: 'Toda la Región Metropolitana' }
@@ -494,3 +498,14 @@ export const services: Service[] = [
         ]
     }
 ];
+
+// Capa SEO de cada servicio (title/description de Google, H1 largo, secciones propias y
+// preguntas frecuentes extra) vive aparte en seo-servicios.ts, para que el catálogo de
+// arriba siga siendo solo lo que la empresa declara. Las preguntas extra se SUMAN a las
+// del servicio, no las reemplazan.
+export const services: Service[] = [...base, ...serviciosNuevos].map((s) => {
+    const seo = seoServicios[s.slug];
+    if (!seo) return s;
+    const { faqExtra, ...resto } = seo;
+    return { ...s, ...resto, faq: [...(s.faq ?? []), ...(faqExtra ?? [])] };
+});

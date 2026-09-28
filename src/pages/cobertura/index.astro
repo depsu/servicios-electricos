@@ -7,7 +7,7 @@ import imgTerreno from '../../assets/paginas/cobertura-terreno.png';
 const sortedComunas = [...comunas].sort((a, b) => a.name.localeCompare(b.name));
 ---
 
-<Layout title="Cobertura en Región Metropolitana | Servicios Eléctricos RM" description="Electricistas en Lampa, Pudahuel y ENEA, San Bernardo, Chicureo, Buin, Paine, Melipilla, Talagante y Peñaflor. Vea los sectores que cubrimos en cada comuna.">
+<Layout title="Cobertura en Región Metropolitana | Servicios Eléctricos RM" description="Electricistas en 17 zonas de la RM: Las Condes, Vitacura, Providencia, Ñuñoa, La Florida, Lampa, San Bernardo, Chicureo y más. Vea los sectores de cada comuna.">
   <section class="relative py-20 bg-slate-900 text-white text-center overflow-hidden">
     <div class="absolute inset-0 z-0">
       <Image
@@ -58,7 +58,7 @@ const sortedComunas = [...comunas].sort((a, b) => a.name.localeCompare(b.name));
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {sortedComunas.map((comuna) => (
-          <a href={`/cobertura/${comuna.slug}`} class="group block bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-400 transition-all duration-300">
+          <a href={`/cobertura/${comuna.slug}/`} class="group block bg-slate-50 border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-400 transition-all duration-300">
             <div class="flex items-center justify-between mb-4">
               <h3 class="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
                 {comuna.name}

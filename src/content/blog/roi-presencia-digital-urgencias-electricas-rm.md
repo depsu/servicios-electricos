@@ -1,5 +1,6 @@
 ---
 title: "Cómo medimos el ROI de la presencia digital para responder urgencias eléctricas en RM"
+metaTitle: "Presencia digital para urgencias eléctricas: cómo medir el ROI"
 description: "Tres años midiendo el retorno de tener un sitio optimizado para urgencias eléctricas en la Región Metropolitana. Métricas reales: tiempos de respuesta, costo por lead, cobertura por comuna y la diferencia entre Ads y orgánico."
 pubDate: 2026-05-17
 author: "Equipo ChileEléctrico"

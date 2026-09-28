@@ -1,5 +1,6 @@
 ---
 title: "Cargadores de autos eléctricos en casas y condominios: lo que piden los reglamentos"
+metaTitle: "Cargador de auto eléctrico en casa o condominio: RIC N°15"
 description: "Qué exige la normativa SEC para instalar un cargador de auto eléctrico en una casa o condominio en Chile: pliego RIC N°15, declaración TE6, dimensionamiento del empalme y los errores que vemos en terreno."
 pubDate: 2026-07-22
 author: "Equipo ChileEléctrico"

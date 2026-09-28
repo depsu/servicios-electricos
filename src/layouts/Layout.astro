@@ -48,14 +48,19 @@ import { ClientRouter } from 'astro:transitions';
 <!doctype html>
 <html lang="es" class="scroll-smooth">
 	<head>
-		<!-- Google Tag Manager -->
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-NQ44WHJ3');</script>
-		<!-- End Google Tag Manager test -->
 		<meta charset="UTF-8" />
+		<!-- Google Tag Manager, con carga diferida: el contenedor (y lo que trae, como Clarity y
+		     el pixel de Bing) se pide cuando la página ya terminó de cargar, en un momento libre
+		     del navegador. Antes competía con el primer dibujo y el LCP móvil de la portada
+		     variaba entre 2 y 10 s según qué tan rápido respondían esos terceros (28-sep-2026).
+		     El dataLayer existe desde el inicio, así que los eventos anteriores quedan en cola. -->
+		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});function cargar(){if(w.__gtmCargado)return;w.__gtmCargado=1;
+		var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+		j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+		function agendar(){if('requestIdleCallback' in w){w.requestIdleCallback(cargar,{timeout:3000});}else{w.setTimeout(cargar,1500);}}
+		if(d.readyState==='complete'){agendar();}else{w.addEventListener('load',agendar,{once:true});}
+		})(window,document,'script','dataLayer','GTM-NQ44WHJ3');</script>
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />

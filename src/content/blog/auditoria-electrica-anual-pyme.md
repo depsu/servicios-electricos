@@ -16,7 +16,7 @@ Una auditoría eléctrica anual es uno de los gastos más subestimados por las P
 
 Una auditoría SEC para PYME estándar revisa:
 
-- **Tablero general (TG)**: temperatura de breakers, apriete de conexiones, balance de fases.
+- **Tablero general (TG)**: temperatura de breakers, apriete de conexiones, balance de fases. Si el tablero tiene [telemetría o monitoreo remoto](/blog/telemetria-monitoreo-remoto-tableros-electricos/), el historial de temperaturas y alarmas acorta esta parte.
 - **Empalme**: dimensionamiento vs consumo real.
 - **Puesta a tierra**: medición con telurómetro contra lo que exige el pliego RIC N°06 (ver [la guía de puesta a tierra](/blog/puesta-a-tierra-malla-a-tierra-casa/)).
 - **Conductores**: estado de aislación con megger.

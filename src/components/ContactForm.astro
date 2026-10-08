@@ -18,13 +18,13 @@ const {
         </div>
 
         <form 
-            action="https://formsubmit.co/rivera.ale982@gmail.com" 
+            action="/api/leads/" 
             method="POST" 
             class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm"
         >
-            <!-- Correo configurado: rivera.ale982@gmail.com -->
+            <!-- Destino: contacto@chileelectrico.cl vía /api/leads (Resend) -->
             
-            <!-- Configuración de Formsubmit -->
+            <!-- Asunto y redirección que lee /api/leads -->
             <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio web">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
@@ -105,8 +105,13 @@ const {
 
 <script is:inline>
     document.addEventListener('astro:page-load', () => {
-        const form = document.querySelector('form[action*="formsubmit.co"]');
+        const form = document.querySelector('form[action="/api/leads/"]');
         if (!form) return;
+
+        // Si el envío sin JS falló, /api/leads vuelve aquí con ?enviado=no.
+        if (new URLSearchParams(location.search).get('enviado') === 'no') {
+            alert('No pudimos enviar tu mensaje. Intenta nuevamente o escríbenos por WhatsApp.');
+        }
 
         const btn = document.getElementById('contact-submit-btn');
         const btnText = document.getElementById('btn-text');

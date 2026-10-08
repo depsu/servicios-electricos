@@ -31,11 +31,11 @@ const inputClass = {
     <h3 class={`text-lg font-bold ${textClass} mb-4`}>{title}</h3>
     
     <form 
-        action="https://formsubmit.co/rivera.ale982@gmail.com" 
+        action="/api/leads/" 
         method="POST"
         class="space-y-4"
     >
-        <!-- Configuración Formsubmit -->
+        <!-- Asunto que lee /api/leads -->
         <input type="hidden" name="_subject" value="Nueva solicitud de cotización">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://chileelectrico.cl/gracias">

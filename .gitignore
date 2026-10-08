@@ -5,3 +5,5 @@ node_modules
 # meses sin publicarse, y la funcion de servidor viajaba con binarios de Mac).
 dist
 .vercel/output
+.vercel
+.env*
